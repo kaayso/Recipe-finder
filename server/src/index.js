@@ -5,7 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const middlewares = require('./middlewares');
-const user = require('./api/user');
+const user = require('./routes/user');
 
 dotenv.config();
 const PORT = process.env.PORT_SERVER || 4000;
