@@ -1,2 +1,2 @@
 # Easy-recipes-
-Finding recipes for Ingredients you already have.
+Find recipes from Ingredients you already have.
