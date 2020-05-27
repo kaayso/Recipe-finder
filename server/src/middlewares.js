@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 //  Error handling middleware (specific for routes)
 const notFound = (req, res, next) => {
   const error = new Error(`Route undefined- ${req.originalUrl}`);
@@ -15,7 +17,26 @@ const errorHandler = (error, req, res, next) => {
   });
 };
 
+// handle invalid token
+const auth = (req, res, next) => {
+  try {
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, process.env.SECRET_TOKEN_ACCESS);
+    const uid = decodedToken.uid;
+    if (req.body.uid && req.body.uid !== uid) {
+      res.status(403);
+      return next(new Error('invalid user ID'));
+    } else {
+      next();
+    }
+  } catch {
+    res.status(401);
+    next(new Error('invalid request'));
+  }
+}
+
 module.exports = {
   notFound,
   errorHandler,
+  auth
 };

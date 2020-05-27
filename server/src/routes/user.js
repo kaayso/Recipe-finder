@@ -1,4 +1,5 @@
 const controllers = require('../controllers/user');
+const middlewares = require('../middlewares');
 
 const {
   Router
@@ -6,7 +7,7 @@ const {
 
 const router = Router();
 
-router.get('/', controllers.allUsers);
+router.get('/', middlewares.auth, controllers.allUsers);
 
 router.post('/signup', controllers.singup);
 

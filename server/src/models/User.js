@@ -16,7 +16,10 @@ const schema = new Schema({
     ...requiredString,
     unique: true
   },
-  emailAddress: requiredString,
+  email: {
+    ...requiredString,
+    unique: true
+  },
   password: requiredString,
 }, {
   timestamps: true

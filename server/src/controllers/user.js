@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const SALT_ROUNDS = 10;
 
@@ -22,6 +23,7 @@ const singup = (req, res, next) => {
     user.save((err, result) => {
       if (err) {
         err.name === 'ValidationError' && res.status(422);
+        err.message.includes('to be unique') && res.status(409);
         return next(err);
       }
       // saved!
@@ -51,9 +53,14 @@ const login = (req, res, next) => {
         next(new Error('incorrect password'));
         return;
       }
+      const myToken = jwt.sign({
+        uid: result._id,
+      }, process.env.SECRET_TOKEN_ACCESS, {
+        expiresIn: '1h'
+      });
       res.status(200).json({
         uid: result._id,
-        token: ''
+        token: myToken
       });
     });
   });
