@@ -16,6 +16,8 @@ module.exports = {
   },
   rules: {
     'no-console': 'off',
-    'max-len': '120',
+    'max-len': 1,
+    'eol-last': 0,
+    'consistent-return': 0
   },
 };

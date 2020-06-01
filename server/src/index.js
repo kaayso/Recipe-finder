@@ -31,7 +31,7 @@ const options = {
   useCreateIndex: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 10000,
-  autoIndex: process.env.NODE_ENV !== 'production',
+  autoIndex: process.env.NODE_ENV !== 'production', // only in dev mod
 };
 
 mongoose.connect(process.env.DB_URL, options).catch((error) => console.error(error));

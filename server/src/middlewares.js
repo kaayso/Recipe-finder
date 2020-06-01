@@ -22,21 +22,20 @@ const auth = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, process.env.SECRET_TOKEN_ACCESS);
-    const uid = decodedToken.uid;
-    if (req.body.uid && req.body.uid !== uid) {
+    if (req.body.uid && req.body.uid !== decodedToken.uid) {
       res.status(403);
-      return next(new Error('invalid user ID'));
-    } else {
-      next();
+      return next(new Error('invalid user'));
     }
+    req.uid = decodedToken.uid;
+    next();
   } catch {
     res.status(401);
     next(new Error('invalid request'));
   }
-}
+};
 
 module.exports = {
   notFound,
   errorHandler,
-  auth
+  auth,
 };
