@@ -125,10 +125,6 @@ const getNewAccessToken = async (req, res, next) => {
 };
 
 const logout = (req, res, next) => {
-  if (!req.body.token) {
-    res.status(401);
-    return next(new Error('invalid request'));
-  }
   try {
     Token.findOneAndDelete(
       {

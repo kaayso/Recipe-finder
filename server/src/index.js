@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const middlewares = require('./middlewares');
 const user = require('./routes/user');
+const recipe = require('./routes/recipe');
+const ingredient = require('./routes/ingredient');
 
 dotenv.config();
 const PORT = process.env.PORT_SERVER || 4000;
@@ -22,6 +24,8 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use('/api/user', user);
+app.use('/api/recipe', recipe);
+app.use('/api/ingredient', ingredient);
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 

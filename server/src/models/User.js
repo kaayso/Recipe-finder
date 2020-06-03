@@ -21,7 +21,10 @@ const schema = new Schema({
     unique: true,
   },
   password: requiredString,
-
+  admin: {
+    type: Boolean,
+    default: false,
+  },
 }, {
   timestamps: true,
 });
