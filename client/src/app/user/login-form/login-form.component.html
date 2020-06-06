@@ -1,0 +1,11 @@
+  <form class="login-form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <input class="login-form__username" type="text" formControlName="username" />
+    <input class="login-form__password" type="password" formControlName="password" />
+    <span *ngIf="showError" class="login-form__error">username or password is incorrect</span>
+
+    <button type="submit" class="login-form__btn">
+      login
+    </button>
+    <span class="login-form__signup-msg"><a href="/signup">create an account for free.</a> </span>
+  </form>
