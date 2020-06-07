@@ -34,8 +34,45 @@ const auth = (req, res, next) => {
   }
 };
 
+const pagination = (model) => async (req, res, next) => {
+  const data = await model.find((err, items) => {
+    if (err) return next(err);
+    return items.filter((i) => i.uid === req.uid || i.uid === '0');
+  });
+  const page = parseInt(req.query.page, 10);
+  const limit = parseInt(req.query.limit, 10);
+  const results = {};
+
+  // define sart and end index
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+
+  // add previous page if exist
+  if (startIndex > 0 && startIndex <= data.length) {
+    results.previousPage = {
+      page: page - 1,
+      items: limit,
+    };
+  }
+
+  // add next page if exist (almost 1 item)
+  if (endIndex < data.length) {
+    const extraItems = ((page + 1) * limit) - data.length;
+    results.nextPage = {
+      page: page + 1,
+      items: extraItems > 0 ? limit - extraItems : limit,
+    };
+  }
+
+  results.data = data.slice(startIndex, endIndex);
+  if (!page || !limit) results.data = data;
+  res.paginationResults = results;
+  next();
+};
+
 module.exports = {
   notFound,
   errorHandler,
   auth,
+  pagination,
 };

@@ -1,13 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 const Recipe = require('../models/Recipe');
 
-const recipes = (req, res, next) => {
-  Recipe.find((err, items) => {
-    if (err) return next(err);
-    const result = items.filter((i) => i.uid === req.uid || i.uid === '0');
-    return res.status(200).json(result);
-  });
-};
+const recipes = (req, res) => res.status(200).json(res.paginationResults);
 
 const createRecipe = (req, res, next) => {
   const recipe = new Recipe(req.body);
