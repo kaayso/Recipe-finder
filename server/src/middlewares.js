@@ -39,8 +39,13 @@ const pagination = (model) => async (req, res, next) => {
     if (err) return next(err);
     return items.filter((i) => i.uid === req.uid || i.uid === '0');
   });
-  const page = parseInt(req.query.page, 10);
-  const limit = parseInt(req.query.limit, 10);
+  let page = parseInt(req.query.page, 10);
+  let limit = parseInt(req.query.limit, 10);
+  // if those params are not specified then return all items
+  if (!page || !limit) {
+    page = 1;
+    limit = data.length;
+  }
   const results = {};
 
   // define sart and end index
@@ -65,7 +70,6 @@ const pagination = (model) => async (req, res, next) => {
   }
 
   results.data = data.slice(startIndex, endIndex);
-  if (!page || !limit) results.data = data;
   res.paginationResults = results;
   next();
 };

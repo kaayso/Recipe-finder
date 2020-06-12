@@ -3,6 +3,13 @@ const Recipe = require('../models/Recipe');
 
 const recipes = (req, res) => res.status(200).json(res.paginationResults);
 
+const recipeById = (req, res, next) => {
+  Recipe.findOne({ _id: req.params.id }, (err, result) => {
+    if (err) return next(err);
+    res.status(200).json(result);
+  });
+};
+
 const createRecipe = (req, res, next) => {
   const recipe = new Recipe(req.body);
   recipe.uid = req.uid;
@@ -38,4 +45,5 @@ module.exports = {
   createRecipe,
   updateRecipe,
   deleteRecipe,
+  recipeById,
 };

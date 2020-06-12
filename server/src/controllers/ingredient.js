@@ -1,10 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 const Ingredient = require('../models/Ingredient');
 
-const ingredients = (req, res, next) => {
-  Ingredient.find((err, items) => {
+const ingredients = (req, res) => res.status(200).json(res.paginationResults);
+
+const ingredientById = (req, res, next) => {
+  Ingredient.findOne({ _id: req.params.id }, (err, result) => {
     if (err) return next(err);
-    return res.status(200).json(items);
+    res.status(200).json(result);
   });
 };
 
@@ -43,4 +45,5 @@ module.exports = {
   createIngredient,
   updateIngredient,
   deleteIngredient,
+  ingredientById,
 };
