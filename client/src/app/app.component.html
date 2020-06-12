@@ -1,1 +1,9 @@
 <router-outlet></router-outlet>
+<span *ngIf="loading">
+  Loading...
+</span>
+<ul>
+  <li *ngFor="let item of recipes">
+    {{item.name}}
+  </li>
+</ul>

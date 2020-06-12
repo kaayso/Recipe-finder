@@ -5,16 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { LoginFormComponent } from './login-form/login-form.component';
 
-
 @NgModule({
-  declarations: [ LoginFormComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  exports: [
-    LoginFormComponent
-  ]
+  declarations: [LoginFormComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  exports: [LoginFormComponent],
 })
-export class UserModule { }
+export class UserModule {}
