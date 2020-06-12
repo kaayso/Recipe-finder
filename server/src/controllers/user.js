@@ -67,7 +67,7 @@ const login = (req, res, next) => {
         }
         // all is fine, generate tokens and save it in DB
         const myToken = generateAccessToken(result, TOKEN_ACCESS_DURATION);
-        const myRefreshToken = generateAccessToken(result, '100y');
+        const myRefreshToken = generateAccessToken(result, '1d');
         const token = new Token({
           token: myRefreshToken,
         });
@@ -119,6 +119,12 @@ const getNewAccessToken = async (req, res, next) => {
       ),
     });
   } catch {
+    // if exists remove it from db
+    if (currentTokens.includes(req.body.token)) {
+      Token.findOneAndDelete({ token: req.body.token }, (err) => {
+        if (err) console.error(err);
+      });
+    }
     res.status(401);
     return next(new Error('invalid request'));
   }
