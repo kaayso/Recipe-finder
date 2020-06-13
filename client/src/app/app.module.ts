@@ -9,8 +9,9 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HttpClientModule } from '@angular/common/http';
-import { RecipeService } from './services/recipe.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { GenericService } from './services/generic.service';
+import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,14 @@ import { RecipeService } from './services/recipe.service';
     PageNotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, UserModule, HttpClientModule],
-  providers: [RecipeService],
+  providers: [
+    GenericService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

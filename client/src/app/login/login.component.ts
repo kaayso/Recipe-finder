@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
   ngOnInit(): void {}
+
+  onSubmit(data) {
+    if (data.token && data.refreshToken) {
+      // localStorage.token = data.token;
+      // localStorage.refreshToken = data.refreshToken;
+      this.router.navigateByUrl('/home');
+    }
+  }
 }

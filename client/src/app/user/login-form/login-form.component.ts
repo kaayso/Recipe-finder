@@ -1,36 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { api } from '../../ws/api';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
-
-  constructor() { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
+
   showError: boolean = false;
+  @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
+
   profileForm = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
-  get username () {
-    return this.profileForm.get('username')
+  get username() {
+    return this.profileForm.get('username');
   }
-  get password () {
-    return this.profileForm.get('password')
+  get password() {
+    return this.profileForm.get('password');
   }
-  onSubmit() {
-    if (this.username.invalid || this.password.invalid){
-      this.showError= true;
+
+  submit() {
+    if (this.username.invalid || this.password.invalid) {
+      this.showError = true;
+    } else {
+      // send HTTP request
+      this.authService.login(api.Login, this.profileForm.value).subscribe(
+        (res) => {
+          console.log(res.headers);
+          this.onSubmit.emit(res);
+        },
+        (err) => {
+          this.showError = true;
+          console.log(err.status);
+        }
+      );
     }
-    else{
-      // check combinaison
-      this.showError= false;
-    }
-    console.log(this.profileForm.value);
   }
 }

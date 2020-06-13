@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RecipeService } from './services/recipe.service';
+import { GenericService } from './services/generic.service';
 import { Recipe } from './interfaces/recipe';
+import { api } from './ws/api';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { Recipe } from './interfaces/recipe';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private recipeService: RecipeService) {}
+  constructor(private webService: GenericService) {}
   recipes: Recipe[];
   dateVal = new Date();
   loading: boolean = true;
@@ -17,8 +18,16 @@ export class AppComponent {
     this.getRecipes();
   }
 
-  async getRecipes() {
-    this.recipes = await this.recipeService.getRecipes();
-    this.loading = false;
+  getRecipes() {
+    const ep = `${api.Recipe}`;
+    this.webService.get(ep).subscribe(
+      (res) => {
+        if (res) this.loading = false;
+        this.recipes = res.data;
+      },
+      (err) => {
+        console.log(err.status);
+      }
+    );
   }
 }
