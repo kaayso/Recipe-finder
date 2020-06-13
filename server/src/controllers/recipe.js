@@ -5,7 +5,10 @@ const recipes = (req, res) => res.status(200).json(res.paginationResults);
 
 const recipeById = (req, res, next) => {
   Recipe.findOne({ _id: req.params.id }, (err, result) => {
-    if (err) return next(err);
+    if (err) {
+      res.statusCode = 404;
+      return next(err);
+    }
     res.status(200).json(result);
   });
 };
