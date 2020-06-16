@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { api } from '../../ws/api';
+import { CookiesService } from '../../services/cookies.service';
 
 @Component({
   selector: 'app-login-form',
@@ -9,7 +10,10 @@ import { api } from '../../ws/api';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private cookiesService: CookiesService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -35,12 +39,13 @@ export class LoginFormComponent implements OnInit {
       // send HTTP request
       this.authService.login(api.Login, this.profileForm.value).subscribe(
         (res) => {
-          console.log(res.headers);
-          this.onSubmit.emit(res);
+          // setup cookie & go to home page
+          this.cookiesService.setCookie('token', res.token);
+          this.cookiesService.setCookie('refreshToken', res.refreshToken);
+          this.onSubmit.emit(res.uid);
         },
         (err) => {
           this.showError = true;
-          console.log(err.status);
         }
       );
     }

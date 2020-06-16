@@ -10,8 +10,8 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router) {}
   ngOnInit(): void {}
 
-  onSubmit(data) {
-    if (data.token && data.refreshToken) {
+  onSubmit(uid) {
+    if (uid) {
       // localStorage.token = data.token;
       // localStorage.refreshToken = data.refreshToken;
       this.router.navigateByUrl('/home');

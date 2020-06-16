@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GenericService } from './services/generic.service';
 import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
+import { CookiesService } from './services/cookies.service';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.inte
   imports: [BrowserModule, AppRoutingModule, UserModule, HttpClientModule],
   providers: [
     GenericService,
+    CookiesService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorInterceptor,
