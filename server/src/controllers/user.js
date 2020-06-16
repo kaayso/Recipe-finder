@@ -77,8 +77,7 @@ const login = (req, res, next) => {
             return next(error);
           }
         });
-        res.cookie('token', myToken, { httpOnly: true, secure: true });
-        res.cookie('refreshToken', myRefreshToken, { httpOnly: true, secure: true });
+
         res.status(200).json({
           // eslint-disable-next-line no-underscore-dangle
           uid: result._id,
