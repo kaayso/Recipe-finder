@@ -7,10 +7,22 @@ import { shareReplay } from 'rxjs/operators';
 })
 export class GenericService {
   constructor(private http: HttpClient) {}
-  apiRoot: string = 'http://localhost:4000/';
+  apiRoot: string =  'http://localhost:4000/';
 
-  // Get ressources according to end point
+  // GET ressources according to end point
   get(ep) {
     return this.http.get<any>(`${this.apiRoot}${ep}`).pipe(shareReplay(1));
+  }
+
+  // POST
+  post(ep, body) {
+    return this.http.post<any>(`${this.apiRoot}${ep}`, body)
+      .pipe(shareReplay(1));
+  }
+
+  // PUT
+  put(ep, body) {
+    return this.http.put<any>(`${this.apiRoot}${ep}`, body)
+      .pipe(shareReplay(1));
   }
 }

@@ -12,8 +12,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(uid) {
     if (uid) {
-      // localStorage.token = data.token;
-      // localStorage.refreshToken = data.refreshToken;
       this.router.navigateByUrl('/home');
     }
   }

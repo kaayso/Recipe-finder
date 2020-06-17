@@ -16,8 +16,11 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
     req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const idToken = this.cookiesService.getCookie('token');
-
+    const endPoint = req.url.slice(req.url.length - 7, req.url.length - 1);
+    let idToken = this.cookiesService.getCookie('token');
+    if (endPoint === 'token') {
+      idToken = this.cookiesService.getCookie('refreshToken');
+    }
     if (!req.headers.has('Content-Type')) {
       req = req.clone({
         headers: req.headers.set('Content-Type', 'application/json'),
