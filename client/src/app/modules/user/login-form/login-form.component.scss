@@ -3,12 +3,13 @@
   flex-direction: column;
   padding: 1em;
   min-height: 350px;
-  min-width: 310px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #4c3d3d;
-  position: relative;
+  position: absolute;
+  bottom: 0;
 
   input.ng-valid {
     border-bottom: 3px solid #8ac926;

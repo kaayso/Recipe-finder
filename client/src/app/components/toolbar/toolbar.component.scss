@@ -1,0 +1,16 @@
+.toolbar {
+  background-color: #4c3d3d;
+}
+
+.toolbar__title {
+  flex-grow: 1;
+  text-transform: capitalize;
+}
+
+.toolbar__icon.mat-icon {
+  font-size: 1.5em;
+  margin: auto;
+  height: auto;
+  width: auto;
+  cursor: pointer;
+}

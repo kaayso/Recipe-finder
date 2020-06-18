@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { api } from '../../ws/api';
-import { CookiesService } from '../../services/cookies.service';
+import { AuthService } from '../../../services/auth.service';
+import { api } from '../../../ws/api';
+import { CookiesService } from '../../../services/cookies.service';
 
 @Component({
   selector: 'app-login-form',
