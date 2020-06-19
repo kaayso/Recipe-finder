@@ -2,9 +2,14 @@
   background-color: #4c3d3d;
 }
 
-.toolbar__title {
+.toolbar__title {    
   flex-grow: 1;
-  text-transform: capitalize;
+  a{
+    text-transform: capitalize;
+    color: #FFF;
+    text-decoration: none;
+  }
+  
 }
 
 .toolbar__icon.mat-icon {

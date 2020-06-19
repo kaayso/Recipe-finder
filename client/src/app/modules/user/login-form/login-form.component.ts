@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { api } from '../../../ws/api';
@@ -17,9 +17,6 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  showError: boolean = false;
-  @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
-
   profileForm = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -34,7 +31,7 @@ export class LoginFormComponent implements OnInit {
 
   submit() {
     if (this.username.invalid || this.password.invalid) {
-      this.showError = true;
+      alert('username or password is incorrect')
     } else {
       // send HTTP request
       this.authService.login(api.Login, this.profileForm.value).subscribe(
@@ -42,10 +39,11 @@ export class LoginFormComponent implements OnInit {
           // setup cookie & go to home page
           this.cookiesService.setCookie('token', res.token);
           this.cookiesService.setCookie('refreshToken', res.refreshToken);
-          this.onSubmit.emit(res.uid);
+          this.authService.setUserId(res.uid);
+          this.authService.setUserConnectionState(true);
         },
         (err) => {
-          this.showError = true;
+          alert('username or password is incorrect')
         }
       );
     }

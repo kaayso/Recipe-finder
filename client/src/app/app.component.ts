@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { GenericService } from './services/generic.service';
+import { AuthService } from './services/auth.service';
 import { Recipe } from './interfaces/recipe';
 import { api } from './ws/api';
+import { Subscription } from 'rxjs'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +12,19 @@ import { api } from './ws/api';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private webService: GenericService) {}
   recipes: Recipe[];
-  dateVal = new Date();
   loading: boolean = true;
+  subscription: Subscription;
+
+  constructor(private webService: GenericService, private authService: AuthService, private router: Router ) {
+    this.subscription = this.authService.getUserConnectionState().subscribe(isConnected => {
+      console.log(isConnected)
+      if (!isConnected) {
+        // redirect to root
+        this.router.navigateByUrl('/');
+      }
+    })
+  }
 
   ngOnInit() {
     this.getRecipes();
@@ -29,5 +41,10 @@ export class AppComponent {
         console.log(err.status);
       }
     );
+  }
+
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
   }
 }
