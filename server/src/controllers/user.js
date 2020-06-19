@@ -23,6 +23,13 @@ const allUsers = (req, res, next) => {
   });
 };
 
+const userById = (req, res, next) => {
+  User.findOne({ _id: req.params.uid }, (err, user) => {
+    if (err) return next(err);
+    return res.status(200).json(user);
+  });
+};
+
 const singup = (req, res, next) => {
   const user = new User(req.body);
 
@@ -159,4 +166,5 @@ module.exports = {
   login,
   getNewAccessToken,
   logout,
+  userById,
 };

@@ -9,6 +9,8 @@ const router = Router();
 
 router.get('/', middlewares.auth, controllers.allUsers);
 
+router.get('/:uid', middlewares.auth, controllers.userById);
+
 router.post('/signup', controllers.singup);
 
 router.post('/login', controllers.login);
