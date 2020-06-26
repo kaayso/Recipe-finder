@@ -3,7 +3,7 @@ import { GenericService } from './services/generic.service';
 import { AuthService } from './services/auth.service';
 import { Recipe } from './interfaces/recipe';
 import { api } from './ws/api';
-import { Subscription } from 'rxjs'
+import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,14 +16,18 @@ export class AppComponent {
   loading: boolean = true;
   subscription: Subscription;
 
-  constructor(private webService: GenericService, private authService: AuthService, private router: Router ) {
-    this.subscription = this.authService.getUserConnectionState().subscribe(isConnected => {
-      console.log(isConnected)
-      if (!isConnected) {
-        // redirect to root
-        this.router.navigateByUrl('/');
-      }
-    })
+  constructor(
+    private webService: GenericService,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    // this.subscription = this.authService.getUserConnectionState().subscribe(isConnected => {
+    //   console.log(isConnected)
+    //   if (!isConnected) {
+    //     // redirect to root
+    //     this.router.navigateByUrl('/');
+    //   }
+    // })
   }
 
   ngOnInit() {

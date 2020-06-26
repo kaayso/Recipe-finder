@@ -1,56 +1,126 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { shareReplay } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import { catchError, mapTo, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { CookiesService } from './cookies.service';
+import { api } from '../ws/api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private cookiesService: CookiesService
+  ) {}
+  private loggedUser: string;
+
   apiRoot: string = 'http://localhost:4000/';
-  private userId = new Subject<any>();
-  private isConnected  = new Subject<any>();
 
   /**
-   * get auth token and user id
+   * setup jwt and user id
    * @param {string} ep
    * @param {string} body
+   * @return {boolean} response
    */
-  login(ep: string, body: string) {
+  login(ep: string, body: string): Observable<boolean> {
+    return this.http.post<any>(`${this.apiRoot}${ep}`, body).pipe(
+      tap((data) => {
+        this.doLoginUser(data);
+      }),
+      mapTo(true),
+      catchError((error) => {
+        console.log(error.message);
+        return of(false);
+      })
+    );
+  }
+
+  /**
+   * remove jwt and user id
+   * @param {string} ep
+   * @param {string} body
+   * @return {boolean} response
+   */
+  logout(ep: string, body: string): Observable<boolean> {
+    return this.http.post<any>(`${this.apiRoot}${ep}`, body).pipe(
+      tap(() => {
+        this.doLogoutUser();
+      }),
+      mapTo(true),
+      catchError((error) => {
+        console.log(error.message);
+        return of(false);
+      })
+    );
+  }
+
+  /**
+   * setup uid and tokens
+   * @param {object} data
+   */
+  doLoginUser(data: any) {
+    const { token, refreshToken, uid } = data;
+    this.loggedUser = uid;
+    this.storeTokens({ token, refreshToken });
+  }
+
+  /**
+   * setup uid and tokens
+   */
+  doLogoutUser() {
+    this.loggedUser = null;
+    this.removeTokens();
+  }
+
+  /**
+   * store tokens in cookies
+   * @param {object} data
+   */
+  storeTokens(data: any) {
+    this.cookiesService.setCookie('token', data.token);
+    this.cookiesService.setCookie('refreshToken', data.refreshToken);
+  }
+
+  /**
+   * store refresh token in cookies
+   * @param {token} string
+   */
+  storeRefreshedToken(token) {
+    this.cookiesService.setCookie('token', token);
+  }
+
+  /**
+   * remove tokens
+   */
+  removeTokens() {
+    this.cookiesService.deleteCookie('token');
+    this.cookiesService.deleteCookie('refreshToken');
+  }
+
+  /**
+   * get token by cookie name
+   * @param name {string}
+   */
+  getJwtToken(name: string) {
+    return this.cookiesService.getCookie(name);
+  }
+
+  /**
+   * refresh token
+   */
+  refreshToken() {
     return this.http
-      .post<any>(`${this.apiRoot}${ep}`, body)
-      .pipe(shareReplay(1)); // prevent multiple subcription and return last val
+      .post<any>(`${this.apiRoot}${api.Token}`, {
+        token: this.getJwtToken('refreshToken'),
+      })
+      .pipe(tap((data) => this.storeRefreshedToken(data.token)));
   }
 
   /**
-   * get uid observable
-  */
-  getUserId() : Observable<any> {
-    return this.userId.asObservable();
+   * return current user
+   */
+  isLoggedIn() {
+    return this.loggedUser;
   }
-
-  /**
-   * set uid
-   * @param {string} user id
-  */
-  setUserId (uid) {
-    this.userId.next(uid);
-  }
-
-  /**
-   * get user
-  */
-  getUserConnectionState() : Observable<any> {
-    return this.isConnected.asObservable();
-  }
-
-  /**
-   * set uid
-   * @param {boolean} connection status
-  */
-  setUserConnectionState (isConnected) {
-    this.isConnected.next(isConnected);
-  }
-
 }
