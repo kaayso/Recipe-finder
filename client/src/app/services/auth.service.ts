@@ -5,13 +5,13 @@ import { Observable, of, throwError } from 'rxjs';
 import { CookiesService } from './cookies.service';
 import { api } from '../ws/api';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private loggedUser: string;
-  apiRoot: string = 'http://localhost:4000/';
 
   constructor(
     private http: HttpClient,
@@ -26,7 +26,7 @@ export class AuthService {
    * @return {boolean} response
    */
   login(ep: string, body: string): Observable<boolean> {
-    return this.http.post<any>(`${this.apiRoot}${ep}`, body).pipe(
+    return this.http.post<any>(`${environment.apiUrl}${ep}`, body).pipe(
       tap((data) => {
         this.doLoginUser(data);
       }),
@@ -45,7 +45,7 @@ export class AuthService {
    * @return {boolean} response
    */
   logout(ep: string, body: string): Observable<boolean> {
-    return this.http.post<any>(`${this.apiRoot}${ep}`, body).pipe(
+    return this.http.post<any>(`${environment.apiUrl}${ep}`, body).pipe(
       tap(() => {
         this.doLogoutUser();
       }),
@@ -117,7 +117,7 @@ export class AuthService {
       return throwError('[cookies] refresh token is undefined');
     }
     return this.http
-      .post<any>(`${this.apiRoot}${api.Token}`, {
+      .post<any>(`${environment.apiUrl}${api.Token}`, {
         token: this.getJwtToken('refreshToken'),
       })
       .pipe(tap((data) => this.storeRefreshedToken(data.token)));
