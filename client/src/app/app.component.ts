@@ -15,7 +15,7 @@ export class AppComponent {
   constructor(private webService: GenericService) {}
 
   ngOnInit() {
-    this.getRecipes();
+    // this.getRecipes();
   }
 
   getRecipes() {

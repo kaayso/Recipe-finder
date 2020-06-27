@@ -32,7 +32,6 @@ export class AuthService {
       }),
       mapTo(true),
       catchError((error) => {
-        console.log(error.message);
         return of(false);
       })
     );

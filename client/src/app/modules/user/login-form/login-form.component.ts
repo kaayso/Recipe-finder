@@ -28,13 +28,17 @@ export class LoginFormComponent implements OnInit {
 
   submit() {
     if (this.username.invalid || this.password.invalid) {
-      alert('username or password is incorrect');
+      alert('Please enter your username and password');
     } else {
       // send HTTP request
       this.authService
         .login(api.Login, this.profileForm.value)
-        .subscribe(() => {
-          this.router.navigateByUrl('/');
+        .subscribe((response) => {
+          if (response) {
+            this.router.navigateByUrl('/');
+          } else {
+            alert('Your username or password is incorrect');
+          }
         });
     }
   }
