@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, mapTo, tap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { CookiesService } from './cookies.service';
 import { api } from '../ws/api';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private loggedUser: string;
+  apiRoot: string = 'http://localhost:4000/';
+
   constructor(
     private http: HttpClient,
-    private cookiesService: CookiesService
+    private cookiesService: CookiesService,
+    private router: Router
   ) {}
-  private loggedUser: string;
-
-  apiRoot: string = 'http://localhost:4000/';
 
   /**
    * setup jwt and user id
@@ -110,6 +112,10 @@ export class AuthService {
    * refresh token
    */
   refreshToken() {
+    if (!this.getJwtToken('refreshToken')) {
+      this.router.navigateByUrl('/login');
+      return throwError('[cookies] refresh token is undefined');
+    }
     return this.http
       .post<any>(`${this.apiRoot}${api.Token}`, {
         token: this.getJwtToken('refreshToken'),
@@ -121,6 +127,6 @@ export class AuthService {
    * return current user
    */
   isLoggedIn() {
-    return this.loggedUser;
+    return this.loggedUser ? true : false;
   }
 }

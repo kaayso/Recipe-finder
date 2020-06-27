@@ -7,6 +7,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { AccessGuardGuard } from './guards/access-guard.guard';
 
 const routes: Routes = [
   {
@@ -17,10 +18,12 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    canActivate: [AccessGuardGuard],
   },
   {
     path: 'recipe',
     component: RecipeComponent,
+    canActivate: [AccessGuardGuard],
   },
   {
     path: 'signup',

@@ -29,7 +29,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # TODO
 
 [X] setup auth service, refreh tokens, authentication interceptor and guard
-[ ] protect ressources if user isn't connected
+[X] protect ressources if user isn't connected
+[ ] env var
 [ ] signup page
 [ ] home page
-[ ] receipe page
+[ ] recipe page

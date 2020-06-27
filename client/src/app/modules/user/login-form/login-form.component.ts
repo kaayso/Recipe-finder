@@ -33,9 +33,7 @@ export class LoginFormComponent implements OnInit {
       // send HTTP request
       this.authService
         .login(api.Login, this.profileForm.value)
-        .subscribe((res) => {
-          // setup cookie & go to home page
-          console.log('user connected');
+        .subscribe(() => {
           this.router.navigateByUrl('/');
         });
     }
