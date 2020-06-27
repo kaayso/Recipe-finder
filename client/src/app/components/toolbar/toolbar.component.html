@@ -1,6 +1,15 @@
-<mat-toolbar class="toolbar" color="primary">
+<mat-toolbar class="toolbar">
   <mat-toolbar-row>
     <span class="toolbar__title"><a href="/">Easy recipe</a></span>
-    <mat-icon class="toolbar__icon" aria-hidden="false" aria-label="Example heart icon">account_box</mat-icon>
+    <button *ngIf="showMenu" class="toolbar__menu-btn" [matMenuTriggerFor]="menu" mat-icon-button
+      aria-label="Example icon button with a menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Se déconnecter</span>
+      </button>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>

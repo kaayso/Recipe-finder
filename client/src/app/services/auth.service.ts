@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, mapTo, tap } from 'rxjs/operators';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, throwError, Subject } from 'rxjs';
 import { CookiesService } from './cookies.service';
 import { api } from '../ws/api';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  private loggedUser: string;
+  private isConnected = new Subject<any>();
 
   constructor(
     private http: HttpClient,
@@ -41,16 +41,19 @@ export class AuthService {
   /**
    * remove jwt and user id
    * @param {string} ep
-   * @param {string} body
    * @return {boolean} response
    */
-  logout(ep: string, body: string): Observable<boolean> {
+  logout(ep: string): Observable<boolean> {
+    const body = {
+      token: this.getJwtToken('refreshToken'),
+    };
     return this.http.post<any>(`${environment.apiUrl}${ep}`, body).pipe(
       tap(() => {
         this.doLogoutUser();
       }),
       mapTo(true),
       catchError((error) => {
+        this.doLogoutUser();
         console.log(error.message);
         return of(false);
       })
@@ -63,16 +66,18 @@ export class AuthService {
    */
   doLoginUser(data: any) {
     const { token, refreshToken, uid } = data;
-    this.loggedUser = uid;
     this.storeTokens({ token, refreshToken });
+    this.storeUserId(uid);
+    this.isConnected.next(true);
   }
 
   /**
    * setup uid and tokens
    */
   doLogoutUser() {
-    this.loggedUser = null;
+    this.removeUserId();
     this.removeTokens();
+    this.isConnected.next(false);
   }
 
   /**
@@ -82,6 +87,14 @@ export class AuthService {
   storeTokens(data: any) {
     this.cookiesService.setCookie('token', data.token);
     this.cookiesService.setCookie('refreshToken', data.refreshToken);
+  }
+
+  /**
+   * store user id in cookies
+   * @param {string} uid
+   */
+  storeUserId(uid: string) {
+    this.cookiesService.setCookie('userId', uid);
   }
 
   /**
@@ -101,6 +114,13 @@ export class AuthService {
   }
 
   /**
+   * remove user id
+   */
+  removeUserId() {
+    this.cookiesService.deleteCookie('userId');
+  }
+
+  /**
    * get token by cookie name
    * @param name {string}
    */
@@ -113,6 +133,7 @@ export class AuthService {
    */
   refreshToken() {
     if (!this.getJwtToken('refreshToken')) {
+      this.doLogoutUser();
       this.router.navigateByUrl('/login');
       return throwError('[cookies] refresh token is undefined');
     }
@@ -124,9 +145,17 @@ export class AuthService {
   }
 
   /**
-   * return current user
+   * check if user is connected
+   * @return {boolean} isConnected
    */
   isLoggedIn() {
-    return this.loggedUser ? true : false;
+    return this.cookiesService.getCookie('userId') ? true : false;
+  }
+
+  /**
+   * observable on connexion user status
+   */
+  isUserConnected(): Observable<any> {
+    return this.isConnected.asObservable();
   }
 }

@@ -2,14 +2,15 @@
   background-color: #4c3d3d;
 }
 
-.toolbar__title {    
+.toolbar__title {
   flex-grow: 1;
-  a{
+
+  a {
     text-transform: capitalize;
     color: #FFF;
     text-decoration: none;
   }
-  
+
 }
 
 .toolbar__icon.mat-icon {
@@ -18,4 +19,9 @@
   height: auto;
   width: auto;
   cursor: pointer;
+}
+
+.toolbar__menu-btn {
+  background-color: transparent;
+  color: #FFF;
 }

@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { GenericService } from './services/generic.service';
-import { AuthService } from './services/auth.service';
 import { Recipe } from './interfaces/recipe';
 import { api } from './ws/api';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +12,7 @@ export class AppComponent {
   recipes: Recipe[];
   loading: boolean = true;
 
-  constructor(
-    private webService: GenericService,
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private webService: GenericService) {}
 
   ngOnInit() {
     this.getRecipes();
