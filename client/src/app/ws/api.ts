@@ -1,6 +1,6 @@
 export enum api {
   Login = 'api/user/login/',
-  Singup = 'api/user/singup/',
+  Singup = 'api/user/signup/',
   AllUser = 'api/user/',
   User = 'api/user/',
   Token = 'api/user/token/',

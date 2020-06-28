@@ -157,4 +157,22 @@ export class AuthService {
   isUserConnected(): Observable<any> {
     return this.isConnected.asObservable();
   }
+ 
+   /**
+   * signup
+   * @param {string} ep
+   * @param {string} body
+   * @return {boolean} response
+   */
+  signup(ep: string, body: string): Observable<boolean> {
+    return this.http.post<any>(`${environment.apiUrl}${ep}`, body).pipe(
+      tap((data) => {
+        console.log(data);
+      }),
+      mapTo(true),
+      catchError((error) => {
+        return of(false);
+      })
+    );
+  } 
 }

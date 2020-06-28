@@ -1,0 +1,14 @@
+<form class="login-form" [formGroup]="profileForm" (ngSubmit)="submit()">
+  <label for="username">username*</label>
+  <input class="login-form__username" name="username" type="text" formControlName="username" />
+  <label for="email">email*</label>
+  <input class="login-form__username" name="email" type="text" formControlName="email" />
+  <label for="password">password*</label>
+  <input class="login-form__password" name="password" type="password" formControlName="password" />
+  <label for="cpassword">confirm password*</label>
+  <input class="login-form__password" name="cpassword" type="password" formControlName="cpassword" />
+
+  <button type="submit" class="login-form__btn">
+    register
+  </button>
+</form>
