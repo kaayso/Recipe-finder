@@ -10,6 +10,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { IngredientCardComponent } from './components/ingredient-card/ingredient-card.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
@@ -22,6 +23,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { MatMenuModule } from '@angular/material/menu';
     LoginComponent,
     PageNotFoundComponent,
     ToolbarComponent,
+    IngredientCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    MatCardModule,
   ],
   providers: [
     GenericService,

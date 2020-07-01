@@ -1,1 +1,21 @@
-<p>home works!</p>
+<div *ngFor="let list of ingredients">
+  <div>
+    {{list[0].category}}
+  </div>
+  <div *ngFor="let ingredient of list[1]">
+    <app-ingredient-card [name]="list[0].category"></app-ingredient-card>
+  </div>
+</div>
+<!-- <div class="cards-container">
+  <app-ingredient-card></app-ingredient-card>
+  <app-ingredient-card></app-ingredient-card>
+  <app-ingredient-card></app-ingredient-card>
+  <app-ingredient-card></app-ingredient-card>
+  <app-ingredient-card></app-ingredient-card>
+  <app-ingredient-card></app-ingredient-card>
+  <app-ingredient-card></app-ingredient-card>
+  <app-ingredient-card></app-ingredient-card>
+  <app-ingredient-card></app-ingredient-card>
+  <app-ingredient-card></app-ingredient-card>
+  <app-ingredient-card></app-ingredient-card>
+</div> -->

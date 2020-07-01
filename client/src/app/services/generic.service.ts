@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 export class GenericService {
   constructor(private http: HttpClient) {}
 
-  // GET ressources according to end point
+  // GET resources according to end point
   get(ep) {
     return this.http
       .get<any>(`${environment.apiUrl}${ep}`)
