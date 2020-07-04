@@ -15,8 +15,7 @@ const qtty = new Schema({
 });
 
 const ingredient = new Schema({
-  name: requiredString,
-  category: requiredString,
+  id: requiredString,
   quantity: {
     type: qtty,
     required: true,

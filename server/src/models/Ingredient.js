@@ -15,6 +15,9 @@ const schema = new Schema({
   image: {
     type: String,
   },
+  part: {
+    type: String,
+  },
 });
 
 const Ingredient = mongoose.model('Ingredient', schema);

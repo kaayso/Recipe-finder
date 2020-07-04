@@ -8,6 +8,7 @@ const middlewares = require('./middlewares');
 const user = require('./routes/user');
 const recipe = require('./routes/recipe');
 const ingredient = require('./routes/ingredient');
+const populateDb = require('./helpers/populateDB');
 
 dotenv.config();
 const PORT = process.env.PORT_SERVER || 4000;
@@ -23,6 +24,7 @@ app.use(cors({
   origin: process.env.CORS_ORIGIN,
 }));
 app.use(express.json());
+app.use(express.static(`${__dirname}/assets/`));
 app.use('/api/user', user);
 app.use('/api/recipe', recipe);
 app.use('/api/ingredient', ingredient);
@@ -43,3 +45,8 @@ mongoose.connect(process.env.DB_URL, options).catch((error) => console.error(err
 mongoose.connection.on('error', (err) => {
   console.error(err);
 });
+
+// populate db
+if (process.env.NODE_ENV === 'production') {
+  populateDb();
+}
