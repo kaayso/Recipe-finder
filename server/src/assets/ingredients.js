@@ -700,5 +700,437 @@ const starchy = [
   },
 ];
 
+const meats = [
+  {
+    name: 'aiguillettes de canard',
+    category: 'Viandes',
+    image: '/images/meats/aiguillettes-de-canard.webp'
+  },
+  {
+    name: 'araignee de porc',
+    category: 'Viandes',
+    image: '/images/meats/araignee-de-porc.webp'
+  },
+  {
+    name: 'basse côte de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/basse-cote-de-boeuf.webp'
+  },
+  {
+    name: 'bavette de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/bavette-de-boeuf.webp'
+  },
+  {
+    name: 'bourguignon',
+    category: 'Viandes',
+    image: '/images/meats/bourguignon.webp'
+  },
+  {
+    name: 'cailles',
+    category: 'Viandes',
+    image: '/images/meats/cailles.webp'
+  },
+  {
+    name: 'carpaccio de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/carpaccio-de-boeuf.webp'
+  },
+  {
+    name: 'carré de porc',
+    category: 'Viandes',
+    image: '/images/meats/carre-de-porc.webp'
+  },
+  {
+    name: 'carré de veau',
+    category: 'Viandes',
+    image: '/images/meats/carre-de-veau.webp'
+  },
+  {
+    name: 'carré d\'agneau',
+    category: 'Viandes',
+    image: '/images/meats/carre-d-agneau.webp'
+  },
+  {
+    name: 'coeur de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/coeur-de-boeuf.webp'
+  },
+  {
+    name: 'coeur de veau',
+    category: 'Viandes',
+    image: '/images/meats/coeur-de-veau.webp'
+  },
+  {
+    name: 'coeurs de canard',
+    category: 'Viandes',
+    image: '/images/meats/coeurs-de-canard.webp'
+  },
+  {
+    name: 'collier d\'agneau',
+    category: 'Viandes',
+    image: '/images/meats/collier-d-agneau.webp'
+  },
+  {
+    name: 'coquelet',
+    category: 'Viandes',
+    image: '/images/meats/coquelet.webp'
+  },
+  {
+    name: 'côte de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/cote-de-boeuf.webp'
+  },
+  {
+    name: 'côtes d\'agneau',
+    category: 'Viandes',
+    image: '/images/meats/cotes-d-agneau.webp'
+  },
+  {
+    name: 'côtes de veau',
+    category: 'Viandes',
+    image: '/images/meats/cotes-de-veau.webp'
+  },
+  {
+    name: 'côtes double d\'agneau',
+    category: 'Viandes',
+    image: '/images/meats/cotes-double-d-agneau.webp'
+  },
+  {
+    name: 'côtes echines de porc',
+    category: 'Viandes',
+    image: '/images/meats/cotes-echines-de-porc.webp'
+  },
+  {
+    name: 'côtes filet d\'agneau',
+    category: 'Viandes',
+    image: '/images/meats/cotes-filet-d-agneau.webp'
+  },
+  {
+    name: 'côtes filets de porc',
+    category: 'Viandes',
+    image: '/images/meats/cotes-filets-de-porc.webp'
+  },
+  {
+    name: 'cuisses confites de canard',
+    category: 'Viandes',
+    image: '/images/meats/cuisses-confites-de-canard.webp'
+  },
+  {
+    name: 'cuisses de poulet sans os',
+    category: 'Viandes',
+    image: '/images/meats/cuisses-de-poulet-sans-os.webp'
+  },
+  {
+    name: 'cuisses de poulet',
+    category: 'Viandes',
+    image: '/images/meats/cuisses-de-poulet.webp'
+  },
+  {
+    name: 'entrecôte de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/entrecote-de-boeuf.webp'
+  },
+  {
+    name: 'épaule avec os d\'agneau',
+    category: 'Viandes',
+    image: '/images/meats/epaule-avec-os-d-agneau.webp'
+  },
+  {
+    name: 'épaule sans os d\'agneau',
+    category: 'Viandes',
+    image: '/images/meats/epaule-sans-os-d-agneau.webp'
+  },
+  {
+    name: 'escalopes de porc',
+    category: 'Viandes',
+    image: '/images/meats/escalopes-de-porc.webp'
+  },
+  {
+    name: 'escalopes de veau',
+    category: 'Viandes',
+    image: '/images/meats/escalopes-de-veau.webp'
+  },
+  {
+    name: 'faux filet de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/faux-filet-de-boeuf.webp'
+  },
+  {
+    name: 'filet mignon de porc',
+    category: 'Viandes',
+    image: '/images/meats/filet-mignon-de-porc.webp'
+  },
+  {
+    name: 'filets de dinde',
+    category: 'Viandes',
+    image: '/images/meats/filets-de-dinde.webp'
+  },
+  {
+    name: 'filets de poulet',
+    category: 'Viandes',
+    image: '/images/meats/filets-de-poulet.webp'
+  },
+  {
+    name: 'foie de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/foie-de-boeuf.webp'
+  },
+  {
+    name: 'foie de porc',
+    category: 'Viandes',
+    image: '/images/meats/foie-de-porc.webp'
+  },
+  {
+    name: 'foie de veau',
+    category: 'Viandes',
+    image: '/images/meats/foie-de-veau.webp'
+  },
+  {
+    name: 'gigot avec os d\'agneau',
+    category: 'Viandes',
+    image: '/images/meats/gigot-avec-os-d-agneau.webp'
+  },
+  {
+    name: 'gite',
+    category: 'Viandes',
+    image: '/images/meats/gite.webp'
+  },
+  {
+    name: 'hampe de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/hampe-de-boeuf.webp'
+  },
+  {
+    name: 'jarret de veau',
+    category: 'Viandes',
+    image: '/images/meats/jarret-de-veau.webp'
+  },
+  {
+    name: 'joue de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/joue-de-boeuf.webp'
+  },
+  {
+    name: 'joue de porc',
+    category: 'Viandes',
+    image: '/images/meats/joue-de-porc.webp'
+  },
+  {
+    name: 'joue de veau',
+    category: 'Viandes',
+    image: '/images/meats/joue-de-veau.webp'
+  },
+  {
+    name: 'langue de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/langue-de-boeuf.webp'
+  },
+  {
+    name: 'langue de porc',
+    category: 'Viandes',
+    image: '/images/meats/langue-de-porc.webp'
+  },
+  {
+    name: 'langue de veau',
+    category: 'Viandes',
+    image: '/images/meats/langue-de-veau.webp'
+  },
+  {
+    name: 'lapin',
+    category: 'Viandes',
+    image: '/images/meats/lapin.webp'
+  },
+  {
+    name: 'magret de canard',
+    category: 'Viandes',
+    image: '/images/meats/magret-de-canard.webp'
+  },
+  {
+    name: 'oreille de porc',
+    category: 'Viandes',
+    image: '/images/meats/oreille-de-porc.webp'
+  },
+  {
+    name: 'paleron de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/paleron-de-boeuf.webp'
+  },
+  {
+    name: 'pave chateaubriand de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/pave-chateaubriand-de-boeuf.webp'
+  },
+  {
+    name: 'paves de veau',
+    category: 'Viandes',
+    image: '/images/meats/paves-de-veau.webp'
+  },
+  {
+    name: 'pied de porc',
+    category: 'Viandes',
+    image: '/images/meats/pied-de-porc.webp'
+  },
+  {
+    name: 'pieds de veau',
+    category: 'Viandes',
+    image: '/images/meats/pieds-de-veau.webp'
+  },
+  {
+    name: 'pigeon',
+    category: 'Viandes',
+    image: '/images/meats/pigeon.webp'
+  },
+  {
+    name: 'pintade',
+    category: 'Viandes',
+    image: '/images/meats/pintade.webp'
+  },
+  {
+    name: 'plat de côte',
+    category: 'Viandes',
+    image: '/images/meats/plat-de-cote.webp'
+  },
+  {
+    name: 'poitrine de porc',
+    category: 'Viandes',
+    image: '/images/meats/poitrine-de-porc.webp'
+  },
+  {
+    name: 'queue de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/queue-de-boeuf.webp'
+  },
+  {
+    name: 'ris d\'agneau',
+    category: 'Viandes',
+    image: '/images/meats/ris-d-agneau.webp'
+  },
+  {
+    name: 'ris de veau',
+    category: 'Viandes',
+    image: '/images/meats/ris-de-veau.webp'
+  },
+  {
+    name: 'rognon d\'agneau',
+    category: 'Viandes',
+    image: '/images/meats/rognon-d-agneau.webp'
+  },
+  {
+    name: 'rognon de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/rognon-de-boeuf.webp'
+  },
+  {
+    name: 'rognon de porc',
+    category: 'Viandes',
+    image: '/images/meats/rognon-de-porc.webp'
+  },
+  {
+    name: 'rognon de veau',
+    category: 'Viandes',
+    image: '/images/meats/rognon-de-veau.webp'
+  },
+  {
+    name: 'rôti echine de porc',
+    category: 'Viandes',
+    image: '/images/meats/roti-echine-de-porc.webp'
+  },
+  {
+    name: 'rôti filet de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/roti-filet-de-boeuf.webp'
+  },
+  {
+    name: 'rôti filet de porc',
+    category: 'Viandes',
+    image: '/images/meats/roti-filet-de-porc.webp'
+  },
+  {
+    name: 'sauté de porc',
+    category: 'Viandes',
+    image: '/images/meats/saute-de-porc.webp'
+  },
+  {
+    name: 'sauté de veau filet T-Bones',
+    category: 'Viandes',
+    image: '/images/meats/saute-de-veau-filet-T-Bones.webp'
+  },
+  {
+    name: 'sauté de veau',
+    category: 'Viandes',
+    image: '/images/meats/saute-de-veau.webp'
+  },
+  {
+    name: 'selle anglaise d\'agneau',
+    category: 'Viandes',
+    image: '/images/meats/selle-anglaise-d-agneau.webp'
+  },
+  {
+    name: 'souris d\'agneau',
+    category: 'Viandes',
+    image: '/images/meats/souris-d-agneau.webp'
+  },
+  {
+    name: 'steak de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/steak-de-boeuf.webp'
+  },
+  {
+    name: 'steak de porc',
+    category: 'Viandes',
+    image: '/images/meats/steak-de-porc.webp'
+  },
+  {
+    name: 'steak hache de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/steak-hache-de-boeuf.webp'
+  },
+  {
+    name: 'T-Bone de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/t-bone-de-boeuf.webp'
+  },
+  {
+    name: 'tendrons de veau',
+    category: 'Viandes',
+    image: '/images/meats/tendrons-de-veau.webp'
+  },
+  {
+    name: 'tête de veau',
+    category: 'Viandes',
+    image: '/images/meats/tete-de-veau.webp'
+  },
+  {
+    name: 'tournedos de magret de canard',
+    category: 'Viandes',
+    image: '/images/meats/tournedos-de-magret-de-canard.webp'
+  },
+  {
+    name: 'tournedos filet de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/tournedos-filet-de-boeuf.webp'
+  },
+  {
+    name: 'tournedos filet de veau',
+    category: 'Viandes',
+    image: '/images/meats/tournedos-filet-de-veau.webp'
+  },
+  {
+    name: 'tranches de gigot d\'agneau',
+    category: 'Viandes',
+    image: '/images/meats/tranches-de-gigot-d-agneau.webp'
+  },
+  {
+    name: 'travers de porc',
+    category: 'Viandes',
+    image: '/images/meats/travers-de-porc.webp'
+  },
+  {
+    name: 'tripe de boeuf',
+    category: 'Viandes',
+    image: '/images/meats/tripe-de-boeuf.webp'
+  }
+]
 
-module.exports = vegetables.concat(fishs).concat(starchy);
+module.exports = vegetables.concat(fishs).concat(starchy).concat(meats);

@@ -7,14 +7,14 @@ const ingredients = require('../assets/ingredients');
 // const ingredients = [];
 
 
-// const ingPaths = fs.readdirSync('./src/assets/images/starchy');
+// const ingPaths = fs.readdirSync('./src/assets/images/meats');
 
 // ingPaths.forEach((path) => {
 //   const name = path.split('.')[0].split('-').join(' ').split(':').join('/');
 //   ingredients.push({
 //     name,
-//     category: 'Féculents',
-//     image: `/images/starchy/${path}`,
+//     category: 'Viandes',
+//     image: `/images/meats/${path}`,
 //   });
 // });
 // console.log(ingredients);
