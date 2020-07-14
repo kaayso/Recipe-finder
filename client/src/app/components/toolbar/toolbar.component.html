@@ -1,6 +1,6 @@
 <mat-toolbar class="toolbar" *ngIf="displayToolBar">
   <mat-toolbar-row>
-    <span class="toolbar__title"><a href="/">Easy recipe</a></span>
+    <div class="toolbar__logo"><a href="/"><img src="../../../assets/logo-app.svg" alt=""></a></div>
     <button *ngIf="showMenu" class="toolbar__menu-btn" [matMenuTriggerFor]="menu" mat-icon-button
       aria-label="Example icon button with a menu icon">
       <mat-icon>exit_to_app</mat-icon>

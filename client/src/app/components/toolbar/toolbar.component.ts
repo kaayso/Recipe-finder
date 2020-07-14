@@ -31,9 +31,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // on loading page
     if (this.authService.isLoggedIn()) this.showMenu = true;
   }
+
   logout() {
     this.authService
       .logout(api.Logout)

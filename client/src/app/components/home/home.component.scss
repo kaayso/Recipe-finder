@@ -22,6 +22,10 @@
   span {
     color: $primary-color;
   }
+
+  span:nth-child(1) {
+    color: $secondary-color;
+  }
 }
 
 .home__btns-container {
