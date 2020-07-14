@@ -1,5 +1,69 @@
-.cards-container {
+@import "~src/styles";
+
+#home {
+  min-height: 100vh;
+  background-image: url('~src/assets/home-bg.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.home__title {
+  line-height: 120px;
+  color: #ffffff;
+  font-family: 'Kaushan Script', cursive;
+  text-align: center;
+  margin-top: 12%;
+  text-transform: uppercase;
+
+  span {
+    color: $primary-color;
+  }
+}
+
+.home__btns-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
   flex-wrap: wrap;
-  flex-direction: row;
+
+  a {
+    width: 180px;
+    height: 80px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-family: 'Charm', cursive;
+    line-height: 20px;
+    font-size: 1.7em;
+    text-decoration: none;
+    @include g-shadow;
+  }
+
+  a:nth-child(1) {
+    background-color: $primary-color;
+
+    &:hover {
+      background-color: #ffffff;
+      color: $primary-color;
+      transition: all 300ms;
+    }
+  }
+
+  a:nth-child(2) {
+    background-color: $secondary-color;
+
+    &:hover {
+      background-color: #ffffff;
+      color: $secondary-color;
+      transition: all 300ms;
+    }
+  }
 }

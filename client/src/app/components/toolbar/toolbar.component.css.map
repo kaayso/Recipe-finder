@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,CAAC;EACP,gBAAgB,EAAE,OAAO;CAC1B;;AAED,AAAA,eAAe,CAAC;EACd,SAAS,EAAE,CAAC;CASb;;AAVD,AAGE,eAHa,CAGb,CAAC,CAAC;EACA,cAAc,EAAE,UAAU;EAC1B,KAAK,EAAE,IAAI;EACX,eAAe,EAAE,IAAI;EACrB,WAAW,EAAE,yBAAyB;CACvC;;AAIH,AAAA,cAAc,AAAA,SAAS,CAAC;EACtB,MAAM,EAAE,OAAO;CAChB;;AAED,AAAA,kBAAkB,CAAC;EACjB,gBAAgB,EAAE,WAAW;EAC7B,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "toolbar.component.scss"
+    ],
+    "names": [],
+    "file": "toolbar.component.css"
+}

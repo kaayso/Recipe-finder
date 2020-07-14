@@ -1,20 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@200&display=swap');
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url('https://fonts.googleapis.com/css2?family=Charm&display=swap');
 
 body {
   height: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Lora', serif;
-  overflow: hidden;
+  font-family: 'Muli', serif;
 }
 
 html {
   height: 100%;
 }
 
+// colors
+
+$primary-color : #EE4266;
+$secondary-color : #0B8CB5;
+
+// END colors
 
 // animations
 @keyframes appear-from-bottom {
@@ -64,3 +71,67 @@ html {
 }
 
 // END animations 
+
+// media queries
+
+@media screen and (max-width : 578px)and(min-width : 480px) {
+  .home__title {
+    font-size: 6.5em;
+    line-height: 90px !important;
+    margin-top: 25% !important;
+
+  }
+
+  .home__btns-container {
+    margin: 15% !important;
+  }
+}
+
+@media screen and (max-width : 479px)and(min-width : 360px) {
+  .home__title {
+    font-size: 5.5em;
+    line-height: 80px !important;
+    margin-top: 35% !important;
+
+  }
+
+  .home__btns-container {
+    margin: 10% !important;
+  }
+}
+
+@media screen and (max-width : 359px) {
+  .home__title {
+    font-size: 4.8em;
+    line-height: 70px !important;
+    margin-top: 40% !important;
+
+  }
+
+}
+
+@media screen and (max-width : 870px)and(min-width : 579px) {
+  .home__title {
+    font-size: 8em;
+    margin-top: 20% !important;
+
+  }
+}
+
+@media screen and (min-width : 871px) {
+  .home__title {
+    font-size: 9em;
+  }
+}
+
+// END media queries
+
+// mixins
+
+@mixin g-shadow {
+  -webkit-box-shadow: -1px 4px 25px -6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 4px 25px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 4px 25px -6px rgba(0, 0, 0, 0.75);
+}
+
+// END mixins

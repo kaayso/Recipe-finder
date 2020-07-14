@@ -1,0 +1,97 @@
+.login-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1em;
+  min-height: 350px;
+  width: 100%;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #4c3d3d;
+  position: absolute;
+  bottom: 0;
+}
+
+.login-form input.ng-valid {
+  border-bottom: 3px solid #8ac926;
+}
+
+.login-form .login-form__username,
+.login-form .login-form__password {
+  margin: 1em;
+  font-size: 1em;
+  padding: .8em;
+  border: 1px solid transparent;
+  background-color: #d5c0c0;
+  color: #4c3d3d;
+  width: 260px;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 2px;
+}
+
+.login-form .login-form__username:focus,
+.login-form .login-form__password:focus {
+  outline: none;
+  border: 1px solid #ffffff;
+}
+
+.login-form .login-form__btn {
+  background-color: #826a6a;
+  margin: 2em;
+  font-size: .75em;
+  padding: 1.3em;
+  color: #e6d9d9;
+  border: 0;
+  cursor: pointer;
+  width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  color: #e6d9d9;
+}
+
+.login-form .login-form__btn:focus {
+  outline: none;
+}
+
+.login-form .login-form__btn:hover {
+  background-color: #d5c0c0;
+  color: #4c3d3d;
+}
+
+.login-form .login-form__signup-msg {
+  position: absolute;
+  bottom: 20px;
+}
+
+.login-form .login-form__signup-msg a {
+  color: #d5c0c0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .7em;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.login-form .login-form__signup-msg a:hover {
+  color: #fff;
+}
+/*# sourceMappingURL=login-form.component.css.map */

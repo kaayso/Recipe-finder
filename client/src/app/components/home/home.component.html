@@ -1,21 +1,11 @@
-<div *ngFor="let list of ingredients">
-  <div>
-    {{list[0].category}}
+<section id="home">
+  <h1 class="home__title"><span>R</span>ecipe<br />Finde<span>r</span></h1>
+  <div class="home__btns-container">
+    <a mat-raised-button href="/recipe">
+      Trouver une <br /> recette
+    </a>
+    <a mat-raised-button href="/recipe">
+      Ajouter une <br /> recette
+    </a>
   </div>
-  <div *ngFor="let ingredient of list[1]">
-    <app-ingredient-card [name]="list[0].category"></app-ingredient-card>
-  </div>
-</div>
-<!-- <div class="cards-container">
-  <app-ingredient-card></app-ingredient-card>
-  <app-ingredient-card></app-ingredient-card>
-  <app-ingredient-card></app-ingredient-card>
-  <app-ingredient-card></app-ingredient-card>
-  <app-ingredient-card></app-ingredient-card>
-  <app-ingredient-card></app-ingredient-card>
-  <app-ingredient-card></app-ingredient-card>
-  <app-ingredient-card></app-ingredient-card>
-  <app-ingredient-card></app-ingredient-card>
-  <app-ingredient-card></app-ingredient-card>
-  <app-ingredient-card></app-ingredient-card>
-</div> -->
+</section>

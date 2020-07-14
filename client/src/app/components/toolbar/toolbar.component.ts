@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { api } from '../../ws/api';
 import { Subscription } from 'rxjs';
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -11,11 +13,21 @@ import { Subscription } from 'rxjs';
 export class ToolbarComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   showMenu: boolean;
-  constructor(private authService: AuthService, private router: Router) {
+  displayToolBar: boolean = false;
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private location: Location
+  ) {
     // show menu in dynamic way
     this.subscription = this.authService
       .isUserConnected()
       .subscribe((response) => (this.showMenu = response));
+    this.location.onUrlChange((path) => {
+      path == '/'
+        ? (this.displayToolBar = false)
+        : (this.displayToolBar = true);
+    });
   }
 
   ngOnInit(): void {
@@ -23,10 +35,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     if (this.authService.isLoggedIn()) this.showMenu = true;
   }
   logout() {
-    this.authService.logout(api.Logout).subscribe(
-      () => this.router.navigateByUrl('/login'),
-      () => this.router.navigateByUrl('/login')
-    );
+    this.authService
+      .logout(api.Logout)
+      .subscribe(() => this.router.navigateByUrl('/login'));
   }
 
   ngOnDestroy() {

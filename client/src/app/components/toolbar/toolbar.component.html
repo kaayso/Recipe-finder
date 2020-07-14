@@ -1,13 +1,12 @@
-<mat-toolbar class="toolbar">
+<mat-toolbar class="toolbar" *ngIf="displayToolBar">
   <mat-toolbar-row>
     <span class="toolbar__title"><a href="/">Easy recipe</a></span>
     <button *ngIf="showMenu" class="toolbar__menu-btn" [matMenuTriggerFor]="menu" mat-icon-button
       aria-label="Example icon button with a menu icon">
-      <mat-icon>menu</mat-icon>
+      <mat-icon>exit_to_app</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="logout()">
-        <mat-icon>power_settings_new</mat-icon>
         <span>Se déconnecter</span>
       </button>
     </mat-menu>

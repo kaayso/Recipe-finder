@@ -1,6 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GenericService } from '../../services/generic.service';
-import { Ingredient } from '../../interfaces/ingredient';
 import { api } from '../../ws/api';
 
 @Component({
@@ -13,7 +12,6 @@ export class HomeComponent implements OnInit {
   loading: boolean = true;
 
   constructor(private webService: GenericService) {}
-  name = 'toto';
   ngOnInit() {
     this.getIngredients();
   }
@@ -22,7 +20,7 @@ export class HomeComponent implements OnInit {
     this.webService.get(api.Ingredient).subscribe(
       () => {
         this.loading = false;
-        this.ingredients = this.formatIngredientToCat([
+        this.ingredients = this.formatIngredientToCategory([
           {
             category: 'a',
             n: 2,
@@ -35,6 +33,10 @@ export class HomeComponent implements OnInit {
             category: 'a',
             n: 5,
           },
+          {
+            category: 'c',
+            n: 5,
+          },
         ]);
         console.log(this.ingredients);
       },
@@ -44,15 +46,19 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  formatIngredientToCat(ingredientList) {
-    const catIndex = {};
+  formatIngredientToCategory(ingredientList) {
+    const catVisited = {};
     const result = [];
     for (let ing of ingredientList) {
-      if (catIndex[ing.category] == undefined) {
-        catIndex[ing.category] = ingredientList.indexOf(ing);
+      if (catVisited[ing.category] == undefined) {
+        catVisited[ing.category] = true;
         result.push([{ category: ing.category }, []]);
       }
-      result[catIndex[ing.category]][1].push(ing);
+      result.find((item) => {
+        if (item[0].category == ing.category) {
+          item[1].push(ing);
+        }
+      });
     }
     return result;
   }

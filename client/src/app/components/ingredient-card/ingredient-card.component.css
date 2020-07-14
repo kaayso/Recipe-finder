@@ -1,0 +1,42 @@
+.ingredient-card {
+  max-width: 200px;
+  max-height: 133.25px;
+  margin-left: 5px;
+  margin-top: 5px;
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.ingredient-card:hover .ingredient-card__title {
+  -webkit-animation: 400ms appear-from-bottom ease-out forwards;
+          animation: 400ms appear-from-bottom ease-out forwards;
+}
+
+.ingredient-card:hover img {
+  -webkit-animation: 1ms filter ease forwards;
+          animation: 1ms filter ease forwards;
+}
+
+.ingredient-card img {
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.ingredient-card__title {
+  font-family: 'Lora', serif;
+  color: #FFF;
+  margin: auto;
+  position: absolute;
+  bottom: 5%;
+  opacity: 0;
+}
+/*# sourceMappingURL=ingredient-card.component.css.map */

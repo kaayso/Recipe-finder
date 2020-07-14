@@ -1,0 +1,115 @@
+#home {
+  min-height: 100vh;
+  background-image: url("../../../assets/home-bg.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.home__title {
+  line-height: 120px;
+  color: #ffffff;
+  font-family: 'Kaushan Script', cursive;
+  text-align: center;
+  margin-top: 12%;
+  text-transform: uppercase;
+}
+
+.home__title span {
+  color: #EE4266;
+}
+
+@media screen and (max-width: 578px) and (min-width: 480px) {
+  .home__title {
+    font-size: 6em;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .home__title {
+    font-size: 4.8em;
+  }
+}
+
+@media screen and (max-width: 655px) and (min-width: 579px) {
+  .home__title {
+    font-size: 8em;
+  }
+}
+
+@media screen and (min-width: 656px) {
+  .home__title {
+    font-size: 9em;
+  }
+}
+
+.home__btns-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 5%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.home__btns-container a {
+  width: 180px;
+  height: 80px;
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #ffffff;
+  font-family: 'Charm', cursive;
+  line-height: 20px;
+  font-size: 1.7em;
+  text-decoration: none;
+  -webkit-box-shadow: -1px 4px 25px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 4px 25px -6px rgba(0, 0, 0, 0.75);
+}
+
+.home__btns-container a:nth-child(1) {
+  background-color: #EE4266;
+}
+
+.home__btns-container a:nth-child(1):hover {
+  background-color: #ffffff;
+  color: #EE4266;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.home__btns-container a:nth-child(2) {
+  background-color: #0B8CB5;
+}
+
+.home__btns-container a:nth-child(2):hover {
+  background-color: #ffffff;
+  color: #0B8CB5;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+/*# sourceMappingURL=home.component.css.map */
