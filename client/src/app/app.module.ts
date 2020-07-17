@@ -26,6 +26,9 @@ import { registerLocaleData } from '@angular/common';
 import fr from '@angular/common/locales/fr';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 registerLocaleData(fr);
 
@@ -48,6 +51,9 @@ registerLocaleData(fr);
     BrowserAnimationsModule,
     FormsModule,
     NzButtonModule,
+    NzGridModule,
+    NzDropDownModule,
+    NzIconModule,
   ],
   providers: [
     GenericService,

@@ -1,13 +1,24 @@
-<div class="toolbar" *ngIf="displayToolBar">
-  <div>
-    <div class="toolbar__logo"><a href="/"><img src="../../../assets/logo-app.svg" alt=""></a></div>
-    <button *ngIf="showMenu" class="toolbar__menu-btn" aria-label="Example icon button with a menu icon">
-      <div>exit_to_app</div>
-    </button>
-    <div>
-      <button (click)="logout()">
-        <span>Se déconnecter</span>
-      </button>
+<div nz-row class="toolbar" *ngIf="displayToolBar">
+  <div nz-col nzSpan="10"></div>
+  <div nz-col nzSpan="4">
+    <div class="toolbar__logo">
+      <a href="/"><img src="../../../assets/logo-app.svg" alt="" /></a>
     </div>
+  </div>
+  <div nz-col nzSpan="10">
+
+    <button *ngIf="showMenu" class="toolbar__btn" nz-button nzType="primary">
+      <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+        <i nz-icon nzType="user" nzTheme="outline"></i>
+      </a>
+    </button>
+
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item nzDisabled>Mes recettes</li>
+        <li nz-menu-divider></li>
+        <li nz-menu-item (click)="logout()">Déconnexion</li>
+      </ul>
+    </nz-dropdown-menu>
   </div>
 </div>
