@@ -19,11 +19,15 @@ import { GenericService } from './services/generic.service';
 import { CookiesService } from './services/cookies.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { fr_FR } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import fr from '@angular/common/locales/fr';
+
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
+registerLocaleData(fr);
 
 @NgModule({
   declarations: [
@@ -42,11 +46,8 @@ import { MatCardModule } from '@angular/material/card';
     UserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatCardModule,
+    FormsModule,
+    NzButtonModule,
   ],
   providers: [
     GenericService,
@@ -56,6 +57,7 @@ import { MatCardModule } from '@angular/material/card';
       useClass: AuthInterceptorInterceptor,
       multi: true,
     },
+    { provide: NZ_I18N, useValue: fr_FR },
   ],
   bootstrap: [AppComponent],
 })

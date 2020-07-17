@@ -94,4 +94,14 @@
 .login-form .login-form__signup-msg a:hover {
   color: #fff;
 }
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
 /*# sourceMappingURL=login-form.component.css.map */

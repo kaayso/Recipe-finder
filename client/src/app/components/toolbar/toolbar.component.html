@@ -1,14 +1,13 @@
-<mat-toolbar class="toolbar" *ngIf="displayToolBar">
-  <mat-toolbar-row>
+<div class="toolbar" *ngIf="displayToolBar">
+  <div>
     <div class="toolbar__logo"><a href="/"><img src="../../../assets/logo-app.svg" alt=""></a></div>
-    <button *ngIf="showMenu" class="toolbar__menu-btn" [matMenuTriggerFor]="menu" mat-icon-button
-      aria-label="Example icon button with a menu icon">
-      <mat-icon>exit_to_app</mat-icon>
+    <button *ngIf="showMenu" class="toolbar__menu-btn" aria-label="Example icon button with a menu icon">
+      <div>exit_to_app</div>
     </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="logout()">
+    <div>
+      <button (click)="logout()">
         <span>Se déconnecter</span>
       </button>
-    </mat-menu>
-  </mat-toolbar-row>
-</mat-toolbar>
+    </div>
+  </div>
+</div>
