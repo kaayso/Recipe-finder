@@ -1,1 +1,5 @@
-/* No CSS *//*# sourceMappingURL=signup.component.css.map */
+#signup {
+  min-height: calc(100vh - 64px);
+  margin-top: 64px;
+}
+/*# sourceMappingURL=signup.component.css.map */

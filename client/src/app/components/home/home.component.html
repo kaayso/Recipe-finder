@@ -1,11 +1,23 @@
 <section id="home">
   <h1 class="home__title"><span>R</span>ecipe<br />Finde<span>r</span></h1>
-  <div class="home__btns-container">
-    <a mat-raised-button href="/recipe">
-      Trouver une <br /> recette
-    </a>
-    <a mat-raised-button href="/recipe">
-      Ajouter une <br /> recette
-    </a>
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <div nzTooltipTitle="Ajouter une recette" nzTooltipPlacement="bottom" nz-button nz-tooltip>
+        <button class="home__btn--second" nz-button nzType="primary">
+          <a href="/add-recipe">
+            <i nz-icon nzType="appstore-add" nzTheme="outline"></i>
+          </a>
+        </button>
+      </div>
+    </div>
+    <div nz-col nzSpan="12">
+      <div nzTooltipTitle="Rechercher une recette" nzTooltipPlacement="bottom" nz-button nz-tooltip>
+        <button class="home__btn" nz-button nzType="primary">
+          <a href="/search-recipe">
+            <i nz-icon nzType="search" nzTheme="outline"></i>
+          </a>
+        </button>
+      </div>
+    </div>
   </div>
 </section>

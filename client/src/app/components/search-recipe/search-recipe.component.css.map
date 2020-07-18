@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,cAAc,CAAC;EACb,UAAU,EAAE,kBAAkB;EAC9B,UAAU,EAAE,IAAI;CACjB",
+    "sources": [
+        "search-recipe.component.scss"
+    ],
+    "names": [],
+    "file": "search-recipe.component.css"
+}
