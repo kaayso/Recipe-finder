@@ -29,6 +29,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 registerLocaleData(fr);
 
@@ -54,6 +55,7 @@ registerLocaleData(fr);
     NzGridModule,
     NzDropDownModule,
     NzIconModule,
+    NzToolTipModule,
   ],
   providers: [
     GenericService,
