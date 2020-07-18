@@ -157,8 +157,8 @@ export class AuthService {
   isUserConnected(): Observable<any> {
     return this.isConnected.asObservable();
   }
- 
-   /**
+
+  /**
    * signup
    * @param {string} ep
    * @param {string} body
@@ -174,5 +174,5 @@ export class AuthService {
         return of(false);
       })
     );
-  } 
+  }
 }

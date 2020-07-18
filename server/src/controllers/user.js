@@ -144,18 +144,17 @@ const logout = (req, res, next) => {
         token: req.body.token,
       },
       (err, doc) => {
-        if (err) next(err);
         if (doc) {
           return res.status(200).json({
-            message: 'document was successfully removed',
+            message: 'token was successfully removed',
           });
         }
-        res.status(401);
+        res.status(422);
         return next(new Error('unknown token'));
       },
     );
   } catch {
-    res.status(401);
+    res.status(422);
     return next(new Error('invalid request'));
   }
 };
