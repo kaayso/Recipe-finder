@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { UserModule } from './modules/user/user.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -10,6 +9,9 @@ import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { IngredientCardComponent } from './components/ingredient-card/ingredient-card.component';
+import { SearchRecipeComponent } from './components/search-recipe/search-recipe.component';
+import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
@@ -29,8 +31,11 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { SearchRecipeComponent } from './components/search-recipe/search-recipe.component';
-import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
 
 registerLocaleData(fr);
 
@@ -45,11 +50,11 @@ registerLocaleData(fr);
     IngredientCardComponent,
     SearchRecipeComponent,
     AddRecipeComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -58,6 +63,11 @@ registerLocaleData(fr);
     NzDropDownModule,
     NzIconModule,
     NzToolTipModule,
+    NzFormModule,
+    NzInputModule,
+    ReactiveFormsModule,
+    NzCheckboxModule,
+    NzNotificationModule,
   ],
   providers: [
     GenericService,

@@ -1,6 +1,114 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Muli:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;900&display=swap");
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+@keyframes appear-from-bottom {
+  from {
+    opacity: 0;
+    font-size: .2em;
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(-200%);
+            transform: translateY(-200%);
+    font-size: 1.4em;
+  }
+}
+
+@-webkit-keyframes appear-from-bottom {
+  from {
+    opacity: 0;
+    font-size: .2em;
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(-200%);
+            transform: translateY(-200%);
+    font-size: 1.4em;
+  }
+}
+
+@keyframes filter {
+  from {
+    -webkit-filter: brightness(0%);
+            filter: brightness(0%);
+  }
+  to {
+    -webkit-filter: brightness(30%);
+            filter: brightness(30%);
+  }
+}
+
+@-webkit-keyframes filter {
+  from {
+    -webkit-filter: brightness(0%);
+            filter: brightness(0%);
+  }
+  to {
+    -webkit-filter: brightness(30%);
+            filter: brightness(30%);
+  }
+}
+
+@media screen and (max-width: 578px) and (min-width: 480px) {
+  .home__title {
+    font-size: 6.5em;
+    line-height: 90px !important;
+    margin-top: 25% !important;
+  }
+  .home__btns-container {
+    margin: 15% !important;
+  }
+}
+
+@media screen and (max-width: 479px) and (min-width: 360px) {
+  .home__title {
+    font-size: 5.5em;
+    line-height: 80px !important;
+    margin-top: 35% !important;
+  }
+  .home__btns-container {
+    margin: 10% !important;
+  }
+}
+
+@media screen and (max-width: 359px) {
+  .home__title {
+    font-size: 4.8em;
+    line-height: 70px !important;
+    margin-top: 40% !important;
+  }
+}
+
+@media screen and (max-width: 870px) and (min-width: 579px) {
+  .home__title {
+    font-size: 8em;
+    margin-top: 20% !important;
+  }
+}
+
+@media screen and (min-width: 871px) {
+  .home__title {
+    font-size: 9em;
+  }
+}
+
 #home {
   min-height: 100vh;
-  background-image: url("../../../assets/home-bg.webp");
+  background-image: url("~src/assets/home-bg.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -26,90 +134,29 @@
 }
 
 .home__title span {
-  color: #EE4266;
+  color: #840032;
 }
 
-@media screen and (max-width: 578px) and (min-width: 480px) {
-  .home__title {
-    font-size: 6em;
-  }
+.home__title span:nth-child(1) {
+  color: #E59500;
 }
 
-@media screen and (max-width: 479px) {
-  .home__title {
-    font-size: 4.8em;
-  }
-}
-
-@media screen and (max-width: 655px) and (min-width: 579px) {
-  .home__title {
-    font-size: 8em;
-  }
-}
-
-@media screen and (min-width: 656px) {
-  .home__title {
-    font-size: 9em;
-  }
-}
-
-.home__btns-container {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 5%;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-.home__btns-container a {
-  width: 180px;
-  height: 80px;
+.home__btn, .home__btn--second {
+  width: 120px;
+  height: 100px;
   margin: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   color: #ffffff;
-  font-family: 'Charm', cursive;
-  line-height: 20px;
-  font-size: 1.7em;
-  text-decoration: none;
+  font-size: 3.5em;
   -webkit-box-shadow: -1px 4px 25px -6px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 4px 25px -6px rgba(0, 0, 0, 0.75);
 }
 
-.home__btns-container a:nth-child(1) {
-  background-color: #EE4266;
+.home__btn--second {
+  background-color: #E59500;
+  border: #E59500;
 }
 
-.home__btns-container a:nth-child(1):hover {
-  background-color: #ffffff;
-  color: #EE4266;
-  -webkit-transition: all 300ms;
-  transition: all 300ms;
-}
-
-.home__btns-container a:nth-child(2) {
-  background-color: #0B8CB5;
-}
-
-.home__btns-container a:nth-child(2):hover {
-  background-color: #ffffff;
-  color: #0B8CB5;
-  -webkit-transition: all 300ms;
-  transition: all 300ms;
+.home__btn--second:hover {
+  background-color: #ebae3d;
 }
 /*# sourceMappingURL=home.component.css.map */

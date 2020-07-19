@@ -1,0 +1,32 @@
+@import "../../../styles.scss";
+
+.login-form {
+  width: 300px;
+  background-color: #ffffff;
+  padding: 5px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 3px;
+  @include g-shadow;
+}
+
+.login-form-margin {
+  margin-bottom: 16px;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 70%;
+}
+
+.login-form__input {
+  display: flex;
+  max-width: 190px;
+  margin: auto;
+}

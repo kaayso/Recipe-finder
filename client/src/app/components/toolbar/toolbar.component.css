@@ -1,26 +1,161 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Muli:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;900&display=swap");
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+@keyframes appear-from-bottom {
+  from {
+    opacity: 0;
+    font-size: .2em;
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(-200%);
+            transform: translateY(-200%);
+    font-size: 1.4em;
+  }
+}
+
+@-webkit-keyframes appear-from-bottom {
+  from {
+    opacity: 0;
+    font-size: .2em;
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(-200%);
+            transform: translateY(-200%);
+    font-size: 1.4em;
+  }
+}
+
+@keyframes filter {
+  from {
+    -webkit-filter: brightness(0%);
+            filter: brightness(0%);
+  }
+  to {
+    -webkit-filter: brightness(30%);
+            filter: brightness(30%);
+  }
+}
+
+@-webkit-keyframes filter {
+  from {
+    -webkit-filter: brightness(0%);
+            filter: brightness(0%);
+  }
+  to {
+    -webkit-filter: brightness(30%);
+            filter: brightness(30%);
+  }
+}
+
+@media screen and (max-width: 578px) and (min-width: 480px) {
+  .home__title {
+    font-size: 6.5em;
+    line-height: 90px !important;
+    margin-top: 25% !important;
+  }
+  .home__btns-container {
+    margin: 15% !important;
+  }
+}
+
+@media screen and (max-width: 479px) and (min-width: 360px) {
+  .home__title {
+    font-size: 5.5em;
+    line-height: 80px !important;
+    margin-top: 35% !important;
+  }
+  .home__btns-container {
+    margin: 10% !important;
+  }
+}
+
+@media screen and (max-width: 359px) {
+  .home__title {
+    font-size: 4.8em;
+    line-height: 70px !important;
+    margin-top: 40% !important;
+  }
+}
+
+@media screen and (max-width: 870px) and (min-width: 579px) {
+  .home__title {
+    font-size: 8em;
+    margin-top: 20% !important;
+  }
+}
+
+@media screen and (min-width: 871px) {
+  .home__title {
+    font-size: 9em;
+  }
+}
+
 .toolbar {
-  background-color: #EE4266;
+  background-color: #840032;
+  height: 64px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  visibility: visible;
 }
 
-.toolbar__title {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+.toolbar__logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.toolbar__title a {
-  text-transform: capitalize;
+.toolbar__logo a {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 64px;
+}
+
+.toolbar__logo a img {
+  height: 50px;
+  width: 50px;
+}
+
+.toolbar__btn {
+  position: absolute;
+  right: 10px;
   color: #FFF;
-  text-decoration: none;
-  font-family: 'Kaushan Script', cursive;
+  bottom: 18px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
-.toolbar__icon.mat-icon {
-  cursor: pointer;
-}
-
-.toolbar__menu-btn {
-  background-color: transparent;
-  color: #FFF;
+.toolbar__btn i {
+  font-size: 1.3em;
 }
 /*# sourceMappingURL=toolbar.component.css.map */

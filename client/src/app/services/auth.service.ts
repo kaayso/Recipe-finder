@@ -175,4 +175,21 @@ export class AuthService {
       })
     );
   }
+
+  /**
+   * save user infos in localStorage
+   * @param user {object}
+   */
+  saveUserCredentials(user: any) {
+    localStorage.setItem('username', user.username);
+    localStorage.setItem('password', user.password);
+  }
+
+  /**
+   * remove user infos in localStorage
+   */
+  removeUserCredentials() {
+    localStorage.removeItem('username');
+    localStorage.removeItem('password');
+  }
 }

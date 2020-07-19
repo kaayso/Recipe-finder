@@ -62,14 +62,14 @@ const login = (req, res, next) => {
     (err, result) => {
       if (err) return next(err);
       if (!result) {
-        res.status(401);
+        res.status(404);
         return next(new Error('user not found'));
       }
       // check password
       bcrypt.compare(user.password, result.password, (bErr, isEqual) => {
         if (bErr) return next(bErr);
         if (!isEqual) {
-          res.status(401);
+          res.status(404);
           return next(new Error('incorrect password'));
         }
         // all is fine, generate tokens and save it in DB

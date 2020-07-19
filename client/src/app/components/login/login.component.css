@@ -1,5 +1,17 @@
 #login {
-  min-height: calc(100vh - 64px);
-  margin-top: 64px;
+  min-height: 100vh;
+  background-image: url("~src/assets/login-bg.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=login.component.css.map */
