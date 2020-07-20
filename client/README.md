@@ -30,9 +30,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Front-end
 
+[X] ng-zorro
+[X] toolbar
+[X] loader
 [X] home page
-[ ] login page
-[ ] signup page
+[X] login page
+[X] signup page
 [ ] add-recipe page
 [ ] search-recipe page
 

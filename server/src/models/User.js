@@ -14,7 +14,6 @@ const requiredString = {
 const schema = new Schema({
   username: {
     ...requiredString,
-    unique: true,
   },
   email: {
     ...requiredString,

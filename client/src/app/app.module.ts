@@ -12,6 +12,7 @@ import { IngredientCardComponent } from './components/ingredient-card/ingredient
 import { SearchRecipeComponent } from './components/search-recipe/search-recipe.component';
 import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
@@ -36,6 +37,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NzStepsModule } from 'ng-zorro-antd/steps';
 
 registerLocaleData(fr);
 
@@ -51,6 +53,7 @@ registerLocaleData(fr);
     SearchRecipeComponent,
     AddRecipeComponent,
     LoginFormComponent,
+    SignupFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ registerLocaleData(fr);
     ReactiveFormsModule,
     NzCheckboxModule,
     NzNotificationModule,
+    NzStepsModule,
   ],
   providers: [
     GenericService,

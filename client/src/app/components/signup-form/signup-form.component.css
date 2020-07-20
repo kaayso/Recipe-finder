@@ -106,14 +106,12 @@ html {
   }
 }
 
-.loader-layout {
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: white;
-  z-index: 1;
+.signup-form__steps-content {
+  margin-top: 16px;
+  border-radius: 6px;
+  background-color: #fafafa;
+  min-height: 140px;
+  text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -125,8 +123,35 @@ html {
           align-items: center;
 }
 
-.loader-layout i {
-  font-size: 4em;
-  color: #840032;
+.signup-form__steps-action {
+  margin-top: 24px;
 }
-/*# sourceMappingURL=app.component.css.map */
+
+.signup-form__btn {
+  margin-right: 8px;
+}
+
+.signup-form {
+  min-width: 300px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 3px;
+  -webkit-box-shadow: -1px 4px 25px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 4px 25px -6px rgba(0, 0, 0, 0.75);
+}
+
+.sign__pwd-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.signup__form-item {
+  width: 250px;
+  margin: 10px;
+}
+/*# sourceMappingURL=signup-form.component.css.map */
