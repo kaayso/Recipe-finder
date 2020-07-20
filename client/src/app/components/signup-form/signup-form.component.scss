@@ -3,12 +3,10 @@
 .signup-form__steps-content {
   margin-top: 16px;
   border-radius: 6px;
-  background-color: #fafafa;
-  min-height: 140px;
+  min-height: 110px;
   text-align: center;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .signup-form__steps-action {
@@ -19,20 +17,14 @@
   margin-right: 8px;
 }
 
-.signup-form {
-  min-width: 300px;
-  background-color: #ffffff;
-  padding: 10px;
-  border-radius: 3px;
-  @include g-shadow;
-}
-
 .sign__pwd-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .signup__form-item {
-  width: 250px;
-  margin: 10px;
+  width: 240px;
+  margin: 10px 20px;
 }

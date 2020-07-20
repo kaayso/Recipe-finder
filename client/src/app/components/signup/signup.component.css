@@ -14,4 +14,20 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.app-signup-form {
+  width: 40%;
+  min-width: 300px;
+  z-index: 2;
+}
+
+.signup__filter {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(17, 17, 17, 0.6);
+  z-index: 1;
+}
 /*# sourceMappingURL=signup.component.css.map */

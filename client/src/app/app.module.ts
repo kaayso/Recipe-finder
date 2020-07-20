@@ -38,6 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 registerLocaleData(fr);
 
@@ -72,6 +73,7 @@ registerLocaleData(fr);
     NzCheckboxModule,
     NzNotificationModule,
     NzStepsModule,
+    NzDividerModule,
   ],
   providers: [
     GenericService,

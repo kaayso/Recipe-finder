@@ -3,8 +3,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('~src/assets/login-bg.webp');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
+
+.app-signup-form {
+  width: 40%;
+  min-width: 300px;
+}
+

@@ -109,8 +109,7 @@ html {
 .signup-form__steps-content {
   margin-top: 16px;
   border-radius: 6px;
-  background-color: #fafafa;
-  min-height: 140px;
+  min-height: 110px;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -118,9 +117,6 @@ html {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .signup-form__steps-action {
@@ -131,27 +127,23 @@ html {
   margin-right: 8px;
 }
 
-.signup-form {
-  min-width: 300px;
-  background-color: #ffffff;
-  padding: 10px;
-  border-radius: 3px;
-  -webkit-box-shadow: -1px 4px 25px -6px rgba(0, 0, 0, 0.75);
-  box-shadow: -1px 4px 25px -6px rgba(0, 0, 0, 0.75);
-}
-
 .sign__pwd-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .signup__form-item {
-  width: 250px;
-  margin: 10px;
+  width: 240px;
+  margin: 10px 20px;
 }
 /*# sourceMappingURL=signup-form.component.css.map */

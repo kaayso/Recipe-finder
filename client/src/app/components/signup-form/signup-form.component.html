@@ -1,10 +1,10 @@
 <div class="signup-form">
-  <nz-steps [nzCurrent]="current">
+  <nz-steps [nzCurrent]="current" nzSize="small">
     <nz-step nzTitle="Mail"></nz-step>
     <nz-step nzTitle="Nom"></nz-step>
     <nz-step nzTitle="Mot de passe"></nz-step>
   </nz-steps>
-
+  <nz-divider></nz-divider>
   <div class="signup-form__steps-content">
     <form nz-form [formGroup]="validateForm" (ngSubmit)="done()">
       <nz-form-item class="signup__form-item" *ngIf="current == 0">
@@ -36,14 +36,14 @@
           <nz-form-control nzHasFeedback nzErrorTip="Veuillez saisir votre mot de passe...">
             <nz-input-group nzPrefixIcon="lock">
               <input (ngModelChange)="validateconfirm()" type="password" nz-input formControlName="password"
-                placeholder="**********" />
+                placeholder="mot de passe" />
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
         <nz-form-item class="signup__form-item">
           <nz-form-control nzHasFeedback [nzErrorTip]="passwordErrorTpl">
             <nz-input-group nzPrefixIcon="lock">
-              <input type="password" nz-input formControlName="confirm" placeholder="**********" />
+              <input type="password" nz-input formControlName="confirm" placeholder="confirmation..." />
             </nz-input-group>
             <ng-template #passwordErrorTpl let-control>
               <ng-container *ngIf="control.hasError('required')">
@@ -58,6 +58,8 @@
       </div>
     </form>
   </div>
+  <nz-divider></nz-divider>
+
   <div class="signup-form__steps-action">
     <button class="signup-form__btn" nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
       <span>Précédent</span>

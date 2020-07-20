@@ -8,3 +8,21 @@
   justify-content: center;
   align-items: center;
 }
+
+.app-login-form {
+  min-width: 300px;
+  max-width: 400px;
+  width: 100%;
+  z-index: 2;
+  margin: 5px;
+}
+
+.login__filter {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba($color: #111, $alpha: 0.4);
+  z-index: 1;
+}
