@@ -4,7 +4,7 @@
     <div nz-col nzSpan="12">
       <div nzTooltipTitle="Ajouter une recette" nzTooltipPlacement="bottom" nz-button nz-tooltip>
         <button class="home__btn--second" nz-button nzType="primary">
-          <a href="/add-recipe">
+          <a (click)="goToAddRecipe()">
             <i nz-icon nzType="appstore-add" nzTheme="outline"></i>
           </a>
         </button>
@@ -13,7 +13,7 @@
     <div nz-col nzSpan="12">
       <div nzTooltipTitle="Rechercher une recette" nzTooltipPlacement="bottom" nz-button nz-tooltip>
         <button class="home__btn" nz-button nzType="primary">
-          <a href="/search-recipe">
+          <a (click)="goToSearchRecipe()">
             <i nz-icon nzType="search" nzTheme="outline"></i>
           </a>
         </button>

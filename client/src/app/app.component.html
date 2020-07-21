@@ -1,3 +1,6 @@
 <app-toolbar></app-toolbar>
-<div class="loader-layout" *ngIf="loading"><i nz-icon [nzType]="'loading'"></i></div>
+<div class="loader-layout" *ngIf="loading">
+  <nz-spin>
+  </nz-spin>
+</div>
 <router-outlet></router-outlet>

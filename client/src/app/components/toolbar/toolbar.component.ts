@@ -34,10 +34,16 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     if (this.authService.isLoggedIn()) this.showMenu = true;
   }
 
-  logout() {
+  logout(): void {
     this.authService
       .logout(api.Logout)
       .subscribe(() => this.router.navigateByUrl('/login'));
+  }
+
+  goHome(): void {
+    console.log('home');
+
+    this.router.navigateByUrl('/');
   }
 
   ngOnDestroy() {

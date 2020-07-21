@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GenericService } from '../../services/generic.service';
 import { api } from '../../ws/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
   ingredients: any[];
   loading: boolean = true;
 
-  constructor(private webService: GenericService) {}
+  constructor(private webService: GenericService, private router: Router) {}
   ngOnInit() {
     this.getIngredients();
   }
@@ -61,5 +62,12 @@ export class HomeComponent implements OnInit {
       });
     }
     return result;
+  }
+
+  goToAddRecipe(): void {
+    this.router.navigateByUrl('/add-recipe');
+  }
+  goToSearchRecipe(): void {
+    this.router.navigateByUrl('/search-recipe');
   }
 }

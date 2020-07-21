@@ -65,6 +65,10 @@ export class LoginFormComponent implements OnInit {
     }
   }
 
+  goSignup(): void {
+    this.router.navigateByUrl('/signup');
+  }
+
   constructor(
     private notification: NzNotificationService,
     private fb: FormBuilder,

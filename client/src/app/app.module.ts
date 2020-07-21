@@ -39,6 +39,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 registerLocaleData(fr);
 
@@ -74,6 +75,7 @@ registerLocaleData(fr);
     NzNotificationModule,
     NzStepsModule,
     NzDividerModule,
+    NzSpinModule,
   ],
   providers: [
     GenericService,
