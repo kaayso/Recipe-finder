@@ -23,16 +23,16 @@ export class AuthService {
    * setup jwt and user id
    * @param {string} ep
    * @param {string} body
-   * @return {boolean} response
+   * @return {any} response
    */
-  login(ep: string, body: string): Observable<boolean> {
+  login(ep: string, body: string): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}${ep}`, body).pipe(
       tap((data) => {
         this.doLoginUser(data);
       }),
-      mapTo(true),
+      mapTo({ ok: true, status: 200 }),
       catchError((error) => {
-        return of(false);
+        return of({ ok: false, status: error.status });
       })
     );
   }
@@ -162,16 +162,16 @@ export class AuthService {
    * signup
    * @param {string} ep
    * @param {string} body
-   * @return {boolean} response
+   * @return {any} response
    */
-  signup(ep: string, body: string): Observable<boolean> {
+  signup(ep: string, body: string): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}${ep}`, body).pipe(
       tap((data) => {
         console.log(data);
       }),
-      mapTo(true),
+      mapTo({ ok: true, status: 201 }),
       catchError((error) => {
-        return of(false);
+        return of({ ok: false, status: error.status });
       })
     );
   }

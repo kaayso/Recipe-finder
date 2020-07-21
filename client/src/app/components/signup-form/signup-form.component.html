@@ -6,7 +6,7 @@
   </nz-steps>
   <nz-divider></nz-divider>
   <div class="signup-form__steps-content">
-    <form nz-form [formGroup]="validateForm" (ngSubmit)="done()">
+    <form nz-form [formGroup]="validateForm">
       <nz-form-item class="signup__form-item" *ngIf="current == 0">
         <nz-form-control nzHasFeedback [nzErrorTip]="emailErrorTpl">
           <nz-input-group nzPrefixIcon="mail">
@@ -67,7 +67,7 @@
     <button class="signup-form__btn" nz-button nzType="default" (click)="next()" *ngIf="current < 2">
       <span>Suivant</span>
     </button>
-    <button [disabled]="!validateForm.valid" class="signup-form__btn" nz-button nzType="primary" (click)="done()"
+    <button [disabled]="!validateForm.valid" class="signup-form__btn" nz-button nzType="primary" (click)="submit()"
       *ngIf="current === 2">
       <span>Terminer</span>
     </button>

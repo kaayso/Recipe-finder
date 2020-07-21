@@ -42,30 +42,47 @@ export class SignupFormComponent implements OnInit {
   }
 
   validateEmail(email): boolean {
-    var re = /\S+@\S+\.\S+/;
+    const re = /\S+@\S+\.\S+/;
     return re.test(email);
   }
 
-  done(): void {
+  submit(): void {
+    for (const i in this.validateForm.controls) {
+      this.validateForm.controls[i].markAsDirty();
+      this.validateForm.controls[i].updateValueAndValidity();
+    }
+
     if (this.validateForm.valid) {
       // all is ok, send request
       const user = this.validateForm.value;
       delete user.confirm;
 
       this.authService.signup(api.Singup, user).subscribe((response) => {
-        if (response) {
+        if (response.ok) {
           this.authService.saveUserCredentials({
             username: user.username,
             password: this.aesEncryptDecryptService.encrypt(user.password),
           });
-          this.router.navigateByUrl('/login');
-        } else {
+          // this.router.navigateByUrl('/login');
+        } else if (response.status === 409) {
           this.createNotification(
             'error',
             'Erreur!',
             'Cette adresse mail est déjà utilisée.'
           );
           this.current = 0;
+        } else if (response.status === 422) {
+          this.createNotification(
+            'error',
+            'Erreur!',
+            "Le formulaire n'est pas valide"
+          );
+        } else {
+          this.createNotification(
+            'error',
+            'Erreur!',
+            'Le serveur ne répond pas.'
+          );
         }
       });
     }

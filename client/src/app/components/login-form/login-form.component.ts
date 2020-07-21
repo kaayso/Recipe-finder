@@ -27,29 +27,41 @@ export class LoginFormComponent implements OnInit {
     }
     const username = this.validateForm.value.username;
     const password = this.validateForm.value.password;
-    if (username && password) {
+    if (this.validateForm.valid) {
       // send HTTP request
       this.authService
         .login(api.Login, this.validateForm.value)
         .subscribe((response) => {
-          if (response) {
+          if (response.ok) {
+            if (this.validateForm.value.remember) {
+              this.authService.saveUserCredentials({
+                username,
+                password: this.aesEncryptDecryptService.encrypt(password),
+              });
+            } else {
+              this.authService.removeUserCredentials();
+            }
             this.router.navigateByUrl('/');
-          } else {
+          } else if (response.status === 404) {
             this.createNotification(
               'error',
               'Connexion échouée!',
-              'Pseudo ou mot de passe incorect, veuillez réessayer.'
+              'Pseudo ou mot de passe incorrect, veuillez réessayer.'
+            );
+          } else if (response.status === 422) {
+            this.createNotification(
+              'error',
+              'Erreur!',
+              "Le formulaire n'est pas valide"
+            );
+          } else {
+            this.createNotification(
+              'error',
+              'Erreur!',
+              'Le serveur ne répond pas.'
             );
           }
         });
-      if (this.validateForm.value.remember) {
-        this.authService.saveUserCredentials({
-          username,
-          password: this.aesEncryptDecryptService.encrypt(password),
-        });
-      } else {
-        this.authService.removeUserCredentials();
-      }
     }
   }
 
