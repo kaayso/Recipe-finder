@@ -40,6 +40,7 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 registerLocaleData(fr);
 
@@ -76,6 +77,7 @@ registerLocaleData(fr);
     NzStepsModule,
     NzDividerModule,
     NzSpinModule,
+    NzAvatarModule,
   ],
   providers: [
     GenericService,

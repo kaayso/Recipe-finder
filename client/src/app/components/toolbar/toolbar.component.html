@@ -8,7 +8,9 @@
   <div nz-col nzSpan="10">
     <button *ngIf="showMenu" class="toolbar__btn" nz-button nzType="primary">
       <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
-        <i nz-icon nzType="user" nzTheme="outline"></i>
+        <!-- <i nz-icon nzType="user" nzTheme="outline"></i> -->
+        <nz-avatar [nzText]="usernameFirstLetter"
+          style="text-transform: uppercase !important; color:#E59500; background-color:#fde3cf;"></nz-avatar>
       </a>
     </button>
 

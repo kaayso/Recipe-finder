@@ -59,11 +59,17 @@ export class SignupFormComponent implements OnInit {
 
       this.authService.signup(api.Singup, user).subscribe((response) => {
         if (response.ok) {
-          this.authService.saveUserCredentials({
-            username: user.username,
-            password: this.aesEncryptDecryptService.encrypt(user.password),
-          });
-          // this.router.navigateByUrl('/login');
+          this.authService.saveUserCredentials([
+            {
+              key: 'username',
+              value: user.username,
+            },
+            {
+              key: 'password',
+              value: this.aesEncryptDecryptService.encrypt(user.password),
+            },
+          ]);
+          this.router.navigateByUrl('/login');
         } else if (response.status === 409) {
           this.createNotification(
             'error',

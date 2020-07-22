@@ -33,11 +33,15 @@
 .toolbar__btn {
   position: absolute;
   right: 10px;
+  top: 7px;
   color: #FFF;
   bottom: 18px;
   box-shadow: none;
+  border-radius: 50%;
 
-  i {
-    font-size: 1.3em;
-  }
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

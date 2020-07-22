@@ -11,18 +11,27 @@ import { Location } from '@angular/common';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
+  connexionSubscription: Subscription;
+  usernameSubscription: Subscription;
   showMenu: boolean;
   displayToolBar: boolean = false;
+  usernameFirstLetter: boolean;
+
   constructor(
     private authService: AuthService,
     private router: Router,
     private location: Location
   ) {
     // show menu in dynamic way
-    this.subscription = this.authService
+    this.connexionSubscription = this.authService
       .isUserConnected()
       .subscribe((response) => (this.showMenu = response));
+    this.usernameSubscription = this.authService
+      .getUsername()
+      .subscribe(
+        (response) => (this.usernameFirstLetter = response.split('')[0])
+      );
+
     this.location.onUrlChange((path) => {
       path == '/'
         ? (this.displayToolBar = false)
@@ -41,12 +50,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   goHome(): void {
-    console.log('home');
-
     this.router.navigateByUrl('/');
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.connexionSubscription.unsubscribe();
+    this.usernameSubscription.unsubscribe();
   }
 }

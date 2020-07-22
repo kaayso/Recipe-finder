@@ -12,6 +12,7 @@ import { environment } from '../../environments/environment';
 })
 export class AuthService {
   private isConnected = new Subject<any>();
+  private username = new Subject<any>();
 
   constructor(
     private http: HttpClient,
@@ -25,7 +26,8 @@ export class AuthService {
    * @param {string} body
    * @return {any} response
    */
-  login(ep: string, body: string): Observable<any> {
+  login(ep: string, body: any): Observable<any> {
+    this.username.next(body.username);
     return this.http.post<any>(`${environment.apiUrl}${ep}`, body).pipe(
       tap((data) => {
         this.doLoginUser(data);
@@ -159,6 +161,13 @@ export class AuthService {
   }
 
   /**
+   * observable on username
+   */
+  getUsername(): Observable<any> {
+    return this.username.asObservable();
+  }
+
+  /**
    * signup
    * @param {string} ep
    * @param {string} body
@@ -178,18 +187,29 @@ export class AuthService {
 
   /**
    * save user infos in localStorage
-   * @param user {object}
+   * @param items {array of object}
    */
-  saveUserCredentials(user: any) {
-    localStorage.setItem('username', user.username);
-    localStorage.setItem('password', user.password);
+  saveUserCredentials(items: any[]) {
+    for (let item of items) {
+      localStorage.setItem(item.key, item.value);
+    }
   }
 
   /**
    * remove user infos in localStorage
+   * @param items {array of string}
    */
-  removeUserCredentials() {
-    localStorage.removeItem('username');
-    localStorage.removeItem('password');
+  removeUserCredentials(items: string[]) {
+    for (let item of items) {
+      localStorage.removeItem(item);
+    }
+  }
+
+  /**
+   * get user info from localStorage
+   * @param key {string}
+   */
+  getUserCredential(key: string) {
+    return localStorage.getItem(key) ? localStorage.getItem(key) : null;
   }
 }

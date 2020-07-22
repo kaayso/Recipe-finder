@@ -33,13 +33,23 @@ export class LoginFormComponent implements OnInit {
         .login(api.Login, this.validateForm.value)
         .subscribe((response) => {
           if (response.ok) {
+            // save username
+            this.authService.saveUserCredentials([
+              {
+                key: 'username',
+                value: username,
+              },
+            ]);
+            // save password if remember checkbox is enable
             if (this.validateForm.value.remember) {
-              this.authService.saveUserCredentials({
-                username,
-                password: this.aesEncryptDecryptService.encrypt(password),
-              });
+              this.authService.saveUserCredentials([
+                {
+                  key: 'password',
+                  value: this.aesEncryptDecryptService.encrypt(password),
+                },
+              ]);
             } else {
-              this.authService.removeUserCredentials();
+              this.authService.removeUserCredentials(['password']);
             }
             this.router.navigateByUrl('/');
           } else if (response.status === 404) {
@@ -78,11 +88,13 @@ export class LoginFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const localStorageUsername = localStorage.getItem('username')
-      ? localStorage.getItem('username')
+    const localStorageUsername = this.authService.getUserCredential('username')
+      ? this.authService.getUserCredential('username')
       : null;
-    const localStoragePassword = localStorage.getItem('password')
-      ? this.aesEncryptDecryptService.decrypt(localStorage.getItem('password'))
+    const localStoragePassword = this.authService.getUserCredential('password')
+      ? this.aesEncryptDecryptService.decrypt(
+          this.authService.getUserCredential('password')
+        )
       : null;
     this.validateForm = this.fb.group({
       username: [localStorageUsername, [Validators.required]],
