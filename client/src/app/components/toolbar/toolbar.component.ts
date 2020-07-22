@@ -15,7 +15,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   usernameSubscription: Subscription;
   showMenu: boolean;
   displayToolBar: boolean = false;
-  usernameFirstLetter: boolean;
+  usernameFirstLetter: string;
 
   constructor(
     private authService: AuthService,
@@ -28,9 +28,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
       .subscribe((response) => (this.showMenu = response));
     this.usernameSubscription = this.authService
       .getUsername()
-      .subscribe(
-        (response) => (this.usernameFirstLetter = response.split('')[0])
-      );
+      .subscribe((response) => {
+        return (this.usernameFirstLetter = response.split('')[0]);
+      });
 
     this.location.onUrlChange((path) => {
       path == '/'
@@ -41,6 +41,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (this.authService.isLoggedIn()) this.showMenu = true;
+    this.usernameFirstLetter = this.authService
+      .getUserCredential('username')
+      .split('')[0];
   }
 
   logout(): void {

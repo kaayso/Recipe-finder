@@ -1,6 +1,6 @@
-<div class="ingredient-card">
-  <img mat-card-image
-    src="https://www.unlockfood.ca/EatRightOntario/media/Website-images-resized/How-to-store-fruit-to-keep-it-fresh-resized.jpg"
-    alt="Fruits" />
-  <div class="ingredient-card__title">{{name}}</div>
-</div>
+<nz-card nzHoverable class="ing-card" [nzCover]="coverTemplate">
+  <nz-card-meta nzDescription="{{description}}" nzTitle="{{title}}"></nz-card-meta>
+</nz-card>
+<ng-template #coverTemplate>
+  <img style="height: 180px; width: 240px;" alt="example" src="{{img}}" />
+</ng-template>

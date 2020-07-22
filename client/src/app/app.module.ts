@@ -41,6 +41,7 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzCardModule } from 'ng-zorro-antd/card';
 
 registerLocaleData(fr);
 
@@ -78,6 +79,7 @@ registerLocaleData(fr);
     NzDividerModule,
     NzSpinModule,
     NzAvatarModule,
+    NzCardModule,
   ],
   providers: [
     GenericService,

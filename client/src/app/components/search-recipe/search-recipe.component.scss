@@ -1,4 +1,12 @@
 #search-recipe {
-  min-height: calc(100vh - 64px);
-  margin-top: 64px;
+  min-height: 100vh;
+  padding-top: 128px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.search-recipe__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
