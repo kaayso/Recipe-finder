@@ -1,7 +1,7 @@
 @import "../../../styles.scss";
 
 .toolbar {
-  background-color: $primary-color;
+  background-color: $tertiary-color;
   height: 64px;
   position: fixed;
   top: 0;
@@ -34,14 +34,20 @@
   position: absolute;
   right: 10px;
   top: 7px;
-  color: #FFF;
+  color: #fff;
   bottom: 18px;
   box-shadow: none;
   border-radius: 50%;
-
+  background-color: $tertiary-color;
+  border-color: $tertiary-color;
   height: 50px;
   width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+    background-color: #3e3535;
+    border-color: #3e3535;
+  }
 }

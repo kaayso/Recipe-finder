@@ -1,12 +1,26 @@
 #signup {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow-y: hidden;
 }
 
 .app-signup-form {
-  width: 40%;
+  width: 80%;
   min-width: 300px;
+  max-width: 700px;
+  margin-top: 150px;
+  padding-bottom: 30%;
 }
 
+.signup__img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  transform: rotate(180deg)translateY(-60%);
+}

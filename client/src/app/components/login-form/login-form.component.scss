@@ -3,7 +3,7 @@
 .login-form {
   background-color: #ffffff;
   padding: 5px;
-  height: 400px;
+  height: 420px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,4 +32,11 @@
 
 .login-form__link {
   font-size: .9em;
+  padding-bottom: 12px;
+}
+
+.login-form__logo {
+  height: 100px;
+  width: 100px;
+  margin: auto;
 }
