@@ -19,6 +19,8 @@ import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.inte
 
 import { GenericService } from './services/generic.service';
 import { CookiesService } from './services/cookies.service';
+import { AuthService } from './services/auth.service';
+import { AesEncryptDecryptService } from './services/aes-encrypt-decrypt.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -84,6 +86,8 @@ registerLocaleData(fr);
   providers: [
     GenericService,
     CookiesService,
+    AuthService,
+    AesEncryptDecryptService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorInterceptor,

@@ -8,8 +8,10 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { CookiesService } from '../services/cookies.service';
 import { catchError, switchMap, filter, take } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { api } from '../ws/api';
 
 @Injectable()
 export class AuthInterceptorInterceptor implements HttpInterceptor {
@@ -17,7 +19,11 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
   private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(
     null
   );
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private cookiesService: CookiesService,
+    private router: Router
+  ) {}
 
   intercept(
     req: HttpRequest<unknown>,
@@ -32,15 +38,35 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
       req = this.addContentType(req);
     }
 
+    let uid = this.cookiesService.getCookie('userId');
+    if (uid) {
+      // resources manipulation needs uid for auth middleware
+      req = this.addUid(req, uid);
+    }
+
     return next.handle(req).pipe(
       catchError((error) => {
-        if (error instanceof HttpErrorResponse && error.status === 401) {
-          return this.handle401Error(req, next);
+        if (error instanceof HttpErrorResponse && error.status === 403) {
+          return this.handle403Error(req, next);
+        } else if (error instanceof HttpErrorResponse && error.status === 401) {
+          return this.handle401Error(req, next).pipe(
+            catchError((error) => {
+              if (error instanceof HttpErrorResponse && error.status === 403) {
+                return this.handle403Error(req, next);
+              }
+            })
+          );
         } else {
           return throwError(error);
         }
       })
     );
+  }
+
+  private addUid(req: HttpRequest<unknown>, uid: string): HttpRequest<unknown> {
+    return req.clone({
+      headers: req.headers.set('uid', uid),
+    });
   }
 
   private addToken(
@@ -64,8 +90,9 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
       this.refreshTokenSubject.next(null);
       return this.authService.refreshToken().pipe(
         switchMap((data: any) => {
-          this.isRefreshed = true;
+          this.isRefreshed = false;
           this.refreshTokenSubject.next(data.token);
+
           return next.handle(this.addToken(req, data.token));
         })
       );
@@ -78,5 +105,12 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
         })
       );
     }
+  }
+
+  private handle403Error(req: HttpRequest<unknown>, next: HttpHandler) {
+    this.authService
+      .logout(api.Logout)
+      .subscribe(() => this.router.navigateByUrl('/login'));
+    return next.handle(req);
   }
 }

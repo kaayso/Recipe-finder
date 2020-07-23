@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
@@ -5,9 +6,9 @@ const Token = require('../models/Token');
 
 const SALT_ROUNDS = 10;
 const TOKEN_ACCESS_DURATION = '15m';
+const REFRESH_TOKEN_ACCESS_DURATION = '1d';
 const generateAccessToken = (user, expire) => jwt.sign(
   {
-    // eslint-disable-next-line no-underscore-dangle
     uid: user._id,
   },
   process.env.SECRET_TOKEN_ACCESS,
@@ -74,7 +75,7 @@ const login = (req, res, next) => {
         }
         // all is fine, generate tokens and save it in DB
         const myToken = generateAccessToken(result, TOKEN_ACCESS_DURATION);
-        const myRefreshToken = generateAccessToken(result, '1d');
+        const myRefreshToken = generateAccessToken(result, REFRESH_TOKEN_ACCESS_DURATION);
         const token = new Token({
           token: myRefreshToken,
         });
@@ -98,41 +99,40 @@ const login = (req, res, next) => {
 
 const getNewAccessToken = async (req, res, next) => {
   // if user token is not specified
-  if (!req.body.token) {
-    res.status(401);
+  if (!req.body.refreshToken) {
+    res.status(403);
     return next(new Error('invalid request'));
   }
   // grab tokens from db
   const tokens = await Token.find();
-  const currentTokens = tokens.map((element) => element.token);
+  const currentRefreshTokens = tokens.map((element) => element.token);
   // check if user token is registered
-  if (!currentTokens.includes(req.body.token)) {
+  if (!currentRefreshTokens.includes(req.body.refreshToken)) {
     res.status(403);
     return next(new Error('invalid token'));
   }
   // generate and send a new token
   try {
     const decodedToken = jwt.verify(
-      req.body.token,
+      req.body.refreshToken,
       process.env.SECRET_TOKEN_ACCESS,
     );
+
     const { uid } = decodedToken;
-    return res.status(201).json({
+    User.findOne({ _id: uid }, (err, result) => res.status(201).json({
       token: generateAccessToken(
-        {
-          uid,
-        },
+        result,
         TOKEN_ACCESS_DURATION,
       ),
-    });
+    }));
   } catch {
     // if exists remove it from db
-    if (currentTokens.includes(req.body.token)) {
-      Token.findOneAndDelete({ token: req.body.token }, (err) => {
+    if (currentRefreshTokens.includes(req.body.refreshToken)) {
+      Token.findOneAndDelete({ token: req.body.refreshToken }, (err) => {
         if (err) console.error(err);
       });
     }
-    res.status(401);
+    res.status(403);
     return next(new Error('invalid request'));
   }
 };

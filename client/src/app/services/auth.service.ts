@@ -140,7 +140,7 @@ export class AuthService {
     }
     return this.http
       .post<any>(`${environment.apiUrl}${api.Token}`, {
-        token: this.getJwtToken('refreshToken'),
+        refreshToken: this.getJwtToken('refreshToken'),
       })
       .pipe(tap((data) => this.storeRefreshedToken(data.token)));
   }
