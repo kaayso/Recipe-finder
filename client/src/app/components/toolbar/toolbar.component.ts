@@ -22,7 +22,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     private router: Router,
     private location: Location
   ) {
-    // show menu in dynamic way
     this.connexionSubscription = this.authService
       .isUserConnected()
       .subscribe((response) => (this.showMenu = response));
@@ -48,7 +47,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.authService
-      .logout(api.Logout)
+      .logout()
       .subscribe(() => this.router.navigateByUrl('/login'));
   }
 

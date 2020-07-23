@@ -14,7 +14,7 @@ import {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  loading = false;
+  loading: boolean = false;
 
   constructor(private router: Router) {
     this.router.events.subscribe((event: Event) => {

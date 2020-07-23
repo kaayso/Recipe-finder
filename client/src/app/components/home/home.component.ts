@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     this.getIngredients();
   }
 
-  getIngredients() {
+  getIngredients(): void {
     this.webService.get(api.Ingredient).subscribe(
       () => {
         this.loading = false;
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  formatIngredientToCategory(ingredientList) {
+  formatIngredientToCategory(ingredientList): any[] {
     const catVisited = {};
     const result = [];
     for (let ing of ingredientList) {

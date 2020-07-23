@@ -109,7 +109,7 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
 
   private handle403Error(req: HttpRequest<unknown>, next: HttpHandler) {
     this.authService
-      .logout(api.Logout)
+      .logout()
       .subscribe(() => this.router.navigateByUrl('/login'));
     return next.handle(req);
   }

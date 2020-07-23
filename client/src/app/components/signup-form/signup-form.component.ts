@@ -17,7 +17,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
   styleUrls: ['./signup-form.component.scss'],
 })
 export class SignupFormComponent implements OnInit {
-  current = 0;
+  current: number = 0;
   validateForm!: FormGroup;
 
   ngOnInit(): void {
@@ -123,7 +123,6 @@ export class SignupFormComponent implements OnInit {
   };
 
   constructor(
-    // private notification: NzNotificationService,
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,

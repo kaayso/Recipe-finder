@@ -29,49 +29,47 @@ export class LoginFormComponent implements OnInit {
     const password = this.validateForm.value.password;
     if (this.validateForm.valid) {
       // send HTTP request
-      this.authService
-        .login(api.Login, this.validateForm.value)
-        .subscribe((response) => {
-          if (response.ok) {
-            // save username
+      this.authService.login(this.validateForm.value).subscribe((response) => {
+        if (response.ok) {
+          // save username
+          this.authService.saveUserCredentials([
+            {
+              key: 'username',
+              value: username,
+            },
+          ]);
+          // save password if remember checkbox is enable
+          if (this.validateForm.value.remember) {
             this.authService.saveUserCredentials([
               {
-                key: 'username',
-                value: username,
+                key: 'password',
+                value: this.aesEncryptDecryptService.encrypt(password),
               },
             ]);
-            // save password if remember checkbox is enable
-            if (this.validateForm.value.remember) {
-              this.authService.saveUserCredentials([
-                {
-                  key: 'password',
-                  value: this.aesEncryptDecryptService.encrypt(password),
-                },
-              ]);
-            } else {
-              this.authService.removeUserCredentials(['password']);
-            }
-            this.router.navigateByUrl('/');
-          } else if (response.status === 404) {
-            this.createNotification(
-              'error',
-              'Connexion échouée!',
-              'Pseudo ou mot de passe incorrect, veuillez réessayer.'
-            );
-          } else if (response.status === 422) {
-            this.createNotification(
-              'error',
-              'Erreur!',
-              "Le formulaire n'est pas valide"
-            );
           } else {
-            this.createNotification(
-              'error',
-              'Erreur!',
-              'Le serveur ne répond pas.'
-            );
+            this.authService.removeUserCredentials(['password']);
           }
-        });
+          this.router.navigateByUrl('/');
+        } else if (response.status === 404) {
+          this.createNotification(
+            'error',
+            'Connexion échouée!',
+            'Pseudo ou mot de passe incorrect, veuillez réessayer.'
+          );
+        } else if (response.status === 422) {
+          this.createNotification(
+            'error',
+            'Erreur!',
+            "Le formulaire n'est pas valide"
+          );
+        } else {
+          this.createNotification(
+            'error',
+            'Erreur!',
+            'Le serveur ne répond pas.'
+          );
+        }
+      });
     }
   }
 

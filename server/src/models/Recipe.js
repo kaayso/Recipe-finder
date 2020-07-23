@@ -23,7 +23,10 @@ const ingredient = new Schema({
 });
 
 const schema = new Schema({
-  uid: requiredString,
+  _creator: {
+    type: Schema.ObjectId,
+    ref: 'User',
+  },
   name: requiredString,
   image: {
     type: String,

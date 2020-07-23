@@ -22,13 +22,12 @@ export class AuthService {
 
   /**
    * setup jwt and user id
-   * @param {string} ep
    * @param {string} body
    * @return {any} response
    */
-  login(ep: string, body: any): Observable<any> {
+  login(body: any): Observable<any> {
     this.username.next(body.username);
-    return this.http.post<any>(`${environment.apiUrl}${ep}`, body).pipe(
+    return this.http.post<any>(`${environment.apiUrl}${api.Login}`, body).pipe(
       tap((data) => {
         this.doLoginUser(data);
       }),
@@ -41,14 +40,13 @@ export class AuthService {
 
   /**
    * remove jwt and user id
-   * @param {string} ep
    * @return {boolean} response
    */
-  logout(ep: string): Observable<boolean> {
+  logout(): Observable<boolean> {
     const body = {
       token: this.getJwtToken('refreshToken'),
     };
-    return this.http.post<any>(`${environment.apiUrl}${ep}`, body).pipe(
+    return this.http.post<any>(`${environment.apiUrl}${api.Logout}`, body).pipe(
       tap(() => {
         this.doLogoutUser();
       }),
