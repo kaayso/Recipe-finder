@@ -1,0 +1,25 @@
+version: '3.0'
+services:
+  web:
+    build: ./client
+    ports:
+      - '4200:4200'
+    volumes:
+      - /usr/app/node_modules
+      - ./client:/usr/app
+    command: bash -c 'npm run start'
+
+  server:
+    build: ./server
+    ports:
+      - '4000:4000'
+    volumes:
+      - /usr/app/node_modules
+      - ./server:/usr/app
+    command: bash -c 'npm install bcrypt && npm run dev'
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - DB_URL=${DB_URL}
+      - PORT=${PORT}
+      - CORS_ORIGIN=${CORS_ORIGIN}
+      - SECRET_TOKEN_ACCESS=${SECRET_TOKEN_ACCESS}

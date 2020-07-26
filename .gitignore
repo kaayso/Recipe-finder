@@ -2,3 +2,4 @@
 *.http
 
 .DS_Store
+.env
