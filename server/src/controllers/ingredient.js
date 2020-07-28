@@ -3,6 +3,11 @@ const Ingredient = require('../models/Ingredient');
 
 const ingredients = (req, res) => res.status(200).json(res.paginationResults);
 
+const ingredientsByCategory = (req, res) => {
+  console.log(res.paginationResults)
+  const ingredients = res.paginationResults.data.filter(ing => ing.category === req.params.cat); 
+  res.status(200).json(ingredients);
+}
 const ingredientById = (req, res, next) => {
   Ingredient.findOne({ _id: req.params.id }, (err, result) => {
     if (err) {
@@ -49,4 +54,5 @@ module.exports = {
   updateIngredient,
   deleteIngredient,
   ingredientById,
+  ingredientsByCategory
 };

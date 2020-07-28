@@ -44,6 +44,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { IngredientDetailsComponent } from './components/ingredient-details/ingredient-details.component';
 
 registerLocaleData(fr);
 
@@ -60,6 +61,7 @@ registerLocaleData(fr);
     AddRecipeComponent,
     LoginFormComponent,
     SignupFormComponent,
+    IngredientDetailsComponent,
   ],
   imports: [
     BrowserModule,

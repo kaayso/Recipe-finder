@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { AccessGuardGuard } from './guards/access-guard.guard';
+import { IngredientDetailsComponent } from './components/ingredient-details/ingredient-details.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,11 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent,
     canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'search-recipe/category',
+    component: IngredientDetailsComponent,
+    canActivate: [AccessGuardGuard],
   },
   {
     path: '**',
