@@ -1,1 +1,8 @@
-<p>ingredient-details works!</p>
+<div id="ing-details">
+  <div class="ing-details__item-wrapper">
+    <div *ngFor="let ing of ingredients">
+      <nz-tag [nzColor]="'magenta'">{{ing.name}}</nz-tag>
+    </div>
+  </div>
+  <nz-spin *ngIf="loading" class="ing-details__loading" nzSimple> </nz-spin>
+</div>

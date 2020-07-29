@@ -1,4 +1,4 @@
-<nz-card nzHoverable class="ing-card" [nzCover]="coverTemplate">
+<nz-card (click)="goToIngredientDetails()" nzHoverable class="ing-card" [nzCover]="coverTemplate">
   <nz-card-meta nzDescription="{{description}}" nzTitle="{{title}}"></nz-card-meta>
 </nz-card>
 <ng-template #coverTemplate>
