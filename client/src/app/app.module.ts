@@ -46,6 +46,8 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 registerLocaleData(fr);
 
@@ -86,6 +88,8 @@ registerLocaleData(fr);
     NzAvatarModule,
     NzCardModule,
     NzTagModule,
+    NzDrawerModule,
+    NzBadgeModule,
   ],
   providers: [
     GenericService,

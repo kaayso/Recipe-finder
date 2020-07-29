@@ -5,6 +5,5 @@ export interface Ingredient {
   category: string;
   quantity: {
     type: Quantity;
-    required: true;
   };
 }

@@ -1,3 +1,20 @@
 .ing-card {
   width: 240px;
 }
+
+.ing-card__item-wrapper {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.ing-card__img {
+  height: 180px;
+  width: 240px;
+}
+
+.ing-card__tag {
+  margin: 1px;
+  cursor: pointer;
+  border: solid 1px lightgray;
+}
