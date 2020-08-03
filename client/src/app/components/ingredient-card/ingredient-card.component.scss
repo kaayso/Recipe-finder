@@ -14,7 +14,17 @@
 }
 
 .ing-card__tag {
-  margin: 1px;
+  margin: 1px 2px;
   cursor: pointer;
   border: solid 1px lightgray;
+}
+
+.ing-card__search {
+  max-width: 250px;
+  margin-bottom: 12px;
+
+  input {
+    font-size: .87em;
+
+  }
 }

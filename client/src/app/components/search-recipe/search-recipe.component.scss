@@ -1,6 +1,7 @@
 #search-recipe {
   min-height: 100vh;
-  padding-top: 128px;
+  width: 100%;
+  padding-top: 100px;
   padding-left: 24px;
   padding-right: 24px;
 }
@@ -9,4 +10,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.search-recipe__search-btn {
+  // margin: 30px auto;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
 }

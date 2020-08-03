@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { api } from '../../ws/api';
 import { Router } from '@angular/router';
 import { AesEncryptDecryptService } from '../../services/aes-encrypt-decrypt.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';

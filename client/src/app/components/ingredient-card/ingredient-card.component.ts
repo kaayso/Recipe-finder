@@ -1,6 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { GenericService } from '../../services/generic.service';
-import { api } from '../../ws/api';
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { Ingredient } from '../../interfaces/ingredient';
 
 @Component({
@@ -12,11 +17,22 @@ export class IngredientCardComponent implements OnInit {
   @Input() img: string;
   @Input() title: string;
   @Input() description: string;
-  visible = false;
-  ingredients: Ingredient[] = [];
-  pickedIngredients: Ingredient[] = [];
+  @Input() items: Ingredient[];
+  @Output() OnPickedItems: EventEmitter<any> = new EventEmitter();
 
-  constructor(private webService: GenericService) {}
+  visible = false;
+  rawIngredients: Ingredient[] = [];
+  pickedIngredients: Ingredient[] = [];
+  inputSearch: string = '';
+
+  constructor() {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    // only run when property "items" changed
+    if (changes['items']) {
+      this.rawIngredients = this.items;
+    }
+  }
 
   open(): void {
     this.visible = true;
@@ -24,37 +40,34 @@ export class IngredientCardComponent implements OnInit {
 
   close(): void {
     this.visible = false;
+    this.OnPickedItems.emit(this.pickedIngredients);
   }
 
-  checkChange(e: boolean, name: string): void {
-    const newIngredient = {
-      category: this.title,
-      name,
-      quantity: {
-        type: { unity: null, value: null },
-      },
-    };
-    const isPresent = this.pickedIngredients.some(
-      (ing) => ing.name === newIngredient.name
-    );
+  pickIngredient(name: string): void {
+    const isPresent = this.pickedIngredients.some((ing) => ing.name === name);
 
     if (isPresent) {
       this.pickedIngredients = this.pickedIngredients.filter(
-        (ing) => ing.name !== newIngredient.name
+        (ing) => ing.name !== name
       );
     } else {
-      this.pickedIngredients.push(newIngredient);
+      this.pickedIngredients.push({
+        category: this.title,
+        name,
+      });
     }
   }
 
-  ngOnInit(): void {
-    this.webService.get(`${api.Ingredient}category/${this.title}`).subscribe(
-      (res) => {
-        this.ingredients = res.sort((a, b) => a.name.localeCompare(b.name));
-      },
-      (err) => {
-        console.error(err);
-      }
+  isChecked(name: string): boolean {
+    return this.pickedIngredients.some((ing) => ing.name === name);
+  }
+
+  onChangeSearch(value: string): void {
+    this.inputSearch = value;
+    this.items = this.rawIngredients.filter((ing) =>
+      ing.name.toLowerCase().includes(value.toLowerCase())
     );
   }
+
+  ngOnInit(): void {}
 }
