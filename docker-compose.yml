@@ -8,6 +8,8 @@ services:
       - /usr/app/node_modules
       - ./client:/usr/app
     command: bash -c 'npm run start'
+    depends_on:
+      - server
 
   server:
     build: ./server
@@ -16,7 +18,7 @@ services:
     volumes:
       - /usr/app/node_modules
       - ./server:/usr/app
-    command: bash -c 'npm install bcrypt && npm run dev'
+    command: bash -c 'npm run dev'
     environment:
       - NODE_ENV=${NODE_ENV}
       - DB_URL=${DB_URL}
