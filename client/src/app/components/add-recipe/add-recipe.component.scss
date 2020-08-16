@@ -1,4 +1,12 @@
 #add-recipe {
   min-height: calc(100vh - 64px);
-  margin-top: 64px;
+  padding-top: 100px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.add-recipe__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

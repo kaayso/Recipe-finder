@@ -40,10 +40,10 @@
 
 .home__btn--second {
   @extend .home__btn;
-  background-color: $secondary-color;
+  background-color: #363246;
   border: $secondary-color;
 
   &:hover {
-    background-color: #ebae3d;
+    background-color: #4d4763;
   }
 }

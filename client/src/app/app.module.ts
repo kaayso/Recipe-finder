@@ -48,6 +48,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 
 registerLocaleData(fr);
 
@@ -65,6 +66,7 @@ registerLocaleData(fr);
     LoginFormComponent,
     SignupFormComponent,
     IngredientDetailsComponent,
+    RecipeCardComponent,
   ],
   imports: [
     BrowserModule,

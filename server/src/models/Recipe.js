@@ -23,9 +23,8 @@ const ingredient = new Schema({
 });
 
 const schema = new Schema({
-  _creator: {
-    type: Schema.ObjectId,
-    ref: 'User',
+  uid: {
+    type: String
   },
   name: requiredString,
   image: {
@@ -36,6 +35,19 @@ const schema = new Schema({
     default: undefined,
     required: true,
   },
+  category: requiredString,
+  time: {
+    type: qtty,
+    required: true,
+  },
+  description: {
+    type: String
+  },
+  default: {
+    type: Boolean,
+    required: true
+  }
+  
 });
 
 const Recipe = mongoose.model('Recipe', schema);

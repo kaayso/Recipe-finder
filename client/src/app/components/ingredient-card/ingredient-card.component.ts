@@ -20,7 +20,7 @@ export class IngredientCardComponent implements OnInit {
   @Input() items: Ingredient[];
   @Output() OnPickedItems: EventEmitter<any> = new EventEmitter();
 
-  visible = false;
+  visible: Boolean = false;
   rawIngredients: Ingredient[] = [];
   pickedIngredients: Ingredient[] = [];
   inputSearch: string = '';

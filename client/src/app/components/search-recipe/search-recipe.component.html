@@ -22,25 +22,48 @@
     </div>
     <div nz-col class="search-recipe__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
       <app-ingredient-card (OnPickedItems)="selectedItems($event)"
-        description="Fromages, yaourts, lait, beurre, crème fraîche..." img="../../../assets/dairy.webp"
+        description="Fromages, yaourts, lait, crème fraîche..." img="../../../assets/dairy.webp"
         title="Produits laitiers" [items]="ingredients['Produits laitiers']">
       </app-ingredient-card>
     </div>
     <div nz-col class="search-recipe__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
       <app-ingredient-card (OnPickedItems)="selectedItems($event)"
-        description="Moutarde, mayonnaise, blanche, harissa..." img="../../../assets/sauces.webp" title="Sauces"
-        [items]="ingredients['Sauces']"></app-ingredient-card>
+        description="Moutarde, mayonnaise, vinaigre, harissa..." img="../../../assets/sauces.webp"
+        title="Vinaigres & sauces" [items]="ingredients['Vinaigres & sauces']"></app-ingredient-card>
     </div>
     <div nz-col class="search-recipe__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
       <app-ingredient-card (OnPickedItems)="selectedItems($event)"
-        description="Piment, cumin, sel, poivre, curi, canelle..." img="../../../assets/spices.webp" title="Épices"
-        [items]="ingredients['Épices']">
+        description="Lentilles, pois chiche, pomme de terre..." img="../../../assets/starchy.webp" title="Féculents"
+        [items]="ingredients['Féculents']">
+      </app-ingredient-card>
+    </div>
+    <div nz-col class="search-recipe__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
+      <app-ingredient-card (OnPickedItems)="selectedItems($event)" description="Piment, cumin, thym, menthe, canelle..."
+        img="../../../assets/spices.webp" title="Épices & aromatiques" [items]="ingredients['Épices & aromatiques']">
       </app-ingredient-card>
     </div>
     <div nz-col class="search-recipe__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
       <app-ingredient-card (OnPickedItems)="selectedItems($event)"
         description="Farine de blé, d'orge, de maïs, de riz..." img="../../../assets/flours.webp" title="Farines"
         [items]="ingredients['Farines']">
+      </app-ingredient-card>
+    </div>
+    <div nz-col class="search-recipe__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
+      <app-ingredient-card (OnPickedItems)="selectedItems($event)"
+        description="Huile de tournesol, huile d'olives, beurre demi-sel..." img="../../../assets/fat.webp"
+        title="Matières grasses" [items]="ingredients['Matière grasse']">
+      </app-ingredient-card>
+    </div>
+    <div nz-col class="search-recipe__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
+      <app-ingredient-card (OnPickedItems)="selectedItems($event)"
+        description="Oeuf de poule, de canard, de caille, d'autruche..." img="../../../assets/eggs.webp" title="Oeufs"
+        [items]="ingredients['Oeufs']">
+      </app-ingredient-card>
+    </div>
+    <div nz-col class="search-recipe__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
+      <app-ingredient-card (OnPickedItems)="selectedItems($event)"
+        description="Arômes, levures, chocolat, sirops, miel..." img="../../../assets/pastry.webp" title="Pâtisserie"
+        [items]="ingredients['Pâtisserie']">
       </app-ingredient-card>
     </div>
   </div>

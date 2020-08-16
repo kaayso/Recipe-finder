@@ -1,0 +1,27 @@
+<div class="recipe-card">
+  <div class="recipe-card__img" (click)="open()">
+    <img alt="" src="{{image}}" />
+  </div>
+  <h3 class="recipe-card__name" (click)="open()">{{getName()}}</h3>
+  <div class="recipe-card__category">{{category}}</div>
+</div>
+
+
+<!-- Drawer -->
+<nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="left" nzTitle="{{name}}" (nzOnClose)="close()">
+  <div>
+    <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
+    {{time}}
+  </div>
+  <div class="recipe-card__ingredients">
+    <h3>Ingredients</h3>
+    <div *ngFor="let ing of ingredients">
+      <li>{{ing}}</li>
+    </div>
+  </div>
+
+  <div class="recipe-card__description">
+    <h3>Préparation</h3>
+    <div>{{description}}</div>
+  </div>
+</nz-drawer>

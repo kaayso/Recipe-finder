@@ -15,7 +15,13 @@ const recipeById = (req, res, next) => {
 
 const createRecipe = (req, res, next) => {
   const recipe = new Recipe(req.body);
-  recipe.uid = req.headers.uid;
+  if (req.body.default){
+    recipe.uid = 0;
+  }
+  else {
+    recipe.uid = req.headers.uid;
+  }
+    
   recipe.save((err) => {
     if (err) {
       if (err.name === 'ValidationError') res.status(422);
