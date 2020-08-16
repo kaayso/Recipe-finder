@@ -6,6 +6,7 @@
   display: flex;
   width: 100%;
   flex-wrap: wrap;
+  padding-top: 32px;
 }
 
 .ing-card__img {
@@ -19,12 +20,21 @@
   border: solid 1px lightgray;
 }
 
-.ing-card__search {
-  max-width: 250px;
-  margin-bottom: 12px;
+.ing-card__search-wrapper {
+  background-color: #ffffff;
+  width: 100%;
+  height: 52px;
+  position: fixed;
+  left: 24px;
+  top: 55px;
+  padding-top: 16px;
+  z-index: 1;
 
-  input {
-    font-size: .87em;
+  .ing-card__search {
+    width: 250px;
 
+    input {
+      font-size: .87em;
+    }
   }
 }

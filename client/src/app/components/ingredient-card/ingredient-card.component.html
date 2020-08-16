@@ -11,10 +11,13 @@
 
 <!-- Drawer -->
 <nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="top" nzTitle="{{title}}" (nzOnClose)="close()">
-  <nz-input-group class="ing-card__search" [nzSuffix]="suffixIconSearch">
-    <input type="text" [ngModel]="inputSearch" (ngModelChange)="onChangeSearch($event)" nz-input
-      placeholder="Saisir le nom de l'ingredient..." />
-  </nz-input-group>
+  <div class="ing-card__search-wrapper">
+    <nz-input-group class="ing-card__search" [nzSuffix]="suffixIconSearch">
+      <input type="text" [ngModel]="inputSearch" (ngModelChange)="onChangeSearch($event)" nz-input
+        placeholder="Saisir le nom de l'ingredient..." />
+    </nz-input-group>
+  </div>
+
   <ng-template #suffixIconSearch>
     <i nz-icon nzType="search"></i>
   </ng-template>
