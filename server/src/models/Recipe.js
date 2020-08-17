@@ -1,21 +1,24 @@
 const mongoose = require('mongoose');
 
-const {
-  Schema,
-} = mongoose;
+const { Schema } = mongoose;
 
 const requiredString = {
   type: String,
   required: true,
 };
 
+const requiredNumber = {
+  type: Number,
+  required: true,
+};
+
 const qtty = new Schema({
   unity: requiredString,
-  value: requiredString,
+  value: requiredNumber,
 });
 
 const ingredient = new Schema({
-  id: requiredString,
+  name: requiredString,
   quantity: {
     type: qtty,
     required: true,
@@ -24,15 +27,15 @@ const ingredient = new Schema({
 
 const schema = new Schema({
   uid: {
-    type: String
+    type: String,
   },
   name: requiredString,
   image: {
     type: String,
   },
+  persons: requiredNumber,
   ingredients: {
     type: [ingredient],
-    default: undefined,
     required: true,
   },
   category: requiredString,
@@ -41,13 +44,12 @@ const schema = new Schema({
     required: true,
   },
   description: {
-    type: String
+    type: String,
   },
   default: {
     type: Boolean,
-    required: true
-  }
-  
+    required: true,
+  },
 });
 
 const Recipe = mongoose.model('Recipe', schema);

@@ -1368,6 +1368,9 @@ const pastry = [
 
 const spices = [
   { name: 'Ciboulette', category: 'Épices & aromatiques' },
+  { name: 'Thé vert', category: 'Épices & aromatiques' },
+  { name: 'Thé noir', category: 'Épices & aromatiques' },
+  { name: 'Café', category: 'Épices & aromatiques' },
   {
     name: 'Estragon',
     category: 'Épices & aromatiques',
@@ -1755,26 +1758,30 @@ const fat = [
   { name: 'Margarine', category: 'Matière grasse' },
 ];
 const flour = [
-  { name: 'Farine de blé', category: 'Farines' },
-  { name: 'farine de seigle', category: 'Farines' },
-  { name: 'farine d’orge', category: 'Farines' },
-  { name: 'farine de grand épeautre', category: 'Farines' },
-  { name: 'farine de petit épeautre', category: 'Farines' },
-  { name: 'farine d’avoine', category: 'Farines' },
-  { name: 'Farine de maïs', category: 'Farines' },
-  { name: 'Farine de riz', category: 'Farines' },
-  { name: 'farine de châtaigne', category: 'Farines' },
-  { name: 'farine de manioc', category: 'Farines' },
-  { name: 'farine de soja', category: 'Farines' },
-  { name: 'farine de pois chiche', category: 'Farines' },
-  { name: 'farine de sarrasin', category: 'Farines' },
-  { name: 'farine de coco', category: 'Farines' },
-  { name: 'farine de chanvre', category: 'Farines' },
-  { name: 'farine de quinoa', category: 'Farines' },
-  { name: 'farine de millet', category: 'Farines' },
-  { name: 'farine de tapioca', category: 'Farines' },
-  { name: 'farine de sorgho', category: 'Farines' },
-  { name: 'farine amarante', category: 'Farines' },
+  { name: 'Semoule moyennne', category: 'Farines & semoule' },
+  { name: 'Semoule fine', category: 'Farines & semoule' },
+  { name: 'Semoule grosse', category: 'Farines & semoule' },
+  { name: 'Couscous', category: 'Farines & semoule' },
+  { name: 'Farine de blé', category: 'Farines & semoule' },
+  { name: 'farine de seigle', category: 'Farines & semoule' },
+  { name: 'farine d’orge', category: 'Farines & semoule' },
+  { name: 'farine de grand épeautre', category: 'Farines & semoule' },
+  { name: 'farine de petit épeautre', category: 'Farines & semoule' },
+  { name: 'farine d’avoine', category: 'Farines & semoule' },
+  { name: 'Farine de maïs', category: 'Farines & semoule' },
+  { name: 'Farine de riz', category: 'Farines & semoule' },
+  { name: 'farine de châtaigne', category: 'Farines & semoule' },
+  { name: 'farine de manioc', category: 'Farines & semoule' },
+  { name: 'farine de soja', category: 'Farines & semoule' },
+  { name: 'farine de pois chiche', category: 'Farines & semoule' },
+  { name: 'farine de sarrasin', category: 'Farines & semoule' },
+  { name: 'farine de coco', category: 'Farines & semoule' },
+  { name: 'farine de chanvre', category: 'Farines & semoule' },
+  { name: 'farine de quinoa', category: 'Farines & semoule' },
+  { name: 'farine de millet', category: 'Farines & semoule' },
+  { name: 'farine de tapioca', category: 'Farines & semoule' },
+  { name: 'farine de sorgho', category: 'Farines & semoule' },
+  { name: 'farine amarante', category: 'Farines & semoule' },
 ];
 
 const eggs = [
@@ -1809,6 +1816,10 @@ const eggs = [
 ];
 
 const vinegar_sauce = [
+  {
+    name: 'Eau',
+    category: 'Vinaigres & sauces',
+  },
   {
     name: 'Sauce Périgueux',
     category: 'Vinaigres & sauces',

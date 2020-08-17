@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
-const {
-  Schema,
-} = mongoose;
+const { Schema } = mongoose;
 
 const requiredString = {
   type: String,
@@ -12,9 +10,6 @@ const requiredString = {
 const schema = new Schema({
   name: requiredString,
   category: requiredString,
-  image: {
-    type: String,
-  },
   part: {
     type: String,
   },

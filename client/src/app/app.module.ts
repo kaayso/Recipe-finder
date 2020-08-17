@@ -13,7 +13,6 @@ import { SearchRecipeComponent } from './components/search-recipe/search-recipe.
 import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
-import { IngredientDetailsComponent } from './components/ingredient-details/ingredient-details.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
@@ -49,6 +48,8 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
+import { IngredientsComponent } from './components/ingredients/ingredients.component';
+import { RecipesComponent } from './components/recipes/recipes.component';
 
 registerLocaleData(fr);
 
@@ -65,8 +66,9 @@ registerLocaleData(fr);
     AddRecipeComponent,
     LoginFormComponent,
     SignupFormComponent,
-    IngredientDetailsComponent,
     RecipeCardComponent,
+    IngredientsComponent,
+    RecipesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
-import { SearchRecipeComponent } from './components/search-recipe/search-recipe.component';
+import { RecipesComponent } from './components/recipes/recipes.component';
+import { IngredientsComponent } from './components/ingredients/ingredients.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { AccessGuardGuard } from './guards/access-guard.guard';
-import { IngredientDetailsComponent } from './components/ingredient-details/ingredient-details.component';
 
 const routes: Routes = [
   {
@@ -23,23 +22,18 @@ const routes: Routes = [
   },
   {
     path: 'add-recipe',
-    component: AddRecipeComponent,
+    component: RecipesComponent,
     canActivate: [AccessGuardGuard],
   },
   {
     path: 'search-recipe',
-    component: SearchRecipeComponent,
+    component: IngredientsComponent,
     canActivate: [AccessGuardGuard],
   },
   {
     path: 'signup',
     component: SignupComponent,
     canActivate: [AuthGuardGuard],
-  },
-  {
-    path: 'search-recipe/category',
-    component: IngredientDetailsComponent,
-    canActivate: [AccessGuardGuard],
   },
   {
     path: '**',

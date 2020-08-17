@@ -1,4 +1,4 @@
 export interface Quantity {
   unity: string;
-  value: string;
+  value: number;
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Ingredient } from '../../interfaces/ingredient';
+import { Quantity } from '../../interfaces/quantity';
 
 @Component({
   selector: 'app-recipe-card',
@@ -9,9 +11,10 @@ export class RecipeCardComponent implements OnInit {
   @Input() name: string;
   @Input() image: string;
   @Input() category: string;
-  @Input() time: string;
+  @Input() time: Quantity;
   @Input() description: string;
-  @Input() ingredients: string[];
+  @Input() persons: number;
+  @Input() ingredients: Ingredient[];
 
   visible: Boolean = false;
 

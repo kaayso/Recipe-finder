@@ -1,0 +1,25 @@
+#ingredients-p {
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 100px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.ingredients-p__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ingredients-p__search-btn {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+}
