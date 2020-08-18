@@ -11,6 +11,7 @@ import { Ingredient } from 'src/app/interfaces/ingredient';
 export class IngredientsComponent implements OnInit {
   ingredients: any = {};
   userIngredients: Ingredient[] = [];
+
   constructor(private genericService: GenericService) {}
 
   ngOnInit(): void {

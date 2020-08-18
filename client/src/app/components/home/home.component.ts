@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   constructor(private router: Router) {}
   ngOnInit() {}
-  goToAddRecipe(): void {
+  goToRecipes(): void {
     this.router.navigateByUrl('/add-recipe');
   }
-  goToSearchRecipe(): void {
+  goToIngredients(): void {
     this.router.navigateByUrl('/search-recipe');
   }
 }

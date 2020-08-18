@@ -18,7 +18,7 @@ export class IngredientCardComponent implements OnInit {
   @Input() title: string;
   @Input() description: string;
   @Input() items: Ingredient[];
-  @Output() OnPickedItems: EventEmitter<any> = new EventEmitter();
+  @Output() selectedItems: EventEmitter<any> = new EventEmitter();
 
   visible: Boolean = false;
   rawIngredients: Ingredient[] = [];
@@ -40,7 +40,7 @@ export class IngredientCardComponent implements OnInit {
 
   close(): void {
     this.visible = false;
-    this.OnPickedItems.emit(this.pickedIngredients);
+    this.selectedItems.emit(this.pickedIngredients);
   }
 
   pickIngredient(name: string): void {
