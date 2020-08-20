@@ -67,6 +67,30 @@ $tertiary-color : #342c2c;
   }
 }
 
+@keyframes rotate-enter {
+  from {
+    transform: rotate(-45deg);
+
+  }
+
+  to {
+    transform: rotate(0deg);
+
+  }
+}
+
+@-webkit-keyframes rotate-enter {
+  from {
+    transform: rotate(-45deg);
+
+  }
+
+  to {
+    transform: rotate(0deg);
+
+  }
+}
+
 // END animations 
 
 // media queries

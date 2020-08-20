@@ -1,16 +1,15 @@
 <!-- Card -->
 <nz-badge [nzCount]="pickedIngredients.length">
   <nz-card (click)="open()" nzHoverable class="ing-card" [nzCover]="coverTemplate">
-    <nz-card-meta nzDescription="{{description}}" nzTitle="{{title}}"></nz-card-meta>
+    <nz-card-meta nzDescription="{{ description }}" nzTitle="{{ title }}"></nz-card-meta>
   </nz-card>
 </nz-badge>
 <ng-template #coverTemplate>
-  <img class="ing-card__img" alt="example" src="http://localhost:4000/images/ingredients/{{img}}.webp" />
+  <img class="ing-card__img" alt="example" src="http://localhost:4000/images/ingredients/{{ img }}.webp" />
 </ng-template>
 
-
 <!-- Drawer -->
-<nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="top" nzTitle="{{title}}" (nzOnClose)="close()">
+<nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="top" nzTitle="{{ title }}" (nzOnClose)="close()">
   <div class="ing-card__search-wrapper">
     <nz-input-group class="ing-card__search" [nzSuffix]="suffixIconSearch">
       <input type="text" [ngModel]="inputSearch" (ngModelChange)="onChangeSearch($event)" nz-input
@@ -19,13 +18,18 @@
   </div>
 
   <ng-template #suffixIconSearch>
-    <i nz-icon nzType="search"></i>
+    <div *ngIf="inputSearch.length === 0">
+      <i nz-icon nzType="search"></i>
+    </div>
+    <div *ngIf="inputSearch.length > 0">
+      <i class="ing-card__close-icon" (click)="clearInputSearch()" nz-icon nzType="close"></i>
+    </div>
   </ng-template>
-  <div class="ing-card__item-wrapper ">
+  <div class="ing-card__item-wrapper">
     <div *ngFor="let ing of items">
       <nz-tag class="ing-card__tag" nzMode="checkable" [nzChecked]="isChecked(ing.name)" nzColor="default"
         (nzCheckedChange)="pickIngredient(ing.name)">
-        {{ing.name}}
+        {{ ing.name }}
       </nz-tag>
     </div>
   </div>

@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 .ing-card {
   width: 240px;
 }
@@ -37,5 +39,17 @@
     input {
       font-size: .87em;
     }
+  }
+}
+
+.ing-card__close-icon {
+  cursor: pointer;
+  animation: 400ms rotate-enter ease forwards;
+  -webkit-animation: 400ms rotate-enter ease forwards;
+  -moz-animation: 400ms rotate-enter ease forwards;
+  -o-animation: 400ms rotate-enter ease forwards;
+
+  &:hover {
+    color: $primary-color;
   }
 }

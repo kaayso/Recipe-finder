@@ -71,5 +71,10 @@ export class IngredientCardComponent implements OnInit {
     );
   }
 
+  clearInputSearch(): void {
+    this.inputSearch = '';
+    this.items = this.rawIngredients;
+  }
+
   ngOnInit(): void {}
 }
