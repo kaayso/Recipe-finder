@@ -1,6 +1,7 @@
 <section id="recipes-p">
-  <div nz-row nzJustify="flex-start" [nzGutter]="[16, 16]" *ngFor="let recipe of recipes">
-    <div nz-col class="recipes-p__item" [nzXXl]="6" [nzXl]="6" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXs]="24">
+  <div nz-row nzJustify="flex-start" [nzGutter]="[16, 16]">
+    <div nz-col *ngFor="let recipe of recipes" class="recipes-p__item" [nzXXl]="6" [nzXl]="6" [nzLg]="8" [nzMd]="12"
+      [nzSm]="24" [nzXs]="24">
       <app-recipe-card [name]="recipe.name" [image]="recipe.image" [category]="recipe.category"
         [ingredients]="recipe.ingredients" [persons]="recipe.persons" [time]="recipe.time"
         [description]="recipe.description">

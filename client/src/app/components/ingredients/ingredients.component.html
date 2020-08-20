@@ -1,78 +1,74 @@
 <section id="ingredients-p">
   <div nz-row nzJustify="flex-start" [nzGutter]="[16, 16]">
     <div nz-col class="ingredients-p__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
-      <app-ingredient-card (selectedItems)="selectedItems($event)"
-        description="Légumes feuilles, légumes tiges, légumes fleurs..."
-        img="http://localhost:4000/images/ingredients/vegetables.webp" title="Légumes" [items]="ingredients['Légumes']">
+      <app-ingredient-card (getIngredientByCategory)="getIngredientByCategory($event)"
+        (selectedItems)="selectedItems($event)" description="Légumes feuilles, légumes tiges, légumes fleurs..."
+        img="vegetables" title="Légumes" [items]="items['Légumes']">
       </app-ingredient-card>
     </div>
     <div nz-col class="ingredients-p__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
-      <app-ingredient-card (selectedItems)="selectedItems($event)"
-        description="Fruits à noyau, fruits à pépin, agrumes..."
-        img="http://localhost:4000/images/ingredients/fruits.webp" title="Fruits" [items]="ingredients['Fruits']">
+      <app-ingredient-card (getIngredientByCategory)="getIngredientByCategory($event)"
+        (selectedItems)="selectedItems($event)" description="Fruits à noyau, fruits à pépin, agrumes..." img="fruits"
+        title="Fruits" [items]="items['Fruits']">
       </app-ingredient-card>
     </div>
     <div nz-col class="ingredients-p__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
-      <app-ingredient-card (selectedItems)="selectedItems($event)" description="Poissons blancs, poissons bleus..."
-        img="http://localhost:4000/images/ingredients/fishs.webp" title="Poissons" [items]="ingredients['Poissons']">
+      <app-ingredient-card (getIngredientByCategory)="getIngredientByCategory($event)"
+        (selectedItems)="selectedItems($event)" description="Poissons blancs, poissons bleus..." img="fishs"
+        title="Poissons" [items]="items['Poissons']">
       </app-ingredient-card>
     </div>
     <div nz-col class="ingredients-p__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
-      <app-ingredient-card (selectedItems)="selectedItems($event)" description="Viandes blanches, viandes rouges..."
-        img="http://localhost:4000/images/ingredients/meat.webp" title="Viandes" [items]="ingredients['Viandes']">
+      <app-ingredient-card (getIngredientByCategory)="getIngredientByCategory($event)"
+        (selectedItems)="selectedItems($event)" description="Viandes blanches, viandes rouges..." img="meat"
+        title="Viandes" [items]="items['Viandes']">
       </app-ingredient-card>
     </div>
     <div nz-col class="ingredients-p__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
-      <app-ingredient-card (selectedItems)="selectedItems($event)"
-        description="Fromages, yaourts, lait, crème fraîche..."
-        img="http://localhost:4000/images/ingredients/dairy.webp" title="Produits laitiers"
-        [items]="ingredients['Produits laitiers']">
+      <app-ingredient-card (getIngredientByCategory)="getIngredientByCategory($event)"
+        (selectedItems)="selectedItems($event)" description="Fromages, yaourts, lait, crème fraîche..." img="dairy"
+        title="Produits laitiers" [items]="items['Produits laitiers']">
       </app-ingredient-card>
     </div>
     <div nz-col class="ingredients-p__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
-      <app-ingredient-card (selectedItems)="selectedItems($event)"
-        description="Moutarde, mayonnaise, vinaigre, harissa..."
-        img="http://localhost:4000/images/ingredients/sauces.webp" title="Vinaigres & sauces"
-        [items]="ingredients['Vinaigres & sauces']"></app-ingredient-card>
+      <app-ingredient-card (getIngredientByCategory)="getIngredientByCategory($event)"
+        (selectedItems)="selectedItems($event)" description="Moutarde, mayonnaise, vinaigre, harissa..." img="sauces"
+        title="Vinaigres & sauces" [items]="items['Vinaigres & sauces']"></app-ingredient-card>
     </div>
     <div nz-col class="ingredients-p__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
-      <app-ingredient-card (selectedItems)="selectedItems($event)"
-        description="Lentilles, pois chiche, pomme de terre..."
-        img="http://localhost:4000/images/ingredients/starchy.webp" title="Féculents"
-        [items]="ingredients['Féculents']">
+      <app-ingredient-card (getIngredientByCategory)="getIngredientByCategory($event)"
+        (selectedItems)="selectedItems($event)" description="Lentilles, pois chiche, pomme de terre..." img="starchy"
+        title="Féculents" [items]="items['Féculents']">
       </app-ingredient-card>
     </div>
     <div nz-col class="ingredients-p__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
-      <app-ingredient-card (selectedItems)="selectedItems($event)" description="Piment, cumin, thym, menthe, canelle..."
-        img="http://localhost:4000/images/ingredients/spices.webp" title="Épices & aromatiques"
-        [items]="ingredients['Épices & aromatiques']">
+      <app-ingredient-card (getIngredientByCategory)="getIngredientByCategory($event)"
+        (selectedItems)="selectedItems($event)" description="Piment, cumin, thym, menthe, canelle..." img="spices"
+        title="Épices & aromatiques" [items]="items['Épices & aromatiques']">
       </app-ingredient-card>
     </div>
     <div nz-col class="ingredients-p__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
-      <app-ingredient-card (selectedItems)="selectedItems($event)"
-        description="Farine de blé, d'orge, smoule, couscous..."
-        img="http://localhost:4000/images/ingredients/flours.webp" title="Farines & semoule"
-        [items]="ingredients['Farines & semoule']">
+      <app-ingredient-card (getIngredientByCategory)="getIngredientByCategory($event)"
+        (selectedItems)="selectedItems($event)" description="Farine de blé, d'orge, smoule, couscous..." img="flours"
+        title="Farines & semoule" [items]="items['Farines & semoule']">
       </app-ingredient-card>
     </div>
     <div nz-col class="ingredients-p__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
-      <app-ingredient-card (selectedItems)="selectedItems($event)"
-        description="Huile de tournesol, huile d'olives, beurre demi-sel..."
-        img="http://localhost:4000/images/ingredients/fat.webp" title="Matières grasses"
-        [items]="ingredients['Matière grasse']">
+      <app-ingredient-card (getIngredientByCategory)="getIngredientByCategory($event)"
+        (selectedItems)="selectedItems($event)" description="Huile de tournesol, huile d'olives, beurre demi-sel..."
+        img="fat" title="Matières grasses" [items]="items['Matières grasses']">
       </app-ingredient-card>
     </div>
     <div nz-col class="ingredients-p__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
-      <app-ingredient-card (selectedItems)="selectedItems($event)"
-        description="Oeuf de poule, de canard, de caille, d'autruche..."
-        img="http://localhost:4000/images/ingredients/eggs.webp" title="Oeufs" [items]="ingredients['Oeufs']">
+      <app-ingredient-card (getIngredientByCategory)="getIngredientByCategory($event)"
+        (selectedItems)="selectedItems($event)" description="Oeuf de poule, de canard, de caille, d'autruche..."
+        img="eggs" title="Oeufs" [items]="items['Oeufs']">
       </app-ingredient-card>
     </div>
     <div nz-col class="ingredients-p__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
-      <app-ingredient-card (selectedItems)="selectedItems($event)"
-        description="Arômes, levures, chocolat, sirops, miel..."
-        img="http://localhost:4000/images/ingredients/pastry.webp" title="Pâtisserie"
-        [items]="ingredients['Pâtisserie']">
+      <app-ingredient-card (getIngredientByCategory)="getIngredientByCategory($event)"
+        (selectedItems)="selectedItems($event)" description="Arômes, levures, chocolat, sirops, miel..." img="pastry"
+        title="Pâtisserie" [items]="items['Pâtisserie']">
       </app-ingredient-card>
     </div>
   </div>

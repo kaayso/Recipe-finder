@@ -19,6 +19,7 @@ export class IngredientCardComponent implements OnInit {
   @Input() description: string;
   @Input() items: Ingredient[];
   @Output() selectedItems: EventEmitter<any> = new EventEmitter();
+  @Output() getIngredientByCategory: EventEmitter<any> = new EventEmitter();
 
   visible: Boolean = false;
   rawIngredients: Ingredient[] = [];
@@ -35,6 +36,7 @@ export class IngredientCardComponent implements OnInit {
   }
 
   open(): void {
+    this.getIngredientByCategory.emit(this.title);
     this.visible = true;
   }
 
