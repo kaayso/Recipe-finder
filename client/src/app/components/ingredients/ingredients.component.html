@@ -72,5 +72,10 @@
       </app-ingredient-card>
     </div>
   </div>
-  <button class="ingredients-p__search-btn" nz-button nzType="primary"><i nz-icon nzType="search"></i></button>
+  <button [disabled]="optionsDisabled" class="ingredients-p__search-btn" nz-button nzType="primary">
+    <div nzTooltipTitle="Rechercher" nzTooltipPlacement="left" nz-button nz-tooltip>
+      <i nz-icon nzType="search"></i>
+    </div>
+  </button>
+  <app-add-recipe-form [userIngredients]="userIngredients" [disabled]="optionsDisabled"></app-add-recipe-form>
 </section>

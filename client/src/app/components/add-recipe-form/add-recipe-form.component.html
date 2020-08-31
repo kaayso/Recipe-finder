@@ -1,0 +1,105 @@
+<button [disabled]="disabled" class="recipes-p__add-btn" (click)="showModal()" nz-button nzType="primary">
+  <div nzTooltipTitle="Ajouter" nzTooltipPlacement="left" nz-button nz-tooltip>
+    <i nz-icon nzType="plus"></i>
+  </div>
+</button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Créer une recette" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+  [nzOkLoading]="isOkLoading" [nzOkText]="ingsFormIsOK ? 'Envoyer' : 'Ok'">
+  <form *ngIf="!ingsFormIsOK" class="add-recipe-form" nz-form [formGroup]="ingredientsForm">
+    <nz-form-item *ngFor="let control of listOfControl; let i = index">
+      <nz-form-label [nzXl]="24" [nzLg]="24" [nzMd]="24" [nzSm]="24" [nzXs]="24" [nzFor]="control.controlInstance"
+        nzRequired>
+        <span class="add-recipe-form__ingredient-name">
+          {{userIngredients[i].name}}
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzXl]="16" [nzLg]="16" [nzMd]="16" [nzSm]="16" [nzXs]="16"
+        nzErrorTip="Veuillez spécifer la quantité...">
+        <div class="add-recipe-form__input-grp">
+          <input nz-input placeholder="3.5" [attr.id]="control.id" [formControlName]="control.controlInstance+'-v'" />
+          <nz-select [formControlName]="control.controlInstance+'-u'">
+            <nz-option nzValue="g" nzLabel="Gramme(s)"></nz-option>
+            <nz-option nzValue="càs" nzLabel="Càs"></nz-option>
+            <nz-option nzValue="càc" nzLabel="Càc"></nz-option>
+            <nz-option nzValue="l" nzLabel="Litre(s)"></nz-option>
+            <nz-option nzValue="u" nzLabel="Unité(s)"></nz-option>
+          </nz-select>
+        </div>
+      </nz-form-control>
+
+    </nz-form-item>
+  </form>
+  <form *ngIf="ingsFormIsOK" class="add-recipe-form" nz-form [formGroup]="validateForm">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="recipeName" nzRequired>
+        <span>
+          Nom
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Veuillez entrer le nom de la recette...">
+        <input nz-input id="recipeName" formControlName="name" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="category" nzRequired>
+        <span>
+          Catégorie
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Veuillez sélectionner une catégorie...">
+        <nz-select id="category" formControlName="category">
+          <nz-option nzValue="entrée" nzLabel="Entrée"></nz-option>
+          <nz-option nzValue="plat principal" nzLabel="Plat principal"></nz-option>
+          <nz-option nzValue="dessert" nzLabel="dessert"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="time" nzRequired>
+        <span>
+          Temps
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Veuillez entrer le temps de préparation...">
+        <div id="time" class="add-recipe-form__input-grp">
+          <input nz-input placeholder="1.5" formControlName="timeValue" />
+          <nz-select formControlName="timeUnity">
+            <nz-option nzValue="h" nzLabel="Heure(s)"></nz-option>
+            <nz-option nzValue="min" nzLabel="Minute(s)"></nz-option>
+          </nz-select>
+        </div>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="persons" nzRequired>
+        <span>
+          Personnes
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Veuillez entrer le nombre de personnes...">
+        <input nz-input placeholder="2" formControlName="persons" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="recipeDescription">
+        <span>
+          Préparation
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <textarea id="recipeDescription" rows="4" nz-input formControlName="description"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-upload class="recipes-p__upload" nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        nzName="recipeImage" nzListType="picture-card" [nzShowUploadList]="false" [nzBeforeUpload]="beforeUpload"
+        (nzChange)="handleChange($event)">
+        <ng-container *ngIf="!avatarUrl">
+          <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+          <div class="ant-upload-text">Ajouter une photo</div>
+        </ng-container>
+        <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+      </nz-upload>
+    </nz-form-item>
+  </form>
+</nz-modal>

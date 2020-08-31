@@ -4,7 +4,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const middlewares = require('./middlewares');
+const httpMiddlewares = require('./middlewares');
 const user = require('./routes/user');
 const recipe = require('./routes/recipe');
 const ingredient = require('./routes/ingredient');
@@ -20,16 +20,25 @@ app.listen(PORT, () => {
 // middlewares
 app.use(morgan('common'));
 app.use(helmet());
-app.use(cors({
-  origin: process.env.CORS_ORIGIN,
-}));
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+  })
+);
+// app.use(bodyParser.json({
+//   limit: '200mb'
+// }));
+// app.use(bodyParser.urlencoded({
+//   limit: '200mb',
+//   extended: true
+// }));
 app.use(express.json());
 app.use(express.static(`${__dirname}/assets/`));
 app.use('/api/user', user);
 app.use('/api/recipe', recipe);
 app.use('/api/ingredient', ingredient);
-app.use(middlewares.notFound);
-app.use(middlewares.errorHandler);
+app.use(httpMiddlewares.notFound);
+app.use(httpMiddlewares.errorHandler);
 
 // db connection
 const options = {
@@ -40,7 +49,9 @@ const options = {
   autoIndex: process.env.NODE_ENV !== 'production', // only in dev mod
 };
 
-mongoose.connect(process.env.DB_URL, options).catch((error) => console.error(error));
+mongoose
+  .connect(process.env.DB_URL, options)
+  .catch((error) => console.error(error));
 
 mongoose.connection.on('error', (err) => {
   console.error(err);

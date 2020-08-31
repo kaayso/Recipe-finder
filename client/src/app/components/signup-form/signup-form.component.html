@@ -10,7 +10,7 @@
       <nz-form-item class="signup-form__item" *ngIf="current == 0">
         <nz-form-control nzHasFeedback [nzErrorTip]="emailErrorTpl">
           <nz-input-group nzPrefixIcon="mail">
-            <input type="email" (ngModelChange)="validateemail()" nz-input formControlName="email"
+            <input type="email" (ngModelChange)="emailChange()" nz-input formControlName="email"
               placeholder="john@gmail.com" />
           </nz-input-group>
           <ng-template #emailErrorTpl let-control>

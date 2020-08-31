@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
+const {
+  Schema
+} = mongoose;
 
 const requiredString = {
   type: String,
@@ -32,6 +34,7 @@ const schema = new Schema({
   name: requiredString,
   image: {
     type: String,
+    default: '/images/recipes/galette_algerienne.jpg',
   },
   persons: requiredNumber,
   ingredients: {

@@ -12,7 +12,7 @@ export class IngredientsComponent implements OnInit {
   ingredients: any = {};
   items: any = {};
   userIngredients: Ingredient[] = [];
-
+  optionsDisabled: boolean = true;
   constructor(private genericService: GenericService) {}
 
   ngOnInit(): void {
@@ -24,7 +24,7 @@ export class IngredientsComponent implements OnInit {
     );
   }
 
-  groupByCategory(ingredientList: Ingredient[]): Object {
+  private groupByCategory(ingredientList: Ingredient[]): Object {
     const result = {};
     for (let ing of ingredientList) {
       if (result[ing.category] == undefined) {
@@ -41,11 +41,12 @@ export class IngredientsComponent implements OnInit {
     }
   }
 
-  selectedItems(selectedIngredients: Ingredient[]): void {
-    if (selectedIngredients.length === 0) return;
-    const category = selectedIngredients[0].category;
+  selectedItems(data: any): void {
     this.userIngredients = this.userIngredients
-      .filter((ing) => ing.category !== category)
-      .concat(selectedIngredients);
+      .filter((ing) => ing.category !== data.category)
+      .concat(data.ingredients);
+
+    // disable controllers if no ingredients
+    this.optionsDisabled = !(this.userIngredients.length > 0);
   }
 }

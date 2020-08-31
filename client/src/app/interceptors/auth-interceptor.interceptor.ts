@@ -11,7 +11,6 @@ import { AuthService } from '../services/auth.service';
 import { CookiesService } from '../services/cookies.service';
 import { catchError, switchMap, filter, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { api } from '../ws/api';
 
 @Injectable()
 export class AuthInterceptorInterceptor implements HttpInterceptor {
@@ -32,10 +31,6 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
     let jwtToken = this.authService.getJwtToken('token');
     if (jwtToken) {
       req = this.addToken(req, jwtToken);
-    }
-
-    if (!req.headers.has('Content-Type')) {
-      req = this.addContentType(req);
     }
 
     let uid = this.cookiesService.getCookie('userId');
@@ -75,12 +70,6 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
   ): HttpRequest<unknown> {
     return req.clone({
       headers: req.headers.set('Authorization', 'Bearer ' + token),
-    });
-  }
-
-  private addContentType(req: HttpRequest<unknown>): HttpRequest<unknown> {
-    return req.clone({
-      headers: req.headers.set('Content-Type', 'application/json'),
     });
   }
 

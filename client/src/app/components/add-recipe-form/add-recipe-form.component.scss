@@ -1,0 +1,43 @@
+@import '../../../styles.scss';
+
+.recipes-p__add-btn {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 80px;
+  right: 25px;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  i {
+    font-size: 20px;
+  }
+}
+
+.add-recipe-form__input-grp {
+  display: flex;
+}
+
+
+.recipes-p__upload {
+  display: flex;
+  justify-content: center;
+}
+
+.add-recipe-form {
+  height: 500px;
+  overflow-y: scroll;
+
+}
+
+.add-recipe-form__ingredient-name {
+  text-transform: capitalize;
+}

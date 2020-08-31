@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { AesEncryptDecryptService } from '../../services/aes-encrypt-decrypt.service';
-import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-login-form',
@@ -12,12 +12,6 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 })
 export class LoginFormComponent implements OnInit {
   validateForm!: FormGroup;
-  LSUsername: string;
-  LSPassword: string;
-
-  createNotification(type: string, title: string, content: string): void {
-    this.notification.create(type, title, content);
-  }
 
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -30,6 +24,9 @@ export class LoginFormComponent implements OnInit {
       // send HTTP request
       this.authService.login(this.validateForm.value).subscribe((response) => {
         if (response.ok) {
+          this.msg.success(`Bienvenue ${username} !`, {
+            nzDuration: 2000,
+          });
           // save username
           this.authService.saveUserCredentials([
             {
@@ -41,32 +38,22 @@ export class LoginFormComponent implements OnInit {
           if (this.validateForm.value.remember) {
             this.authService.saveUserCredentials([
               {
-                key: 'password',
+                key: 'sessionId',
                 value: this.aesEncryptDecryptService.encrypt(password),
               },
             ]);
           } else {
-            this.authService.removeUserCredentials(['password']);
+            this.authService.removeUserCredentials(['sessionId']);
           }
           this.router.navigateByUrl('/');
         } else if (response.status === 404) {
-          this.createNotification(
-            'error',
-            'Connexion échouée!',
-            'Pseudo ou mot de passe incorrect, veuillez réessayer.'
+          this.msg.error(
+            'Connexion échouée : pseudo ou mot de passe incorrect.'
           );
         } else if (response.status === 422) {
-          this.createNotification(
-            'error',
-            'Erreur!',
-            "Le formulaire n'est pas valide"
-          );
+          this.msg.error("Erreur : Le formulaire n'est pas valide.");
         } else {
-          this.createNotification(
-            'error',
-            'Erreur!',
-            'Le serveur ne répond pas.'
-          );
+          this.msg.error('Erreur : Le serveur ne répond pas.');
         }
       });
     }
@@ -77,20 +64,20 @@ export class LoginFormComponent implements OnInit {
   }
 
   constructor(
-    private notification: NzNotificationService,
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private aesEncryptDecryptService: AesEncryptDecryptService
+    private aesEncryptDecryptService: AesEncryptDecryptService,
+    private msg: NzMessageService
   ) {}
 
   ngOnInit(): void {
     const localStorageUsername = this.authService.getUserCredential('username')
       ? this.authService.getUserCredential('username')
       : null;
-    const localStoragePassword = this.authService.getUserCredential('password')
+    const localStoragePassword = this.authService.getUserCredential('sessionId')
       ? this.aesEncryptDecryptService.decrypt(
-          this.authService.getUserCredential('password')
+          this.authService.getUserCredential('sessionId')
         )
       : null;
     this.validateForm = this.fb.group({

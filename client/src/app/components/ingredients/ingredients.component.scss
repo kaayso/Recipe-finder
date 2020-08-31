@@ -22,4 +22,14 @@
   position: fixed;
   bottom: 25px;
   right: 25px;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  i {
+    font-size: 20px;
+  }
 }

@@ -29,7 +29,7 @@ export class AppComponent {
         case event instanceof NavigationError: {
           setTimeout(() => {
             this.loading = false;
-          }, 500);
+          }, 700);
           break;
         }
         default: {

@@ -65,7 +65,7 @@ export class SignupFormComponent implements OnInit {
               value: user.username,
             },
             {
-              key: 'password',
+              key: 'sessionId',
               value: this.aesEncryptDecryptService.encrypt(user.password),
             },
           ]);
@@ -100,7 +100,7 @@ export class SignupFormComponent implements OnInit {
     );
   }
 
-  validateemail(): void {
+  emailChange(): void {
     setTimeout(() => this.validateForm.controls.email.updateValueAndValidity());
   }
 

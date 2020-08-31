@@ -13,6 +13,10 @@ import { SearchRecipeComponent } from './components/search-recipe/search-recipe.
 import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
+import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
+import { IngredientsComponent } from './components/ingredients/ingredients.component';
+import { RecipesComponent } from './components/recipes/recipes.component';
+import { AddRecipeFormComponent } from './components/add-recipe-form/add-recipe-form.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
@@ -23,12 +27,12 @@ import { AuthService } from './services/auth.service';
 import { AesEncryptDecryptService } from './services/aes-encrypt-decrypt.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { fr_FR } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import fr from '@angular/common/locales/fr';
 
+import { FormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
@@ -47,9 +51,10 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
-import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
-import { IngredientsComponent } from './components/ingredients/ingredients.component';
-import { RecipesComponent } from './components/recipes/recipes.component';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 registerLocaleData(fr);
 
@@ -69,6 +74,7 @@ registerLocaleData(fr);
     RecipeCardComponent,
     IngredientsComponent,
     RecipesComponent,
+    AddRecipeFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,6 +100,10 @@ registerLocaleData(fr);
     NzTagModule,
     NzDrawerModule,
     NzBadgeModule,
+    NzModalModule,
+    NzSelectModule,
+    NzUploadModule,
+    NzMessageModule,
   ],
   providers: [
     GenericService,

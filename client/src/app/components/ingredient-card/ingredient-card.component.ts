@@ -21,7 +21,7 @@ export class IngredientCardComponent implements OnInit {
   @Output() selectedItems: EventEmitter<any> = new EventEmitter();
   @Output() getIngredientByCategory: EventEmitter<any> = new EventEmitter();
 
-  visible: Boolean = false;
+  isVisible: boolean = false;
   rawIngredients: Ingredient[] = [];
   pickedIngredients: Ingredient[] = [];
   inputSearch: string = '';
@@ -36,13 +36,17 @@ export class IngredientCardComponent implements OnInit {
   }
 
   open(): void {
+    // load ingredients and open modal
     this.getIngredientByCategory.emit(this.title);
-    this.visible = true;
+    this.isVisible = true;
   }
 
   close(): void {
-    this.visible = false;
-    this.selectedItems.emit(this.pickedIngredients);
+    this.isVisible = false;
+    this.selectedItems.emit({
+      ingredients: this.pickedIngredients,
+      category: this.title,
+    });
   }
 
   pickIngredient(name: string): void {
