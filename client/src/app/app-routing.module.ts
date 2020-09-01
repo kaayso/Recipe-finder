@@ -21,12 +21,12 @@ const routes: Routes = [
     canActivate: [AccessGuardGuard],
   },
   {
-    path: 'add-recipe',
+    path: 'recipes',
     component: RecipesComponent,
     canActivate: [AccessGuardGuard],
   },
   {
-    path: 'search-recipe',
+    path: 'ingredients',
     component: IngredientsComponent,
     canActivate: [AccessGuardGuard],
   },

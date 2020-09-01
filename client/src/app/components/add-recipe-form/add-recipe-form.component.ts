@@ -11,6 +11,7 @@ import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs';
 import { GenericService } from '../../services/generic.service';
 import { api } from '../../ws/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-recipe-form',
@@ -36,7 +37,8 @@ export class AddRecipeFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private msg: NzMessageService,
-    private genericService: GenericService
+    private genericService: GenericService,
+    private router: Router
   ) {
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
@@ -89,7 +91,6 @@ export class AddRecipeFormComponent implements OnInit {
         this.getBase64(info.file!.originFileObj!, (img: string) => {
           this.loading = false;
           this.avatarUrl = img;
-          this.msg.success('Image uploaded successfully!');
           this.recipeImage = info.file!.originFileObj!;
         });
         break;
@@ -226,6 +227,7 @@ export class AddRecipeFormComponent implements OnInit {
           this.msg.success('Recipe added successfully!');
           this.isVisible = false;
           this.isOkLoading = false;
+          this.router.navigateByUrl('/recipes');
         },
         (err) => {
           if (err.status === 422) {

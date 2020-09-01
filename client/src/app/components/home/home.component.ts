@@ -12,9 +12,9 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) {}
   ngOnInit() {}
   goToRecipes(): void {
-    this.router.navigateByUrl('/add-recipe');
+    this.router.navigateByUrl('/recipes');
   }
   goToIngredients(): void {
-    this.router.navigateByUrl('/search-recipe');
+    this.router.navigateByUrl('/ingredients');
   }
 }
