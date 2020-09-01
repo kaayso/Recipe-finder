@@ -1,5 +1,6 @@
 <div class="recipe-card">
   <div class="recipe-card__img" (click)="open()">
+    <i nz-icon *ngIf="!default" nzType="star" class="recipe-card__own-recipe" nzTheme="fill"></i>
     <div class="recipe-card__infos">
       <div>
         <i nz-icon nzType="clock-circle" nzTheme="outline"></i>

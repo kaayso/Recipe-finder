@@ -14,6 +14,7 @@ export class RecipeCardComponent implements OnInit {
   @Input() time: Quantity;
   @Input() description: string;
   @Input() persons: number;
+  @Input() default: boolean;
   @Input() ingredients: Ingredient[];
 
   visible: Boolean = false;
