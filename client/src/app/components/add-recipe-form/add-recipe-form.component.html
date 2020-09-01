@@ -4,13 +4,13 @@
   </div>
 </button>
 <nz-modal [(nzVisible)]="isVisible" nzTitle="Créer une recette" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
-  [nzOkLoading]="isOkLoading" [nzOkText]="ingsFormIsOK ? 'Envoyer' : 'Ok'">
+  [nzOkLoading]="isOkLoading" [nzOkText]="ingsFormIsOK ? 'Valider' : 'Suivant'">
   <form *ngIf="!ingsFormIsOK" class="add-recipe-form" nz-form [formGroup]="ingredientsForm">
     <nz-form-item *ngFor="let control of listOfControl; let i = index">
       <nz-form-label [nzXl]="24" [nzLg]="24" [nzMd]="24" [nzSm]="24" [nzXs]="24" [nzFor]="control.controlInstance"
         nzRequired>
         <span class="add-recipe-form__ingredient-name">
-          {{userIngredients[i].name}}
+          {{control.controlInstance}}
         </span>
       </nz-form-label>
       <nz-form-control [nzXl]="16" [nzLg]="16" [nzMd]="16" [nzSm]="16" [nzXs]="16"

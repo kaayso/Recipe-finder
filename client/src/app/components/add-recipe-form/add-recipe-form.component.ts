@@ -102,36 +102,54 @@ export class AddRecipeFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  setupFields(): void {
-    for (let i = 0; i < this.userIngredients.length; i++) {
-      const control = {
-        id: i,
-        controlInstance: this.userIngredients[i].name,
-      };
-      this.listOfControl.push(control);
-      this.ingredientsForm.addControl(
-        `${control.controlInstance}-v`,
-        new FormControl(null, [
-          Validators.required,
-          Validators.pattern('[+-]?([0-9]*[.])?[0-9]+'),
-        ])
-      );
-      this.ingredientsForm.addControl(
-        `${control.controlInstance}-u`,
-        new FormControl('g', Validators.required)
-      );
-    }
-  }
+  private setupFields(): void {
+    const currentControls = this.listOfControl.map((c) => c.controlInstance);
 
-  removeFields(): void {
-    this.ingredientsForm = this.fb.group({});
-    this.listOfControl = [];
+    for (let i = 0; i < this.userIngredients.length; i++) {
+      const ingredientName = this.userIngredients[i].name;
+
+      if (!currentControls.includes(ingredientName)) {
+        const control = {
+          id: i,
+          controlInstance: ingredientName,
+        };
+        this.listOfControl.push(control);
+        this.ingredientsForm.addControl(
+          `${control.controlInstance}-v`,
+          new FormControl(null, [
+            Validators.required,
+            Validators.pattern('[+-]?([0-9]*[.])?[0-9]+'),
+          ])
+        );
+        this.ingredientsForm.addControl(
+          `${control.controlInstance}-u`,
+          new FormControl('g', Validators.required)
+        );
+      }
+    }
+
+    // clean ingredientsForm and listOfControl => remove deprecated ingredients
+    if (this.listOfControl.length !== this.userIngredients.length) {
+      const userIngredientsName = this.userIngredients.map((ing) => ing.name);
+      let listOfControlClone = [...this.listOfControl];
+      // check if there is extra ings in control list
+      for (let i = 0; i < this.listOfControl.length; i++) {
+        const control = this.listOfControl[i];
+        if (!userIngredientsName.includes(control.controlInstance)) {
+          // remove item control from listOfControl
+          listOfControlClone.splice(listOfControlClone.indexOf(control), 1);
+          // remove item from ingredientsForm
+          this.ingredientsForm.removeControl(`${control.controlInstance}-v`);
+          this.ingredientsForm.removeControl(`${control.controlInstance}-u`);
+        }
+      }
+      this.listOfControl = listOfControlClone;
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
     // only run when property "userIngredients" changed
     if (changes['userIngredients']) {
-      this.removeFields();
       this.setupFields();
       this.ingsFormIsOK = false;
     }
@@ -141,7 +159,7 @@ export class AddRecipeFormComponent implements OnInit {
     this.isVisible = true;
   }
 
-  buildPayload(recipeInfos: any, ingredientsInfos: any): any {
+  private buildPayload(recipeInfos: any, ingredientsInfos: any): any {
     // Prepare recipeInfos object
     let payload = { ...recipeInfos };
     payload.time = {
@@ -190,7 +208,6 @@ export class AddRecipeFormComponent implements OnInit {
         this.validateForm.value,
         this.ingredientsForm.value
       );
-      console.log(payload);
 
       this.genericService.post(api.Recipe, payload).subscribe(
         (res) => {
