@@ -10,7 +10,7 @@ import { Ingredient } from 'src/app/interfaces/ingredient';
 })
 export class IngredientsComponent implements OnInit {
   ingredients: any = {};
-  items: any = {};
+  loadedItems: any = {};
   userIngredients: Ingredient[] = [];
   optionsDisabled: boolean = true;
   constructor(private genericService: GenericService) {}
@@ -36,8 +36,8 @@ export class IngredientsComponent implements OnInit {
   }
 
   getIngredientByCategory(name: string): void {
-    if (!this.items[name]) {
-      this.items[name] = this.ingredients[name];
+    if (!this.loadedItems[name]) {
+      this.loadedItems[name] = this.ingredients[name];
     }
   }
 

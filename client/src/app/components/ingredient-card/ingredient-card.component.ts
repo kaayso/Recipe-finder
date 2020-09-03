@@ -25,19 +25,25 @@ export class IngredientCardComponent implements OnInit {
   rawIngredients: Ingredient[] = [];
   pickedIngredients: Ingredient[] = [];
   inputSearch: string = '';
+  loading = true;
 
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges) {
     // only run when property "items" changed
     if (changes['items']) {
-      this.rawIngredients = this.items;
+      if (this.items && this.items.length > 0) {
+        this.rawIngredients = this.items;
+        this.loading = false;
+      }
     }
   }
 
   open(): void {
     // load ingredients and open modal
-    this.getIngredientByCategory.emit(this.title);
+    setTimeout(() => {
+      this.getIngredientByCategory.emit(this.title);
+    }, 400);
     this.isVisible = true;
   }
 

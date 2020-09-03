@@ -9,7 +9,8 @@
 </ng-template>
 
 <!-- Drawer -->
-<nz-drawer [nzClosable]="false" [nzVisible]="isVisible" nzPlacement="top" nzTitle="{{ title }}" (nzOnClose)="close()">
+<nz-drawer style="padding-bottom: 0;" [nzClosable]="false" [nzVisible]="isVisible" nzPlacement="top"
+  nzTitle="{{ title }}" (nzOnClose)="close()">
   <div class="ing-card__search-wrapper">
     <nz-input-group class="ing-card__search" [nzSuffix]="suffixIconSearch">
       <input type="text" [ngModel]="inputSearch" (ngModelChange)="onChangeSearch($event)" nz-input
@@ -25,12 +26,18 @@
       <i class="ing-card__close-icon" (click)="clearInputSearch()" nz-icon nzType="close"></i>
     </div>
   </ng-template>
-  <div class="ing-card__item-wrapper">
-    <div *ngFor="let ing of items">
-      <nz-tag class="ing-card__tag" nzMode="checkable" [nzChecked]="isChecked(ing.name)" nzColor="default"
-        (nzCheckedChange)="pickIngredient(ing.name)">
-        {{ ing.name }}
-      </nz-tag>
+  <div style="width: 100%;height: 100%;">
+    <div class="ing-card__loader" *ngIf="loading">
+      <nz-spin>
+      </nz-spin>
+    </div>
+    <div class="ing-card__item-wrapper">
+      <div *ngFor="let ing of items">
+        <nz-tag class="ing-card__tag" nzMode="checkable" [nzChecked]="isChecked(ing.name)" nzColor="default"
+          (nzCheckedChange)="pickIngredient(ing.name)">
+          {{ ing.name }}
+        </nz-tag>
+      </div>
     </div>
   </div>
 </nz-drawer>
