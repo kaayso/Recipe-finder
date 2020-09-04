@@ -25,13 +25,6 @@ app.use(
     origin: process.env.CORS_ORIGIN,
   })
 );
-// app.use(bodyParser.json({
-//   limit: '200mb'
-// }));
-// app.use(bodyParser.urlencoded({
-//   limit: '200mb',
-//   extended: true
-// }));
 app.use(express.json());
 app.use(express.static(`${__dirname}/assets/`));
 app.use('/api/user', user);
