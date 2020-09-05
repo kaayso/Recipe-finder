@@ -12,6 +12,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class LoginFormComponent implements OnInit {
   validateForm!: FormGroup;
+  loading = false;
 
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -21,9 +22,11 @@ export class LoginFormComponent implements OnInit {
     const username = this.validateForm.value.username;
     const password = this.validateForm.value.password;
     if (this.validateForm.valid) {
+      this.loading = true;
       // send HTTP request
       this.authService.login(this.validateForm.value).subscribe((response) => {
         if (response.ok) {
+          this.loading = false;
           this.msg.success(`Bienvenue ${username} !`, {
             nzDuration: 2000,
           });
@@ -47,12 +50,15 @@ export class LoginFormComponent implements OnInit {
           }
           this.router.navigateByUrl('/');
         } else if (response.status === 404) {
+          this.loading = false;
           this.msg.error(
             'Connexion échouée : pseudo ou mot de passe incorrect.'
           );
         } else if (response.status === 422) {
+          this.loading = false;
           this.msg.error("Erreur : Le formulaire n'est pas valide.");
         } else {
+          this.loading = false;
           this.msg.error('Erreur : Le serveur ne répond pas.');
         }
       });

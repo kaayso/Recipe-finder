@@ -1,7 +1,27 @@
-<div class="recipe-card">
-  <div class="recipe-card__img" (click)="open()">
-    <i nz-icon *ngIf="!default" nzType="star" class="recipe-card__own-recipe" nzTheme="fill"></i>
-    <div class="recipe-card__infos">
+<div nz-row class="recipe-card">
+  <div nz-col class="recipe-card__left-side" [nzXXl]="8" [nzXl]="8" [nzLg]="8" [nzMd]="12" [nzSm]="12" [nzXs]="24">
+    <div>
+      <div class="recipe-card__img" (click)="open()">
+        <i nz-icon *ngIf="!default" nzType="star" class="recipe-card__own-recipe" nzTheme="fill"></i>
+        <div class="recipe-card__infos-mobile">
+          <div>
+            <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
+            {{time.value}} {{time.unity}}
+          </div>
+          <div>
+            <i nz-icon nzType="user" nzTheme="outline"></i>
+            {{persons}}
+          </div>
+        </div>
+        <img alt="" src="https://recipe-finder-server.herokuapp.com/{{image}}" />
+      </div>
+      <h3 class="recipe-card__name" (click)="open()">{{getName()}}</h3>
+      <div class="recipe-card__category">{{category}}</div>
+    </div>
+
+  </div>
+  <div nz-col class="recipe-card__right-side" [nzXXl]="16" [nzXl]="16" [nzLg]="16" [nzMd]="10" [nzSm]="10">
+    <div class="recipe-card__infos-desktop">
       <div>
         <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
         {{time.value}} {{time.unity}}
@@ -10,16 +30,20 @@
         <i nz-icon nzType="user" nzTheme="outline"></i>
         {{persons}}
       </div>
+      <div *ngIf="!default">
+        <i nz-icon nzType="star" nzTheme="fill"></i>
+      </div>
     </div>
-    <img alt="" src="http://localhost:4000/{{image}}" />
+    <p>{{getDescription()}}</p>
+    <button nz-button nzType="primary" (click)="open()">
+      <span>Plus...</span>
+    </button>
   </div>
-  <h3 class="recipe-card__name" (click)="open()">{{getName()}}</h3>
-  <div class="recipe-card__category">{{category}}</div>
 </div>
 
 
 <!-- Drawer -->
-<nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="left" nzTitle="{{name}}" (nzOnClose)="close()">
+<nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="right" nzTitle="{{name}}" (nzOnClose)="close()">
   <div>
     <div>
       <i nz-icon nzType="clock-circle" nzTheme="outline"></i>

@@ -32,5 +32,12 @@ export class RecipeCardComponent implements OnInit {
     if (this.name.length > 35) return this.name.slice(0, 35) + ' ...';
     return this.name;
   }
+
+  getDescription(): string {
+    if (this.description.length > 120)
+      return this.description.slice(0, 120) + ' ...';
+    return this.description;
+  }
+
   ngOnInit(): void {}
 }

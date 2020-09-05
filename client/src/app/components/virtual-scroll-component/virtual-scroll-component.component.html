@@ -1,0 +1,16 @@
+<nz-table #virtualTable [nzVirtualMinBufferPx]="350" [nzVirtualMaxBufferPx]="400" [nzVirtualItemSize]="249"
+  [nzData]="listOfData" [nzVirtualForTrackBy]="trackByIndex" [nzFrontPagination]="false" [nzShowPagination]="false"
+  [nzScroll]="{ x: '100vw', y: '100vh' }">
+  <tbody>
+    <ng-template nz-virtual-scroll let-data let-index="_id">
+      <tr>
+        <td>
+          <app-recipe-card [name]="data.name" [image]="data.image" [category]="data.category"
+            [ingredients]="data.ingredients" [persons]="data.persons" [time]="data.time"
+            [description]="data.description" [default]="data.default">
+          </app-recipe-card>
+        </td>
+      </tr>
+    </ng-template>
+  </tbody>
+</nz-table>

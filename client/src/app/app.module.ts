@@ -17,6 +17,7 @@ import { RecipeCardComponent } from './components/recipe-card/recipe-card.compon
 import { IngredientsComponent } from './components/ingredients/ingredients.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { AddRecipeFormComponent } from './components/add-recipe-form/add-recipe-form.component';
+import { VirtualScrollComponentComponent } from './components/virtual-scroll-component/virtual-scroll-component.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
@@ -55,6 +56,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 registerLocaleData(fr);
 
@@ -75,6 +77,7 @@ registerLocaleData(fr);
     IngredientsComponent,
     RecipesComponent,
     AddRecipeFormComponent,
+    VirtualScrollComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +107,7 @@ registerLocaleData(fr);
     NzSelectModule,
     NzUploadModule,
     NzMessageModule,
+    NzTableModule,
   ],
   providers: [
     GenericService,

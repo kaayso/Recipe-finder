@@ -11,11 +11,18 @@ const ingredient = require('./routes/ingredient');
 const populateDb = require('./helpers/populateDB');
 
 dotenv.config();
-const PORT = process.env.PORT_SERVER || 4000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}.`);
 });
+
+app.get('/', (req, res) => {
+  res.send({
+    "Application-name": "Recipe Finder",
+    "Author": "Faycel BENYOUSSA"
+  })
+})
 
 // middlewares
 app.use(morgan('common'));
