@@ -2,6 +2,25 @@ const Recipe = require('../models/Recipe');
 const Ingredient = require('../models/Ingredient');
 const recipes = require('../assets/recipes');
 const ingredients = require('../assets/ingredients');
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+// db connection
+const options = {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 10000,
+  autoIndex: process.env.NODE_ENV !== 'production', // only in dev mod
+};
+
+mongoose
+  .connect(process.env.DB_URL, options)
+  .catch((error) => console.error(error));
+
+mongoose.connection.on('error', (err) => {
+  console.error(err);
+});
 
 const populateDb = () => {
   console.log('Populate database...');
@@ -29,4 +48,7 @@ const populateDb = () => {
   });
   console.log('   ✓ | recipes');
 };
-module.exports = populateDb;
+
+
+// Add recipes & ingredients to db
+populateDb();

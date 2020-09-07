@@ -8,7 +8,6 @@ const httpMiddlewares = require('./middlewares');
 const user = require('./routes/user');
 const recipe = require('./routes/recipe');
 const ingredient = require('./routes/ingredient');
-const populateDb = require('./helpers/populateDB');
 
 dotenv.config();
 const PORT = process.env.PORT || 4000;
@@ -56,8 +55,3 @@ mongoose
 mongoose.connection.on('error', (err) => {
   console.error(err);
 });
-
-// populate db
-if (process.env.NODE_ENV === 'production') {
-  populateDb();
-}
