@@ -16,10 +16,10 @@ export class RecipeCardComponent implements OnInit {
   @Input() persons: number;
   @Input() default: boolean;
   @Input() ingredients: Ingredient[];
-
-  visible: Boolean = false;
+  visible: boolean = false;
 
   constructor() {}
+
   open(): void {
     this.visible = true;
   }

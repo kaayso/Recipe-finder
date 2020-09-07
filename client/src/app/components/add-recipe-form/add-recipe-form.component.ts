@@ -60,13 +60,13 @@ export class AddRecipeFormComponent implements OnInit {
       const isJpgOrPng =
         file.type === 'image/jpeg' || file.type === 'image/png';
       if (!isJpgOrPng) {
-        this.msg.error('Seulement les images JPG ou PNG sont acceptés!');
+        this.msg.error('Seules les images JPG ou PNG sont acceptés!');
         observer.complete();
         return;
       }
       const isLt2M = file.size! / 1024 / 1024 < 2;
       if (!isLt2M) {
-        this.msg.error("L'image doit être inférieur à 2MB!");
+        this.msg.error("La taille de l'image doit être inférieur à 2MB!");
         observer.complete();
         return;
       }
@@ -199,10 +199,7 @@ export class AddRecipeFormComponent implements OnInit {
     }
 
     // Create a recipe
-    if (
-      this.validateForm.status === 'VALID' &&
-      this.ingredientsForm.status === 'VALID'
-    ) {
+    if (this.validateForm.valid && this.ingredientsForm.valid) {
       this.isOkLoading = true;
       // Prepare payloads
       const payload = this.buildPayload(
@@ -239,7 +236,7 @@ export class AddRecipeFormComponent implements OnInit {
         }
       );
     }
-    this.ingsFormIsOK = this.ingredientsForm.status === 'VALID';
+    this.ingsFormIsOK = this.ingredientsForm.valid;
   }
 
   handleCancel(): void {

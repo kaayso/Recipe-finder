@@ -8,20 +8,20 @@ services:
       - /usr/app/node_modules
       - ./client:/usr/app
     command: bash -c 'npm run start'
-    depends_on:
-      - server
+    # depends_on:
+    #   - server
 
-  server:
-    build: ./server
-    ports:
-      - '4000:4000'
-    volumes:
-      - /usr/app/node_modules
-      - ./server:/usr/app
-    command: bash -c 'npm install bcrypt && npm run dev' # compatibility pb : bcrypt must be reinstalled on linux
-    environment:
-      - NODE_ENV=${NODE_ENV}
-      - DB_URL=${DB_URL}
-      - PORT=${PORT}
-      - CORS_ORIGIN=${CORS_ORIGIN}
-      - SECRET_TOKEN_ACCESS=${SECRET_TOKEN_ACCESS}
+  # server:
+  #   build: ./server
+  #   ports:
+  #     - '4000:4000'
+  #   volumes:
+  #     - /usr/app/node_modules
+  #     - ./server:/usr/app
+  #   command: bash -c 'npm install bcrypt && npm run dev' # compatibility pb : bcrypt must be reinstalled on linux
+  #   environment:
+  #     - NODE_ENV=${NODE_ENV}
+  #     - DB_URL=${DB_URL}
+  #     - PORT=${PORT}
+  #     - CORS_ORIGIN=${CORS_ORIGIN}
+  #     - SECRET_TOKEN_ACCESS=${SECRET_TOKEN_ACCESS}

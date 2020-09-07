@@ -25,7 +25,7 @@ export class IngredientCardComponent implements OnInit {
   rawIngredients: Ingredient[] = [];
   pickedIngredients: Ingredient[] = [];
   inputSearch: string = '';
-  loading = true;
+  loading: boolean = true;
 
   constructor() {}
 

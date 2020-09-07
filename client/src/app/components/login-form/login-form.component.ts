@@ -12,7 +12,32 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class LoginFormComponent implements OnInit {
   validateForm!: FormGroup;
-  loading = false;
+  loading: boolean = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private aesEncryptDecryptService: AesEncryptDecryptService,
+    private msg: NzMessageService
+  ) {}
+
+  ngOnInit(): void {
+    const localStorageUsername = this.authService.getUserCredential('username')
+      ? this.authService.getUserCredential('username')
+      : null;
+    const localStoragePassword = this.authService.getUserCredential('sessionId')
+      ? this.aesEncryptDecryptService.decrypt(
+          this.authService.getUserCredential('sessionId')
+        )
+      : null;
+
+    this.validateForm = this.fb.group({
+      username: [localStorageUsername, [Validators.required]],
+      password: [localStoragePassword, [Validators.required]],
+      remember: [true],
+    });
+  }
 
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -21,6 +46,7 @@ export class LoginFormComponent implements OnInit {
     }
     const username = this.validateForm.value.username;
     const password = this.validateForm.value.password;
+
     if (this.validateForm.valid) {
       this.loading = true;
       // send HTTP request
@@ -67,29 +93,5 @@ export class LoginFormComponent implements OnInit {
 
   goSignup(): void {
     this.router.navigateByUrl('/signup');
-  }
-
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router,
-    private aesEncryptDecryptService: AesEncryptDecryptService,
-    private msg: NzMessageService
-  ) {}
-
-  ngOnInit(): void {
-    const localStorageUsername = this.authService.getUserCredential('username')
-      ? this.authService.getUserCredential('username')
-      : null;
-    const localStoragePassword = this.authService.getUserCredential('sessionId')
-      ? this.aesEncryptDecryptService.decrypt(
-          this.authService.getUserCredential('sessionId')
-        )
-      : null;
-    this.validateForm = this.fb.group({
-      username: [localStorageUsername, [Validators.required]],
-      password: [localStoragePassword, [Validators.required]],
-      remember: [true],
-    });
   }
 }

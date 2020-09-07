@@ -20,12 +20,20 @@ export class SignupFormComponent implements OnInit {
   current: number = 0;
   validateForm!: FormGroup;
 
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private aesEncryptDecryptService: AesEncryptDecryptService,
+    private notification: NzNotificationService
+  ) {}
+
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      email: [null, [this.emailValidator]],
+      email: [null, [this._emailValidator]],
       username: [null, [Validators.required]],
       password: [null, [Validators.required]],
-      confirm: [null, [this.confirmValidator]],
+      confirm: [null, [this._confirmValidator]],
     });
   }
 
@@ -37,11 +45,15 @@ export class SignupFormComponent implements OnInit {
     this.current += 1;
   }
 
-  createNotification(type: string, title: string, content: string): void {
+  private _createNotification(
+    type: string,
+    title: string,
+    content: string
+  ): void {
     this.notification.create(type, title, content);
   }
 
-  validateEmail(email): boolean {
+  private _validateEmail(email): boolean {
     const re = /\S+@\S+\.\S+/;
     return re.test(email);
   }
@@ -71,20 +83,20 @@ export class SignupFormComponent implements OnInit {
           ]);
           this.router.navigateByUrl('/login');
         } else if (response.status === 409) {
-          this.createNotification(
+          this._createNotification(
             'error',
             'Erreur!',
             'Cette adresse mail est déjà utilisée.'
           );
           this.current = 0;
         } else if (response.status === 422) {
-          this.createNotification(
+          this._createNotification(
             'error',
             'Erreur!',
             "Le formulaire n'est pas valide"
           );
         } else {
-          this.createNotification(
+          this._createNotification(
             'error',
             'Erreur!',
             'Le serveur ne répond pas.'
@@ -104,7 +116,9 @@ export class SignupFormComponent implements OnInit {
     setTimeout(() => this.validateForm.controls.email.updateValueAndValidity());
   }
 
-  confirmValidator = (control: FormControl): { [s: string]: boolean } => {
+  private _confirmValidator = (
+    control: FormControl
+  ): { [s: string]: boolean } => {
     if (!control.value) {
       return { error: true, required: true };
     } else if (control.value !== this.validateForm.controls.password.value) {
@@ -113,20 +127,14 @@ export class SignupFormComponent implements OnInit {
     return {};
   };
 
-  emailValidator = (control: FormControl): { [s: string]: boolean } => {
+  private _emailValidator = (
+    control: FormControl
+  ): { [s: string]: boolean } => {
     if (!control.value) {
       return { error: true, required: true };
-    } else if (!this.validateEmail(control.value)) {
+    } else if (!this._validateEmail(control.value)) {
       return { email: true, error: true };
     }
     return {};
   };
-
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router,
-    private aesEncryptDecryptService: AesEncryptDecryptService,
-    private notification: NzNotificationService
-  ) {}
 }

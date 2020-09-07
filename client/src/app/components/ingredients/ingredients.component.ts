@@ -13,18 +13,19 @@ export class IngredientsComponent implements OnInit {
   loadedItems: any = {};
   userIngredients: Ingredient[] = [];
   optionsDisabled: boolean = true;
+
   constructor(private genericService: GenericService) {}
 
   ngOnInit(): void {
     this.genericService.get(api.Ingredient).subscribe(
       (res) => {
-        this.ingredients = this.groupByCategory(res.data);
+        this.ingredients = this._groupByCategory(res.data);
       },
       (err) => console.error(err)
     );
   }
 
-  private groupByCategory(ingredientList: Ingredient[]): Object {
+  private _groupByCategory(ingredientList: Ingredient[]): Object {
     const result = {};
     for (let ing of ingredientList) {
       if (result[ing.category] == undefined) {
