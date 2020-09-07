@@ -16,7 +16,6 @@ export class RecipesComponent implements OnInit {
     this.genericService.get(api.Recipe).subscribe(
       (res) => {
         this.recipes = res.data;
-        console.log(this.recipes);
       },
       (err) => console.error(err)
     );
