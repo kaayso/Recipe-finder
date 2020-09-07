@@ -55,6 +55,14 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/');
   }
 
+  goToRecipes(): void {
+    this.router.navigateByUrl('/recipes');
+  }
+
+  goToIngredients(): void {
+    this.router.navigateByUrl('/ingredients');
+  }
+
   ngOnDestroy() {
     this.connexionSubscription.unsubscribe();
     this.usernameSubscription.unsubscribe();
