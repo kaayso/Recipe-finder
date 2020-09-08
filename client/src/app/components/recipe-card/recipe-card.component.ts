@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Ingredient } from '../../interfaces/ingredient';
-import { Quantity } from '../../interfaces/quantity';
+import { Ingredient } from 'src/app/interfaces/ingredient';
+import { Quantity } from 'src/app/interfaces/quantity';
 
 @Component({
   selector: 'app-recipe-card',

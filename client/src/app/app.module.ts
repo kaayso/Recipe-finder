@@ -26,6 +26,7 @@ import { GenericService } from './services/generic.service';
 import { CookiesService } from './services/cookies.service';
 import { AuthService } from './services/auth.service';
 import { AesEncryptDecryptService } from './services/aes-encrypt-decrypt.service';
+import { UserResourceService } from './services/user-resource.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
@@ -114,6 +115,7 @@ registerLocaleData(fr);
     CookiesService,
     AuthService,
     AesEncryptDecryptService,
+    UserResourceService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorInterceptor,

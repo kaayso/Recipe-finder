@@ -7,8 +7,8 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { CookiesService } from '../services/cookies.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { CookiesService } from 'src/app/services/cookies.service';
 import { catchError, switchMap, filter, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 

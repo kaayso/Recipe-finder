@@ -96,11 +96,34 @@ const deleteRecipe = (req, res, next) => {
   });
 };
 
+const getRecipesFromIngredients = async (req, res, next) => {
+  const userIngredients = req.body.userIngredients.map(ing => ing.name.toLowerCase());
+  const result = new Set();
+
+  try {
+    const recipes = await Recipe.find();
+    recipes.forEach(recipe => {
+      const recipeIngs = recipe.ingredients.map(ing => ing.name.toLowerCase());
+      userIngredients.forEach(uIng => {
+        if (recipeIngs.find((ing) => uIng === ing)) {
+          result.add(recipe);
+        }
+      });
+    });
+  } catch (error) {
+    return next(error);
+  }
+  return res.status(200).json({
+    userIngredients: [...result]
+  });
+}
+
 module.exports = {
   recipes,
   createRecipe,
   updateRecipe,
   deleteRecipe,
   recipeById,
-  addRecipeImage
+  addRecipeImage,
+  getRecipesFromIngredients
 };

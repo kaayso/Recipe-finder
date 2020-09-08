@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SearchRecipeComponent } from './components/search-recipe/search-recipe.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { AccessGuardGuard } from './guards/access-guard.guard';
 
@@ -34,6 +35,11 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent,
     canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'recipes/search',
+    component: SearchRecipeComponent,
+    canActivate: [AccessGuardGuard],
   },
   {
     path: '**',

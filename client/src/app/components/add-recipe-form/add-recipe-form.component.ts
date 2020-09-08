@@ -9,9 +9,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { Ingredient } from 'src/app/interfaces/ingredient';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs';
-import { GenericService } from '../../services/generic.service';
-import { api } from '../../ws/api';
-import { Router } from '@angular/router';
+import { GenericService } from 'src/app/services/generic.service';
+import { api } from 'src/app/ws/api';
 
 @Component({
   selector: 'app-add-recipe-form',
@@ -37,8 +36,7 @@ export class AddRecipeFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private msg: NzMessageService,
-    private genericService: GenericService,
-    private router: Router
+    private genericService: GenericService
   ) {
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
@@ -224,7 +222,6 @@ export class AddRecipeFormComponent implements OnInit {
           this.msg.success('Recipe added successfully!');
           this.isVisible = false;
           this.isOkLoading = false;
-          this.router.navigateByUrl('/recipes');
         },
         (err) => {
           if (err.status === 422) {

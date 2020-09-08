@@ -7,12 +7,10 @@ const Token = require('../models/Token');
 const SALT_ROUNDS = 10;
 const TOKEN_ACCESS_DURATION = '15m';
 const REFRESH_TOKEN_ACCESS_DURATION = '1d';
-const generateAccessToken = (user, expire) => jwt.sign(
-  {
+const generateAccessToken = (user, expire) => jwt.sign({
     uid: user._id,
   },
-  process.env.SECRET_TOKEN_ACCESS,
-  {
+  process.env.SECRET_TOKEN_ACCESS, {
     expiresIn: expire,
   },
 );
@@ -25,7 +23,9 @@ const allUsers = (req, res, next) => {
 };
 
 const userById = (req, res, next) => {
-  User.findOne({ _id: req.params.uid }, (err, user) => {
+  User.findOne({
+    _id: req.params.uid
+  }, (err, user) => {
     if (err) return next(err);
     return res.status(200).json(user);
   });
@@ -56,8 +56,7 @@ const singup = (req, res, next) => {
 const login = (req, res, next) => {
   const user = req.body;
   // get user from DB
-  User.findOne(
-    {
+  User.findOne({
       username: user.username,
     },
     (err, result) => {
@@ -98,7 +97,7 @@ const login = (req, res, next) => {
 };
 
 const getNewAccessToken = async (req, res, next) => {
-  // if user token is not specified
+  // if user's token is not specified
   if (!req.body.refreshToken) {
     res.status(403);
     return next(new Error('invalid request'));
@@ -118,8 +117,12 @@ const getNewAccessToken = async (req, res, next) => {
       process.env.SECRET_TOKEN_ACCESS,
     );
 
-    const { uid } = decodedToken;
-    User.findOne({ _id: uid }, (err, result) => res.status(201).json({
+    const {
+      uid
+    } = decodedToken;
+    User.findOne({
+      _id: uid
+    }, (err, result) => res.status(201).json({
       token: generateAccessToken(
         result,
         TOKEN_ACCESS_DURATION,
@@ -128,7 +131,9 @@ const getNewAccessToken = async (req, res, next) => {
   } catch {
     // if exists remove it from db
     if (currentRefreshTokens.includes(req.body.refreshToken)) {
-      Token.findOneAndDelete({ token: req.body.refreshToken }, (err) => {
+      Token.findOneAndDelete({
+        token: req.body.refreshToken
+      }, (err) => {
         if (err) console.error(err);
       });
     }
@@ -139,8 +144,7 @@ const getNewAccessToken = async (req, res, next) => {
 
 const logout = (req, res, next) => {
   try {
-    Token.findOneAndDelete(
-      {
+    Token.findOneAndDelete({
         token: req.body.token,
       },
       (err, doc) => {

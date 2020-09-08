@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { AesEncryptDecryptService } from '../../services/aes-encrypt-decrypt.service';
+import { AesEncryptDecryptService } from 'src/app/services/aes-encrypt-decrypt.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({

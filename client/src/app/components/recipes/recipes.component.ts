@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GenericService } from '../../services/generic.service';
-import { api } from '../../ws/api';
+import { GenericService } from 'src/app/services/generic.service';
+import { api } from 'src/app/ws/api';
 import { Recipe } from 'src/app/interfaces/recipe';
 
 @Component({

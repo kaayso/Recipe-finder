@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { GenericService } from '../../services/generic.service';
-import { api } from '../../ws/api';
+import { GenericService } from 'src/app/services/generic.service';
+import { api } from 'src/app/ws/api';
 import { Ingredient } from 'src/app/interfaces/ingredient';
+import { UserResourceService } from 'src/app/services/user-resource.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ingredients',
@@ -14,7 +16,11 @@ export class IngredientsComponent implements OnInit {
   userIngredients: Ingredient[] = [];
   optionsDisabled: boolean = true;
 
-  constructor(private genericService: GenericService) {}
+  constructor(
+    private genericService: GenericService,
+    private userResourceService: UserResourceService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.genericService.get(api.Ingredient).subscribe(
@@ -49,5 +55,10 @@ export class IngredientsComponent implements OnInit {
 
     // disable controllers if no ingredients
     this.optionsDisabled = !(this.userIngredients.length > 0);
+  }
+
+  searchRecipes(): void {
+    this.userResourceService.setUserIngredients(this.userIngredients);
+    this.router.navigateByUrl('recipes/search');
   }
 }

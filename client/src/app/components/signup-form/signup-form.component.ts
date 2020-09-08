@@ -5,10 +5,10 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { api } from '../../ws/api';
+import { AuthService } from 'src/app/services/auth.service';
+import { api } from 'src/app/ws/api';
 import { Router } from '@angular/router';
-import { AesEncryptDecryptService } from '../../services/aes-encrypt-decrypt.service';
+import { AesEncryptDecryptService } from 'src/app/services/aes-encrypt-decrypt.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({

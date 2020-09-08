@@ -6,7 +6,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { Ingredient } from '../../interfaces/ingredient';
+import { Ingredient } from 'src/app/interfaces/ingredient';
 
 @Component({
   selector: 'app-ingredient-card',

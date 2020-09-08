@@ -6,5 +6,6 @@ export enum api {
   Token = 'api/user/token/',
   Logout = 'api/user/logout/',
   Recipe = 'api/recipe/',
+  SearchRecipe = 'api/recipe/search/',
   Ingredient = 'api/ingredient/',
 }
