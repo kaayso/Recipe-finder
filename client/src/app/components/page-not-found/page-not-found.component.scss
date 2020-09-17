@@ -6,21 +6,24 @@
   background-color: #E9FCFF;
   flex-direction: column;
 
+  .page-not-found__container {
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+  }
+
   img {
     width: 100%;
-    max-width: 600px;
     height: auto;
   }
 
   p {
     text-align: center;
     font-size: 1.3em;
-    font-weight: bold;
-    max-width: 600px;
-    padding: 10px
-  }
-
-  .page-not-found__btn {
-    margin-top: 40px;
+    padding: 10px;
+    color: #111111;
   }
 }

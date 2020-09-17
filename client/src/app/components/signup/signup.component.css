@@ -4,12 +4,12 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-image: url("~src/assets/login-bg.webp");
+  -ms-flex-align: center;
+  align-items: center;
+  background-image: url("~src/assets/login-bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,4 +30,5 @@
   background-color: rgba(17, 17, 17, 0.6);
   z-index: 1;
 }
+
 /*# sourceMappingURL=signup.component.css.map */

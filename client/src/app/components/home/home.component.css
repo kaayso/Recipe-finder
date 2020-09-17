@@ -2,12 +2,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Muli:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;900&display=swap");
+
 body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -20,10 +21,11 @@ html {
     opacity: 0;
     font-size: .2em;
   }
+
   to {
     opacity: 1;
     -webkit-transform: translateY(-200%);
-            transform: translateY(-200%);
+    transform: translateY(-200%);
     font-size: 1.4em;
   }
 }
@@ -33,10 +35,11 @@ html {
     opacity: 0;
     font-size: .2em;
   }
+
   to {
     opacity: 1;
     -webkit-transform: translateY(-200%);
-            transform: translateY(-200%);
+    transform: translateY(-200%);
     font-size: 1.4em;
   }
 }
@@ -44,22 +47,24 @@ html {
 @keyframes filter {
   from {
     -webkit-filter: brightness(0%);
-            filter: brightness(0%);
+    filter: brightness(0%);
   }
+
   to {
     -webkit-filter: brightness(30%);
-            filter: brightness(30%);
+    filter: brightness(30%);
   }
 }
 
 @-webkit-keyframes filter {
   from {
     -webkit-filter: brightness(0%);
-            filter: brightness(0%);
+    filter: brightness(0%);
   }
+
   to {
     -webkit-filter: brightness(30%);
-            filter: brightness(30%);
+    filter: brightness(30%);
   }
 }
 
@@ -69,6 +74,7 @@ html {
     line-height: 90px !important;
     margin-top: 25% !important;
   }
+
   .home__btns-container {
     margin: 15% !important;
   }
@@ -80,6 +86,7 @@ html {
     line-height: 80px !important;
     margin-top: 35% !important;
   }
+
   .home__btns-container {
     margin: 10% !important;
   }
@@ -108,7 +115,7 @@ html {
 
 #home {
   min-height: 100vh;
-  background-image: url("~src/assets/home-bg.webp");
+  background-image: url("~src/assets/home-bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -116,12 +123,12 @@ html {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .home__title {
@@ -141,7 +148,8 @@ html {
   color: #E59500;
 }
 
-.home__btn, .home__btn--second {
+.home__btn,
+.home__btn--second {
   width: 120px;
   height: 100px;
   margin: 20px;
@@ -159,4 +167,5 @@ html {
 .home__btn--second:hover {
   background-color: #ebae3d;
 }
+
 /*# sourceMappingURL=home.component.css.map */

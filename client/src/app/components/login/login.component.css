@@ -1,6 +1,6 @@
 #login {
   min-height: 100vh;
-  background-image: url("~src/assets/login-bg.webp");
+  background-image: url("~src/assets/login-bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -8,10 +8,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
+
 /*# sourceMappingURL=login.component.css.map */
