@@ -1,16 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 const Recipe = require('../models/Recipe');
-const multer = require('multer');
-const path = require('path');
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, `${path.join(__dirname, '../assets/images/recipes')}`)
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}${path.extname(file.originalname)}`)
-  }
-})
 
 const recipes = (req, res) => res.status(200).json(res.paginationResults);
 
@@ -26,34 +15,6 @@ const recipeById = (req, res, next) => {
   });
 };
 
-const addRecipeImage = (req, res, next) => {
-  // save image
-  const upload = multer({
-    storage: storage
-  }).single('recipeImage');
-
-  upload(req, res, (err) => {
-    if (err) {
-      next(err);
-    }
-    // get recipe id 
-    const recipeId = req.body.recipeId;
-    // update recipe object
-    Recipe.findOneAndUpdate({
-      _id: recipeId
-    }, {
-      image: `/images/recipes/${req.file.filename}`
-    }, (err) => {
-      if (err) {
-        res.statusCode = 404;
-        return next(err);
-      }
-      return res.status(201).json({
-        message: 'Recipe\'s image successfully added.',
-      });
-    });
-  });
-}
 
 const createRecipe = (req, res, next) => {
   // save recipe
@@ -124,6 +85,5 @@ module.exports = {
   updateRecipe,
   deleteRecipe,
   recipeById,
-  addRecipeImage,
   getRecipesFromIngredients
 };

@@ -34,7 +34,7 @@ const schema = new Schema({
   name: requiredString,
   image: {
     type: String,
-    default: '/images/recipes/galette_algerienne.jpg',
+    default: 'https://firebasestorage.googleapis.com/v0/b/recipe-finder-a7ec2.appspot.com/o/images%2Fdefault%2Fdefault_recipe.png?alt=media&token=ff5398e3-d6dd-46c3-948f-67c5e458e9d6',
   },
   persons: requiredNumber,
   ingredients: {

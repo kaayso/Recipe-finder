@@ -1,22 +1,31 @@
 const {
   Router,
 } = require('express');
-const controllers = require('../controllers/user');
-const middlewares = require('../middlewares');
+const {
+  allUsers,
+  singup,
+  login,
+  getNewAccessToken,
+  logout,
+  userById,
+} = require('../controllers/user');
+const {
+  auth
+} = require('../middlewares');
 
 
 const router = Router();
 
-router.get('/', middlewares.auth, controllers.allUsers);
+router.get('/', auth, allUsers);
 
-router.get('/:uid', middlewares.auth, controllers.userById);
+router.get('/:uid', auth, userById);
 
-router.post('/signup', controllers.singup);
+router.post('/signup', singup);
 
-router.post('/login', controllers.login);
+router.post('/login', login);
 
-router.post('/token', controllers.getNewAccessToken);
+router.post('/token', getNewAccessToken);
 
-router.post('/logout', controllers.logout);
+router.post('/logout', logout);
 
 module.exports = router;

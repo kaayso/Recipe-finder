@@ -2,6 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
+// firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+// components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -19,21 +25,26 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { AddRecipeFormComponent } from './components/add-recipe-form/add-recipe-form.component';
 import { VirtualScrollComponentComponent } from './components/virtual-scroll-component/virtual-scroll-component.component';
 
+// interceptor
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
 
+// services
 import { GenericService } from './services/generic.service';
 import { CookiesService } from './services/cookies.service';
 import { AuthService } from './services/auth.service';
 import { AesEncryptDecryptService } from './services/aes-encrypt-decrypt.service';
 import { UserResourceService } from './services/user-resource.service';
+import { UploadService } from './services/upload.service';
 
+// utils
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { fr_FR } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import fr from '@angular/common/locales/fr';
 
+// UI modules
 import { FormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -58,6 +69,9 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzTableModule } from 'ng-zorro-antd/table';
+
+// env
+import { environment } from 'src/environments/environment';
 
 registerLocaleData(fr);
 
@@ -109,6 +123,9 @@ registerLocaleData(fr);
     NzUploadModule,
     NzMessageModule,
     NzTableModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [
     GenericService,
@@ -116,6 +133,7 @@ registerLocaleData(fr);
     AuthService,
     AesEncryptDecryptService,
     UserResourceService,
+    UploadService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorInterceptor,

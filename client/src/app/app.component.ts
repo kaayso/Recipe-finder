@@ -7,6 +7,8 @@ import {
   NavigationStart,
   Router,
 } from '@angular/router';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +19,7 @@ export class AppComponent {
   loading: boolean = false;
 
   constructor(private router: Router) {
+    // AngularFireModule.initializeApp(environment.firebaseConfig);
     this.router.events.subscribe((event: Event) => {
       switch (true) {
         case event instanceof NavigationStart: {

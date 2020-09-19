@@ -5,11 +5,13 @@ const ingredients = (req, res) => res.status(200).json(res.paginationResults);
 
 const ingredientsByCategory = (req, res) => {
   console.log(res.paginationResults)
-  const ingredients = res.paginationResults.data.filter(ing => ing.category === req.params.cat); 
+  const ingredients = res.paginationResults.data.filter(ing => ing.category === req.params.cat);
   res.status(200).json(ingredients);
 }
 const ingredientById = (req, res, next) => {
-  Ingredient.findOne({ _id: req.params.id }, (err, result) => {
+  Ingredient.findOne({
+    _id: req.params.id
+  }, (err, result) => {
     if (err) {
       res.statusCode = 404;
       return next(err);
@@ -35,7 +37,9 @@ const createIngredient = (req, res, next) => {
 
 const updateIngredient = (req, res, next) => {
   const ingredient = new Ingredient(req.body);
-  Ingredient.findByIdAndUpdate({ _id: ingredient._id }, ingredient, (err, result) => {
+  Ingredient.findByIdAndUpdate({
+    _id: ingredient._id
+  }, ingredient, (err, result) => {
     if (err) return next(err);
     return res.status(200).json(result);
   });
@@ -44,7 +48,9 @@ const updateIngredient = (req, res, next) => {
 const deleteIngredient = (req, res, next) => {
   Ingredient.findOneAndDelete(req._id, (err) => {
     if (err) return next(err);
-    return res.status(200).json({ message: 'Ingredient has been deleted' });
+    return res.status(200).json({
+      message: 'Ingredient has been deleted'
+    });
   });
 };
 

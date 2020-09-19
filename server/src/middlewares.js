@@ -34,9 +34,12 @@ const auth = (req, res, next) => {
 };
 
 const pagination = (model) => async (req, res, next) => {
-  const data = await model.find((err, items) => {
+  let data = await model.find((err) => {
     if (err) return next(err);
-    return items.filter((i) => i.uid === req.uid || i.uid === '0');
+  });
+  // get only default items or his own items
+  data = data.filter((i) => {
+    if (i.uid === req.headers.uid || i.default === true) return i;
   });
 
   let page = parseInt(req.query.page, 10);

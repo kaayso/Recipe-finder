@@ -1,16 +1,26 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  SimpleChanges,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Ingredient } from 'src/app/interfaces/ingredient';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs';
 import { GenericService } from 'src/app/services/generic.service';
 import { api } from 'src/app/ws/api';
+import { UploadService } from 'src/app/services/upload.service';
+import { CookiesService } from 'src/app/services/cookies.service';
 
 @Component({
   selector: 'app-add-recipe-form',
@@ -36,7 +46,10 @@ export class AddRecipeFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private msg: NzMessageService,
-    private genericService: GenericService
+    private genericService: GenericService,
+    private uploadService: UploadService,
+    private router: Router,
+    private cookiesService: CookiesService
   ) {
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
@@ -183,7 +196,7 @@ export class AddRecipeFormComponent implements OnInit {
     return payload;
   }
 
-  handleOk(): void {
+  async handleOk() {
     if (this.ingsFormIsOK) {
       for (const i in this.validateForm.controls) {
         this.validateForm.controls[i].markAsDirty();
@@ -205,23 +218,22 @@ export class AddRecipeFormComponent implements OnInit {
         this.ingredientsForm.value
       );
 
+      // upload image in firebaseStoage and save download url
+      if (this.recipeImage) {
+        this.uploadService.handleFile(this.recipeImage);
+        const userId = this.cookiesService.getCookie('userId');
+        await this.uploadService.upload(userId);
+        // set image url in payload object
+        payload.image = this.uploadService.url;
+      }
+
       this.genericService.post(api.Recipe, payload).subscribe(
         (res) => {
           console.log(res.message);
-          // setting recipe image
-          if (this.recipeImage) {
-            let formData = new FormData();
-            formData.append('recipeImage', this.recipeImage);
-            formData.append('recipeId', res.id);
-
-            this.genericService.put(`${api.Recipe}image`, formData).subscribe(
-              (res) => console.log(res.message),
-              (err) => console.log(err)
-            );
-          }
           this.msg.success('Recipe added successfully!');
           this.isVisible = false;
           this.isOkLoading = false;
+          this.router.navigateByUrl('/recipes');
         },
         (err) => {
           if (err.status === 422) {

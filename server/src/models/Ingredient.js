@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
+const {
+  Schema
+} = mongoose;
 
 const requiredString = {
   type: String,
@@ -12,6 +14,10 @@ const schema = new Schema({
   category: requiredString,
   part: {
     type: String,
+  },
+  default: {
+    type: Boolean,
+    required: true,
   },
 });
 
