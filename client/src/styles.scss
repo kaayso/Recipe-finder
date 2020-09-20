@@ -15,8 +15,8 @@ html {
 
 // colors
 
-$primary-color : #840032;
-$secondary-color : #E59500;
+$primary-color : #08a0ca;
+$secondary-color : #FF4D4F;
 $tertiary-color : #342c2c;
 // END colors
 
@@ -91,59 +91,116 @@ $tertiary-color : #342c2c;
   }
 }
 
+@keyframes enter-from-left {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(-15vw);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes enter-from-left {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(-15vw);
+    opacity: 1;
+
+  }
+}
+
+
+
+@keyframes enter-from-bottom {
+  from {
+    transform: translateY(220%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes enter-from-bottom {
+  from {
+    transform: translateX(220%);
+    opacity: 0;
+
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+
+  }
+}
+
+@keyframes appear-from-left {
+  from {
+    transform: translateX(200%);
+    opacity: 0;
+
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes appear-from-left {
+  from {
+    transform: translateX(200%);
+    opacity: 0;
+
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+@keyframes appear-from-right {
+  from {
+    transform: translateX(-200%);
+    opacity: 0;
+
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes appear-from-right {
+  from {
+    transform: translateX(-200%);
+    opacity: 0;
+
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 // END animations 
 
 // media queries
 
-@media screen and (max-width : 578px)and(min-width : 480px) {
-  .home__title {
-    font-size: 6.5em;
-    line-height: 90px !important;
-    margin-top: 25% !important;
-
-  }
-
-  .home__btns-container {
-    margin: 15% !important;
-  }
-}
-
-@media screen and (max-width : 479px)and(min-width : 360px) {
-  .home__title {
-    font-size: 5.5em;
-    line-height: 80px !important;
-    margin-top: 35% !important;
-
-  }
-
-  .home__btns-container {
-    margin: 10% !important;
-  }
-}
-
-@media screen and (max-width : 359px) {
-  .home__title {
-    font-size: 4.8em;
-    line-height: 70px !important;
-    margin-top: 40% !important;
-
-  }
-
-}
-
-@media screen and (max-width : 870px)and(min-width : 579px) {
-  .home__title {
-    font-size: 8em;
-    margin-top: 20% !important;
-
-  }
-}
-
-@media screen and (min-width : 871px) {
-  .home__title {
-    font-size: 9em;
-  }
-}
 
 // END media queries
 

@@ -2,48 +2,49 @@
 
 #home {
   min-height: 100vh;
-  background-image: url('~src/assets/home-bg.png');
+  background-image: url('~src/assets/home-bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
-}
 
-.home__title {
-  line-height: 120px;
-  color: #ffffff;
-  font-family: 'Kaushan Script', cursive;
-  text-align: center;
-  margin-top: 12%;
-  text-transform: uppercase;
+  .home__to-ings {
+    width: 300px;
+    background-color: rgba($color: #580c04, $alpha: 0.7);
+    color: #fff;
+    padding: 1.5em;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    border: 0;
+    border-radius: 5px;
+    @include g-shadow;
+    cursor: pointer;
+    outline: none;
+    margin: 50px;
 
-  span {
-    color: $primary-color;
+    &:hover {
+      background-color: rgba($color: #580c04, $alpha: 0.4);
+
+    }
+
+    opacity: 0;
+
+    animation: appear-from-right 1.5s ease-in-out forwards;
   }
 
-  span:nth-child(1) {
-    color: $secondary-color;
-  }
-}
+  .home__to-recipes {
+    @extend .home__to-ings;
+    background-color: rgba($color: #f1a80c, $alpha: 0.7);
 
+    &:hover {
+      background-color: rgba($color: #f1a80c, $alpha: 0.4);
 
-.home__btn {
-  width: 120px;
-  height: 100px;
-  margin: 20px;
-  color: #ffffff;
-  font-size: 3.5em;
-  @include g-shadow;
-}
+    }
 
-.home__btn--second {
-  @extend .home__btn;
-  background-color: #363246;
-  border: $secondary-color;
-
-  &:hover {
-    background-color: #4d4763;
+    opacity: 0;
+    animation: appear-from-left 1.5s ease-in-out forwards;
   }
 }

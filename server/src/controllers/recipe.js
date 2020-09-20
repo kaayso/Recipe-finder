@@ -62,7 +62,10 @@ const getRecipesFromIngredients = async (req, res, next) => {
   const result = new Set();
 
   try {
-    const recipes = await Recipe.find();
+    let recipes = await Recipe.find();
+    recipes = recipes.filter((i) => {
+      if (i.uid === req.headers.uid || i.default === true) return i;
+    });
     recipes.forEach(recipe => {
       const recipeIngs = recipe.ingredients.map(ing => ing.name.toLowerCase());
       userIngredients.forEach(uIng => {

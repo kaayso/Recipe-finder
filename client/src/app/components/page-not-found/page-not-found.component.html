@@ -1,10 +1,15 @@
 <section id="page-not-found">
   <div class="page-not-found__container">
-    <img src="../../../assets/404_not_found.png" alt="">
-    <p>
-      Page introuvable! Pour revenir à la page d'accueil, veillez cliquer sur le bouton ci-dessous.
-    </p>
-    <button (click)="goToHome()" nz-button nzType="primary">
+    <!-- <img class="page-not-found__img" src="../../../assets/404_not_found.png" alt=""> -->
+    <ul class="page-not-found__404">
+      <li>4</li>
+      <li>0</li>
+      <li>4</li>
+    </ul>
+    <div class="page-not-found__not-found">page introuvable.</div>
+    <div class="page-not-found__text">
+      Cliquez sur le boutton ci-dessous pour revenir à la page d'accueil.</div>
+    <button class="page-not-found__button" (click)="goToHome()" nz-button nzType="primary">
       Accueil
     </button>
   </div>

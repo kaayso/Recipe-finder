@@ -1,9 +1,10 @@
 <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
   <div class="loader-layout" *ngIf="loading">
-    <nz-spin>
-    </nz-spin>
+    <i nz-icon [nzType]="'loading'"></i>
+
   </div>
   <img src="../../../assets/logo-app.svg" alt="Recipe finder" class="login-form__logo">
+
   <nz-form-item>
     <nz-form-control nzErrorTip="Veuillez saisir votre pseudo SVP!">
       <nz-input-group class="login-form__input" nzPrefixIcon="user">

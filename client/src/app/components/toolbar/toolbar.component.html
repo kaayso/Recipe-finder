@@ -8,16 +8,15 @@
   <div nz-col nzSpan="10">
     <button *ngIf="showMenu" class="toolbar__btn" nz-button nzType="primary">
       <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
-        <!-- <i nz-icon nzType="user" nzTheme="outline"></i> -->
         <nz-avatar [nzText]="usernameFirstLetter" class="toolbar__avatar"></nz-avatar>
       </a>
     </button>
 
     <nz-dropdown-menu #menu="nzDropdownMenu">
       <ul nz-menu>
-        <li nz-menu-item (click)="goToRecipes()"><i nz-icon nzType="star" nzTheme="outline"></i>Mes recettes</li>
-        <li nz-menu-item (click)="goToIngredients()"><i nz-icon nzType="search" nzTheme="outline"></i>Rechercher une
-          recette</li>
+        <li nz-menu-item (click)="goToRecipes()"><i nz-icon nzType="star" nzTheme="outline"></i>Recettes</li>
+        <li nz-menu-item (click)="goToIngredients()"><i nz-icon nzType="search" nzTheme="outline"></i>Rechercher/Ajouter
+        </li>
         <li nz-menu-divider></li>
         <li nz-menu-item (click)="logout()"><i nz-icon nzType="logout" nzTheme="outline"></i>Déconnexion</li>
       </ul>

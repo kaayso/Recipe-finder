@@ -1,12 +1,16 @@
+@import "../../../styles.scss";
+
 #login {
   min-height: 100vh;
-  background-image: url('~src/assets/login-bg.png');
+  background-image: url('~src/assets/login-bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  flex-wrap: wrap;
 }
 
 .app-login-form {
@@ -15,14 +19,34 @@
   width: 100%;
   z-index: 2;
   margin: 5px;
+  animation: appear-from-left 1s ease-in-out forwards;
 }
 
-.login__filter {
-  position: absolute;
-  top: 64px;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgba($color: #111, $alpha: 0.4);
-  z-index: 1;
+
+.login__text {
+  margin-right: 50px;
+  margin-left: 50px;
+  padding: 1em;
+
+  .login__title {
+    text-align: center;
+    font-weight: 900;
+    font-size: calc(3em + 3vmin);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    color: rgba($color: #0e0e0e85, $alpha: .5);
+    border-bottom: 1px solid rgba($color: #0e0e0e85, $alpha: .5);
+  }
+}
+
+
+@media screen and (max-width : 746px) {
+  .app-login-form {
+    animation: enter-from-bottom 1s ease-in-out forwards;
+  }
+
+  .login__text {
+    margin-top: 3em;
+  }
 }
