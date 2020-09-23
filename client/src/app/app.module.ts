@@ -69,6 +69,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 // env
 import { environment } from 'src/environments/environment';
@@ -127,6 +128,7 @@ registerLocaleData(fr);
     NzUploadModule,
     NzMessageModule,
     NzTableModule,
+    NzPopconfirmModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),

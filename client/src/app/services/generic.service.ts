@@ -29,4 +29,11 @@ export class GenericService {
       .put<any>(`${environment.apiUrl}${ep}`, body)
       .pipe(shareReplay(1));
   }
+
+  // DELETE
+  delete(ep) {
+    return this.http
+      .delete<any>(`${environment.apiUrl}${ep}`)
+      .pipe(shareReplay(1));
+  }
 }

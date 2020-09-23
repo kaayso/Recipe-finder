@@ -49,12 +49,15 @@ const updateRecipe = (req, res, next) => {
 };
 
 const deleteRecipe = (req, res, next) => {
-  Recipe.findOneAndDelete(req._id, (err) => {
-    if (err) return next(err);
-    return res.status(200).json({
-      message: 'Recipe has been deleted'
+  Recipe.findOneAndDelete({
+      _id: req.params.id
+    },
+    (err) => {
+      if (err) return next(err);
+      return res.status(200).json({
+        message: 'Recipe has been deleted'
+      });
     });
-  });
 };
 
 const getRecipesFromIngredients = async (req, res, next) => {

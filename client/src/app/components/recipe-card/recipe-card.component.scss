@@ -53,7 +53,6 @@
 .recipe-card__category {
   color: #afafaf;
   font-size: .9em;
-  margin-left: 0 !important;
 }
 
 
@@ -182,4 +181,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
+  div {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 }

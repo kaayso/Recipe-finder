@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Ingredient } from 'src/app/interfaces/ingredient';
 import { Quantity } from 'src/app/interfaces/quantity';
+import { GenericService } from 'src/app/services/generic.service';
+import { api } from 'src/app/ws/api';
 
 @Component({
   selector: 'app-recipe-card',
@@ -20,7 +22,7 @@ export class RecipeCardComponent implements OnInit {
   @Input() ingredients: Ingredient[];
   visible: boolean = false;
 
-  constructor() {}
+  constructor(private genericService: GenericService) {}
 
   open(): void {
     this.visible = true;
@@ -47,6 +49,18 @@ export class RecipeCardComponent implements OnInit {
 
   setVisibility(visibility): void {
     this.showRecipeSetter = visibility;
+  }
+
+  deleteRecipe(): void {
+    this.genericService.delete(`${api.Recipe}${this._id}`).subscribe(
+      (res) => {
+        console.log(res);
+        window.location.reload();
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   ngOnInit(): void {}

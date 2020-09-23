@@ -18,23 +18,32 @@
       <h3 class="recipe-card__name" (click)="open()">{{getName()}}</h3>
       <div class="recipe-card__footer">
         <div class="recipe-card__category">{{category}}</div>
-        <i *ngIf="!default" class="recipe-card__edit-btn" (click)="editRecipe()" nz-icon nzType="edit"
-          nzTheme="outline"></i>
+        <div nzTooltipTitle="Éditer" nzTooltipPlacement="top" nz-button nz-tooltip>
+          <i *ngIf="!default" class="recipe-card__edit-btn" (click)="editRecipe()" nz-icon nzType="edit"
+            nzTheme="outline"></i>
+        </div>
+        <div nzTooltipTitle="Supprimer" nzTooltipPlacement="top" nz-button nz-tooltip>
+          <a nz-popconfirm (nzOnConfirm)="deleteRecipe()" nzPopconfirmTitle="Êtes-vous sûr?" [nzIcon]="iconTpl"><i
+              *ngIf="!default" class="recipe-card__edit-btn" nz-icon nzType="delete" nzTheme="outline"></i></a>
+          <ng-template #iconTpl>
+            <i nz-icon nzType="question-circle-o" style="color: #FF4D4F;"></i>
+          </ng-template>
+        </div>
       </div>
     </div>
 
   </div>
   <div nz-col class="recipe-card__right-side" [nzXXl]="16" [nzXl]="16" [nzLg]="16" [nzMd]="10" [nzSm]="10">
     <div class="recipe-card__infos-desktop">
-      <div>
+      <div nzTooltipTitle="Temps" nzTooltipPlacement="top" nz-button nz-tooltip>
         <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
         {{time.value}} {{time.unity}}
       </div>
-      <div>
+      <div nzTooltipTitle="Nombre de personnes" nzTooltipPlacement="top" nz-button nz-tooltip>
         <i nz-icon nzType="user" nzTheme="outline"></i>
         {{persons}}
       </div>
-      <div *ngIf="!default">
+      <div *ngIf="!default" nzTooltipTitle="Ma recette" nzTooltipPlacement="top" nz-button nz-tooltip>
         <i nz-icon nzType="star" nzTheme="outline"></i>
       </div>
     </div>
