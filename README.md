@@ -9,6 +9,6 @@ Find recipes from Ingredients you already have.
 [x] image format & weight
 [x] Add set btn to my recipe
 [x] remove ing -> launch a new search
-[ ] recipe card : remove btn
+[x] recipe card : remove btn
 [ ] Add some recipe
 [ ] deploy front
