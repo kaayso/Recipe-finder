@@ -2,6 +2,9 @@
 
 .ing-card {
   width: 240px;
+  opacity: 0;
+  animation: zoom-out 0.8s ease-in-out forwards;
+
 }
 
 .ing-card__item-wrapper {

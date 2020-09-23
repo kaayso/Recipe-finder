@@ -1,27 +1,26 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl,
 } from '@angular/forms';
-import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { Ingredient } from 'src/app/interfaces/ingredient';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs';
 import { GenericService } from 'src/app/services/generic.service';
 import { api } from 'src/app/ws/api';
 import { UploadService } from 'src/app/services/upload.service';
 import { CookiesService } from 'src/app/services/cookies.service';
+import { Quantity } from 'src/app/interfaces/quantity';
+import { Ingredient } from 'src/app/interfaces/ingredient';
 
 @Component({
-  selector: 'app-add-recipe-form',
-  templateUrl: './add-recipe-form.component.html',
-  styleUrls: ['./add-recipe-form.component.scss'],
+  selector: 'app-set-recipe',
+  templateUrl: './set-recipe.component.html',
+  styleUrls: ['./set-recipe.component.scss'],
 })
-export class AddRecipeFormComponent implements OnInit {
-  isVisible = false;
+export class SetRecipeComponent implements OnInit {
   isOkLoading = false;
   validateForm!: FormGroup;
   ingredientsForm!: FormGroup;
@@ -33,30 +32,48 @@ export class AddRecipeFormComponent implements OnInit {
     controlInstance: string;
   }> = [];
   ingsFormIsOK = false;
-  @Input() disabled: boolean;
-  @Input() userIngredients: Ingredient[];
+  @Input() isVisible: boolean = false;
+  @Input() name: string;
+  @Input() _id: string;
+  @Input() image: string;
+  @Input() category: string;
+  @Input() time: Quantity;
+  @Input() description: string;
+  @Input() persons: number;
+  @Input() ingredients: Ingredient[];
+  @Output() setVisibility: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private fb: FormBuilder,
     private msg: NzMessageService,
     private genericService: GenericService,
     private uploadService: UploadService,
-    private router: Router,
     private cookiesService: CookiesService
-  ) {
+  ) {}
+
+  ngOnInit(): void {
+    this.init();
+  }
+
+  init(): void {
     this.validateForm = this.fb.group({
-      name: [null, [Validators.required]],
-      category: ['plat principal', [Validators.required]],
-      timeUnity: ['h', [Validators.required]],
+      name: [this.name, [Validators.required]],
+      category: [this.category, [Validators.required]],
+      timeUnity: [this.time.unity, [Validators.required]],
       timeValue: [
-        null,
+        this.time.value,
         [Validators.required, Validators.pattern('[+-]?([0-9]*[.])?[0-9]+')],
       ],
-      description: ['', []],
-      persons: [null, [Validators.required, Validators.pattern('^[0-9]+$')]],
+      description: [this.description, []],
+      persons: [
+        this.persons,
+        [Validators.required, Validators.pattern('^[0-9]+$')],
+      ],
     });
 
     this.ingredientsForm = this.fb.group({});
+    this.setupFields();
+    this.ingsFormIsOK = false;
   }
 
   beforeUpload = (file: NzUploadFile, _fileList: NzUploadFile[]) => {
@@ -105,13 +122,13 @@ export class AddRecipeFormComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
-
   private setupFields(): void {
     const currentControls = this.listOfControl.map((c) => c.controlInstance);
 
-    for (let i = 0; i < this.userIngredients.length; i++) {
-      const ingredientName = this.userIngredients[i].name;
+    for (let i = 0; i < this.ingredients.length; i++) {
+      const ingredientName = this.ingredients[i].name;
+      const ingredientValue = this.ingredients[i].quantity.value;
+      const ingredientUnity = this.ingredients[i].quantity.unity;
 
       if (!currentControls.includes(ingredientName)) {
         const control = {
@@ -121,21 +138,21 @@ export class AddRecipeFormComponent implements OnInit {
         this.listOfControl.push(control);
         this.ingredientsForm.addControl(
           `${control.controlInstance}-v`,
-          new FormControl(null, [
+          new FormControl(ingredientValue, [
             Validators.required,
             Validators.pattern('[+-]?([0-9]*[.])?[0-9]+'),
           ])
         );
         this.ingredientsForm.addControl(
           `${control.controlInstance}-u`,
-          new FormControl('g', Validators.required)
+          new FormControl(ingredientUnity, Validators.required)
         );
       }
     }
 
     // clean ingredientsForm and listOfControl => remove deprecated ingredients
-    if (this.listOfControl.length !== this.userIngredients.length) {
-      const userIngredientsName = this.userIngredients.map((ing) => ing.name);
+    if (this.listOfControl.length !== this.ingredients.length) {
+      const userIngredientsName = this.ingredients.map((ing) => ing.name);
       let listOfControlClone = [...this.listOfControl];
       // check if there is extra ings in control list
       for (let i = 0; i < this.listOfControl.length; i++) {
@@ -152,18 +169,6 @@ export class AddRecipeFormComponent implements OnInit {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    // only run when property "userIngredients" changed
-    if (changes['userIngredients']) {
-      this.setupFields();
-      this.ingsFormIsOK = false;
-    }
-  }
-
-  showModal(): void {
-    this.isVisible = true;
-  }
-
   private buildPayload(recipeInfos: any, ingredientsInfos: any): any {
     // Prepare recipeInfos object
     let payload = { ...recipeInfos };
@@ -171,11 +176,13 @@ export class AddRecipeFormComponent implements OnInit {
       unity: recipeInfos.timeUnity,
       value: recipeInfos.timeValue,
     };
+    payload._id = this._id;
     payload.default = false;
+    payload.image = this.image;
     delete payload.timeUnity;
     delete payload.timeValue;
     // Prepare ingredientsInfos object
-    let ingsPayload = [...this.userIngredients];
+    let ingsPayload = [...this.ingredients];
 
     for (let ing of ingsPayload) {
       delete ing.category;
@@ -202,8 +209,8 @@ export class AddRecipeFormComponent implements OnInit {
       }
     }
 
-    // Create a recipe
-    if (this.validateForm.valid && this.ingredientsForm.valid) {
+    // Upload a recipe
+    if (this.validateForm.valid && this.ingsFormIsOK) {
       this.isOkLoading = true;
       // Prepare payloads
       const payload = this.buildPayload(
@@ -220,13 +227,12 @@ export class AddRecipeFormComponent implements OnInit {
         payload.image = this.uploadService.url;
       }
 
-      this.genericService.post(api.Recipe, payload).subscribe(
+      this.genericService.put(api.Recipe, payload).subscribe(
         (res) => {
-          console.log(res.message);
-          this.msg.success('Recette ajoutée!');
-          this.isVisible = false;
-          this.isOkLoading = false;
-          this.router.navigateByUrl('/recipes');
+          console.log(res);
+          this.msg.success('Recette à été mise à jour!');
+          window.location.reload();
+          this.leave();
         },
         (err) => {
           if (err.status === 422) {
@@ -242,14 +248,13 @@ export class AddRecipeFormComponent implements OnInit {
   }
 
   handleCancel(): void {
-    if (this.ingsFormIsOK) {
-      this.ingsFormIsOK = false;
-    } else {
+    if (!this.ingsFormIsOK) {
       this.leave();
     }
+    this.ingsFormIsOK = false;
   }
 
   leave(): void {
-    this.isVisible = false;
+    this.setVisibility.emit(false);
   }
 }

@@ -4,6 +4,7 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .app-signup-form {
@@ -15,12 +16,8 @@
 }
 
 .signup__img {
-  // position: absolute;
-  // bottom: 0;
-  // left: 0;
   margin-top: 64px;
-  object-fit: cover;
   width: 100%;
   height: 40%;
-  // transform: rotate(180deg);
+  object-fit: cover;
 }

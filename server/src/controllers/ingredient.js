@@ -1,7 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 const Ingredient = require('../models/Ingredient');
 
-const ingredients = (req, res) => res.status(200).json(res.paginationResults);
+const ingredients = (req, res) => {
+  Ingredient.find((err, result) => {
+    if (err) return next(err);
+    return res.status(200).json(result);
+  });
+};
 
 const ingredientsByCategory = (req, res) => {
   console.log(res.paginationResults)

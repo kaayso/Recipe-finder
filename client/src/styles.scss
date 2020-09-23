@@ -197,6 +197,33 @@ $tertiary-color : #342c2c;
   }
 }
 
+@keyframes zoom-out {
+  from {
+    transform: scale(0);
+    opacity: 0;
+
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+
+  }
+}
+
+@-webkit-keyframes zoom-out {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+
+  }
+}
+
 // END animations 
 
 // media queries

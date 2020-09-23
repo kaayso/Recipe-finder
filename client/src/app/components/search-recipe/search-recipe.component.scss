@@ -2,3 +2,33 @@
   min-height: 100vh;
   padding-top: 100px;
 }
+
+.search-recipe__back-btn {
+  position: fixed;
+  top: 50%;
+  left: 1em;
+  z-index: 2;
+  opacity: 0;
+  animation: appear-from-right 1.2s ease-in-out forwards;
+}
+
+.search-recipe__ingredients {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.search-recipe__tag {
+  margin: 1px 2px;
+  text-transform: capitalize;
+
+}
+
+.search-recipe__counter.search-recipe__counter {
+  position: fixed;
+  top: 100px;
+  right: 1.38em;
+  z-index: 2;
+  opacity: 0;
+  animation: appear-from-left 1.2s ease-in-out forwards;
+}

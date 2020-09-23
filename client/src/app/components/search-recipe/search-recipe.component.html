@@ -1,3 +1,19 @@
 <section id="search-recipe">
-  <app-virtual-scroll-component [data]="recipesFound"></app-virtual-scroll-component>
+  <app-back-button path="/ingredients" class="search-recipe__back-btn"></app-back-button>
+  <button (click)="open()" nz-button class="search-recipe__counter" nzType="primary"
+    nzShape="circle">{{userIngredients.length}}</button>
+
+  <nz-drawer style="padding-bottom: 0;" [nzClosable]="false" [nzVisible]="isVisible" nzPlacement="right"
+    nzTitle="Ingrédients sélectionnés" (nzOnClose)="close()">
+    <div class="search-recipe__ingredients">
+      <div *ngFor="let ing of userIngredients">
+        <nz-tag nzMode="closeable" (nzOnClose)="onCloseTag($event, ing.name)" class="search-recipe__tag"
+          [nzChecked]="true" nzColor="default">
+          {{ ing.name }}
+        </nz-tag>
+      </div>
+    </div>
+  </nz-drawer>
+  <app-virtual-scroll-component [data]="recipesFound">
+  </app-virtual-scroll-component>
 </section>

@@ -5,7 +5,7 @@
     <ng-template nz-virtual-scroll let-data let-index="_id">
       <tr>
         <td>
-          <app-recipe-card [name]="data.name" [image]="data.image" [category]="data.category"
+          <app-recipe-card [_id]="data._id" [name]="data.name" [image]="data.image" [category]="data.category"
             [ingredients]="data.ingredients" [persons]="data.persons" [time]="data.time"
             [description]="data.description" [default]="data.default">
           </app-recipe-card>
@@ -14,3 +14,11 @@
     </ng-template>
   </tbody>
 </nz-table>
+
+<!-- <div *ngFor="let recipe of data">
+
+  <app-recipe-card [_id]="recipe._id" [name]="recipe.name" [image]="recipe.image" [category]="recipe.category"
+    [ingredients]="recipe.ingredients" [persons]="recipe.persons" [time]="recipe.time"
+    [description]="recipe.description" [default]="recipe.default">
+  </app-recipe-card>
+</div> -->

@@ -14,11 +14,7 @@ const schema = new Schema({
   category: requiredString,
   part: {
     type: String,
-  },
-  default: {
-    type: Boolean,
-    required: true,
-  },
+  }
 });
 
 const Ingredient = mongoose.model('Ingredient', schema);

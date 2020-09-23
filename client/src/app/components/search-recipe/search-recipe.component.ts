@@ -12,6 +12,8 @@ import { Recipe } from 'src/app/interfaces/recipe';
   styleUrls: ['./search-recipe.component.scss'],
 })
 export class SearchRecipeComponent implements OnInit {
+  isVisible: boolean = false;
+  searchAgain: boolean = false;
   userIngredients: Ingredient[];
   recipesFound: Recipe[];
 
@@ -27,6 +29,10 @@ export class SearchRecipeComponent implements OnInit {
     if (!this.userIngredients) {
       this.router.navigateByUrl('/ingredients');
     }
+    this.getRecipes();
+  }
+
+  private getRecipes(): void {
     const payload = { userIngredients: this.userIngredients };
     this.genericService.post(api.SearchRecipe, payload).subscribe(
       (res) => {
@@ -36,5 +42,28 @@ export class SearchRecipeComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  close(): void {
+    this.isVisible = false;
+    if (this.userIngredients.length === 0) {
+      this.router.navigateByUrl('/ingredients');
+    }
+    if (this.searchAgain) {
+      this.getRecipes();
+      this.searchAgain = false;
+    }
+  }
+
+  open(): void {
+    this.isVisible = true;
+  }
+
+  onCloseTag(event: Event, name): void {
+    event.preventDefault();
+    this.userIngredients = this.userIngredients.filter(
+      (ing) => ing.name !== name
+    );
+    this.searchAgain = true;
   }
 }

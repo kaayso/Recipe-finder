@@ -72,6 +72,8 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 
 // env
 import { environment } from 'src/environments/environment';
+import { BackButtonComponent } from './components/back-button/back-button.component';
+import { SetRecipeComponent } from './components/set-recipe/set-recipe.component';
 
 registerLocaleData(fr);
 
@@ -93,6 +95,8 @@ registerLocaleData(fr);
     RecipesComponent,
     AddRecipeFormComponent,
     VirtualScrollComponentComponent,
+    BackButtonComponent,
+    SetRecipeComponent,
   ],
   imports: [
     BrowserModule,

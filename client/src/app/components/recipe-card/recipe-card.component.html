@@ -2,7 +2,7 @@
   <div nz-col class="recipe-card__left-side" [nzXXl]="8" [nzXl]="8" [nzLg]="8" [nzMd]="12" [nzSm]="12" [nzXs]="24">
     <div>
       <div class="recipe-card__img" (click)="open()">
-        <i nz-icon *ngIf="!default" nzType="star" class="recipe-card__own-recipe" nzTheme="fill"></i>
+        <i nz-icon *ngIf="!default" nzType="star" class="recipe-card__own-recipe" nzTheme="outline"></i>
         <div class="recipe-card__infos-mobile">
           <div>
             <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
@@ -16,7 +16,11 @@
         <img alt="" src="{{image}}" />
       </div>
       <h3 class="recipe-card__name" (click)="open()">{{getName()}}</h3>
-      <div class="recipe-card__category">{{category}}</div>
+      <div class="recipe-card__footer">
+        <div class="recipe-card__category">{{category}}</div>
+        <i *ngIf="!default" class="recipe-card__edit-btn" (click)="editRecipe()" nz-icon nzType="edit"
+          nzTheme="outline"></i>
+      </div>
     </div>
 
   </div>
@@ -31,12 +35,12 @@
         {{persons}}
       </div>
       <div *ngIf="!default">
-        <i nz-icon nzType="star" nzTheme="fill"></i>
+        <i nz-icon nzType="star" nzTheme="outline"></i>
       </div>
     </div>
     <p>{{getDescription()}}</p>
-    <button nz-button nzType="primary" (click)="open()">
-      <span>Plus...</span>
+    <button nz-button nzType="default" (click)="open()">
+      <span>en savoir plus...</span>
     </button>
   </div>
 </div>
@@ -66,3 +70,9 @@
     <div>{{description}}</div>
   </div>
 </nz-drawer>
+<div *ngIf="showRecipeSetter">
+  <app-set-recipe [isVisible]="showRecipeSetter" (setVisibility)="setVisibility($event)" [name]="name" [image]="image"
+    [category]="category" [_id]="_id" [ingredients]="ingredients" [persons]="persons" [time]="time"
+    [description]="description">
+  </app-set-recipe>
+</div>

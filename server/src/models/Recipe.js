@@ -34,7 +34,7 @@ const schema = new Schema({
   name: requiredString,
   image: {
     type: String,
-    default: 'https://firebasestorage.googleapis.com/v0/b/recipe-finder-a7ec2.appspot.com/o/images%2Fdefault%2Fdefault_recipe.png?alt=media&token=ff5398e3-d6dd-46c3-948f-67c5e458e9d6',
+    default: 'https://firebasestorage.googleapis.com/v0/b/recipe-finder-a7ec2.appspot.com/o/images%2Fdefault%2Fdefault_recipe.jpg?alt=media&token=9436b50e-32ff-40c7-a14f-bf8ee70d0ac6',
   },
   persons: requiredNumber,
   ingredients: {

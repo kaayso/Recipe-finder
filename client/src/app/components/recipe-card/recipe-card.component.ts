@@ -8,6 +8,8 @@ import { Quantity } from 'src/app/interfaces/quantity';
   styleUrls: ['./recipe-card.component.scss'],
 })
 export class RecipeCardComponent implements OnInit {
+  showRecipeSetter: boolean = false;
+  @Input() _id: string;
   @Input() name: string;
   @Input() image: string;
   @Input() category: string;
@@ -34,9 +36,17 @@ export class RecipeCardComponent implements OnInit {
   }
 
   getDescription(): string {
-    if (this.description.length > 120)
-      return this.description.slice(0, 120) + ' ...';
+    if (this.description.length > 220)
+      return this.description.slice(0, 220) + ' ...';
     return this.description;
+  }
+
+  editRecipe(): void {
+    this.showRecipeSetter = true;
+  }
+
+  setVisibility(visibility): void {
+    this.showRecipeSetter = visibility;
   }
 
   ngOnInit(): void {}

@@ -10,14 +10,12 @@ const {
 } = require('../controllers/ingredient');
 const {
   auth,
-  pagination
 } = require('../middlewares');
-const Ingredient = require('../models/Ingredient');
 
 const router = Router();
 
-router.get('/', auth, pagination(Ingredient), ingredients);
-router.get('/category/:cat', auth, pagination(Ingredient), ingredientsByCategory);
+router.get('/', auth, ingredients);
+router.get('/category/:cat', auth, ingredientsByCategory);
 router.get('/:id', auth, ingredientById);
 router.post('/', auth, createIngredient);
 router.put('/', auth, updateIngredient);

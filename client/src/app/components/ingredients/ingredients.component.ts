@@ -25,7 +25,7 @@ export class IngredientsComponent implements OnInit {
   ngOnInit(): void {
     this.genericService.get(api.Ingredient).subscribe(
       (res) => {
-        this.ingredients = this._groupByCategory(res.data);
+        this.ingredients = this._groupByCategory(res);
       },
       (err) => console.error(err)
     );

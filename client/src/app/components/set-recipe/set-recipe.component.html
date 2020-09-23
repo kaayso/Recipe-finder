@@ -1,20 +1,15 @@
-<button [disabled]="disabled" class="recipes-p__add-btn" (click)="showModal()" nz-button nzType="primary">
-  <div nzTooltipTitle="Ajouter" nzTooltipPlacement="left" nz-button nz-tooltip>
-    <i nz-icon nzType="plus"></i>
-  </div>
-</button>
-<nz-modal [(nzVisible)]="isVisible" nzTitle="Créer une recette" (nzOnCancel)="leave()" [nzFooter]="modalFooter">
-  <form *ngIf="!ingsFormIsOK" class="add-recipe-form" nz-form [formGroup]="ingredientsForm">
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Modifier une recette" (nzOnCancel)="leave()" [nzFooter]="modalFooter">
+  <form *ngIf="!ingsFormIsOK" class="set-recipe-form" nz-form [formGroup]="ingredientsForm">
     <nz-form-item *ngFor="let control of listOfControl; let i = index">
       <nz-form-label [nzXl]="24" [nzLg]="24" [nzMd]="24" [nzSm]="24" [nzXs]="24" [nzFor]="control.controlInstance"
         nzRequired>
-        <span class="add-recipe-form__ingredient-name">
-          {{control.controlInstance}}
+        <span class="set-recipe-form__ingredient-name">
+          {{control?.controlInstance}}
         </span>
       </nz-form-label>
       <nz-form-control [nzXl]="16" [nzLg]="16" [nzMd]="16" [nzSm]="16" [nzXs]="16"
         nzErrorTip="Veuillez spécifer la quantité...">
-        <div class="add-recipe-form__input-grp">
+        <div class="set-recipe-form__input-grp">
           <input nz-input placeholder="3.5" [attr.id]="control.id" [formControlName]="control.controlInstance+'-v'" />
           <nz-select [formControlName]="control.controlInstance+'-u'">
             <nz-option nzValue="g" nzLabel="Gramme(s)"></nz-option>
@@ -28,7 +23,7 @@
 
     </nz-form-item>
   </form>
-  <form *ngIf="ingsFormIsOK" class="add-recipe-form" nz-form [formGroup]="validateForm">
+  <form *ngIf="ingsFormIsOK" class="set-recipe-form" nz-form [formGroup]="validateForm">
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="recipeName" nzRequired>
         <span>
@@ -61,7 +56,7 @@
         </span>
       </nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Veuillez entrer le temps de préparation...">
-        <div id="time" class="add-recipe-form__input-grp">
+        <div id="time" class="set-recipe-form__input-grp">
           <input nz-input placeholder="1.5" formControlName="timeValue" />
           <nz-select formControlName="timeUnity">
             <nz-option nzValue="h" nzLabel="Heure(s)"></nz-option>
