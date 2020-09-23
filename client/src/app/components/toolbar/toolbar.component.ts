@@ -41,7 +41,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     if (this.authService.isLoggedIn()) this.showMenu = true;
     this.usernameFirstLetter = this.authService
       .getUserCredential('username')
-      .split('')[0];
+      ?.split('')[0];
   }
 
   logout(): void {
