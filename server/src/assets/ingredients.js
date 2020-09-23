@@ -625,6 +625,122 @@ const starchy = [{
     category: 'Féculents',
   },
   {
+    name: 'Les Bucatinis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Capellinis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Spaghettis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Fettuccines',
+    category: 'Féculents',
+  },
+  {
+    name: 'La Lasagne',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Linguines',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Pappardelles',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Tagliatelles',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Taglionis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Cavatappis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Ditalinis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Macaronis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Pennes',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Rigatonis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Zitis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Cannellonis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Raviolis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Tortellinis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Fidéos',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Orzos',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les vermicelles',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Campanelles',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Casarecces',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Conchiglies',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Farfalles',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Fusillis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Gemellis',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Orecchiettes',
+    category: 'Féculents',
+  },
+  {
+    name: 'Les Radiatores',
+    category: 'Féculents',
+  },
+  {
 
     name: 'Blé',
     category: 'Féculents',

@@ -38,6 +38,6 @@ const recipes = [{
   },
   default: true,
   description: "Mélanger la semoule, l'huile, le sel et la levure dans un grand récipient (ex : saladier). Ajouter l'eau tiède petit à petit tout en malaxant le mélange jusqu'à obtenir une pâte souple mais compacte. Bien pétrir sur une table en aérant la pâte. Diviser la pâte en deux boules de pâtes. Aplatir chacune des deux boules de pâte à l'aide d'un rouleau à pâtisserie pour obtenir deux galettes bien rondes d'un peu moins d'un cm d'épaisseur. Laisser reposer 30 min les deux galettes en les recouvrant d'un torchon. Faire cuire les galettes dans une crêpière à feu moyen - fort des deux côtés. Faire tourner les galettes pendant la cuisson pour obtenir une couleur doré homogène. Durant la cuisson la pâte est susceptible de gonfler par endroits, du coup faire des troues à l'aide d'une fourchette.",
-}, ];
+}];
 
 module.exports = recipes;
