@@ -2,12 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Muli:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;900&display=swap");
+
 body {
   min-height: 100vh;
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -20,10 +22,11 @@ html {
     opacity: 0;
     font-size: .2em;
   }
+
   to {
     opacity: 1;
     -webkit-transform: translateY(-200%);
-            transform: translateY(-200%);
+    transform: translateY(-200%);
     font-size: 1.4em;
   }
 }
@@ -33,10 +36,11 @@ html {
     opacity: 0;
     font-size: .2em;
   }
+
   to {
     opacity: 1;
     -webkit-transform: translateY(-200%);
-            transform: translateY(-200%);
+    transform: translateY(-200%);
     font-size: 1.4em;
   }
 }
@@ -44,22 +48,24 @@ html {
 @keyframes filter {
   from {
     -webkit-filter: brightness(0%);
-            filter: brightness(0%);
+    filter: brightness(0%);
   }
+
   to {
     -webkit-filter: brightness(30%);
-            filter: brightness(30%);
+    filter: brightness(30%);
   }
 }
 
 @-webkit-keyframes filter {
   from {
     -webkit-filter: brightness(0%);
-            filter: brightness(0%);
+    filter: brightness(0%);
   }
+
   to {
     -webkit-filter: brightness(30%);
-            filter: brightness(30%);
+    filter: brightness(30%);
   }
 }
 
@@ -69,6 +75,7 @@ html {
     line-height: 90px !important;
     margin-top: 25% !important;
   }
+
   .home__btns-container {
     margin: 15% !important;
   }
@@ -80,6 +87,7 @@ html {
     line-height: 80px !important;
     margin-top: 35% !important;
   }
+
   .home__btns-container {
     margin: 10% !important;
   }
@@ -105,4 +113,5 @@ html {
     font-size: 9em;
   }
 }
+
 /*# sourceMappingURL=styles.css.map */
