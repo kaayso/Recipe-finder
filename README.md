@@ -24,7 +24,7 @@ Clone down this repository. You will need `node` and `npm` or `yarn` installed g
 | CORS_ORIGIN         | CORS origin (development mode -> http://localhost:4200) |
 | SECRET_TOKEN_ACCESS | Private key to encode/decode a JWT                      |
 
-# Install application manualy
+### Install application manualy
 
 Installation (client):
 
@@ -49,7 +49,7 @@ Start client:
 `npm run dev` (nodemon)<br />
 `npm run start`
 
-# Install application using Docker
+### Install application using Docker
 
 Installation & run application:
 
