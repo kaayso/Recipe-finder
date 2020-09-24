@@ -11,4 +11,4 @@ Find recipes from Ingredients you already have.
 [x] remove ing -> launch a new search
 [x] recipe card : remove btn
 [ ] Add some recipe
-[ ] deploy front
+[x] deploy front

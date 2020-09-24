@@ -10,7 +10,8 @@
   flex-direction: column;
   border-radius: 3px;
   @include g-shadow;
-  color: #bdbdbd
+  color: #bdbdbd;
+  margin-top: -10px;
 }
 
 .login-form__remind-me {

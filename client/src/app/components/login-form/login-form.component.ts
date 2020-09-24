@@ -53,9 +53,12 @@ export class LoginFormComponent implements OnInit {
       this.authService.login(this.validateForm.value).subscribe((response) => {
         if (response.ok) {
           this.loading = false;
-          this.msg.success(`Bienvenue ${username} !`, {
-            nzDuration: 2000,
-          });
+          setTimeout(() => {
+            this.msg.success(`Bienvenue ${username} !`, {
+              nzDuration: 1800,
+            });
+          }, 1400);
+
           // save username
           this.authService.saveUserCredentials([
             {

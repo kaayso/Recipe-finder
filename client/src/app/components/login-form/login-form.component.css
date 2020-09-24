@@ -2,12 +2,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Muli:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;900&display=swap");
+
 body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -20,10 +21,11 @@ html {
     opacity: 0;
     font-size: .2em;
   }
+
   to {
     opacity: 1;
     -webkit-transform: translateY(-200%);
-            transform: translateY(-200%);
+    transform: translateY(-200%);
     font-size: 1.4em;
   }
 }
@@ -33,10 +35,11 @@ html {
     opacity: 0;
     font-size: .2em;
   }
+
   to {
     opacity: 1;
     -webkit-transform: translateY(-200%);
-            transform: translateY(-200%);
+    transform: translateY(-200%);
     font-size: 1.4em;
   }
 }
@@ -44,22 +47,24 @@ html {
 @keyframes filter {
   from {
     -webkit-filter: brightness(0%);
-            filter: brightness(0%);
+    filter: brightness(0%);
   }
+
   to {
     -webkit-filter: brightness(30%);
-            filter: brightness(30%);
+    filter: brightness(30%);
   }
 }
 
 @-webkit-keyframes filter {
   from {
     -webkit-filter: brightness(0%);
-            filter: brightness(0%);
+    filter: brightness(0%);
   }
+
   to {
     -webkit-filter: brightness(30%);
-            filter: brightness(30%);
+    filter: brightness(30%);
   }
 }
 
@@ -69,6 +74,7 @@ html {
     line-height: 90px !important;
     margin-top: 25% !important;
   }
+
   .home__btns-container {
     margin: 15% !important;
   }
@@ -80,6 +86,7 @@ html {
     line-height: 80px !important;
     margin-top: 35% !important;
   }
+
   .home__btns-container {
     margin: 10% !important;
   }
@@ -114,15 +121,15 @@ html {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   border-radius: 3px;
   -webkit-box-shadow: -1px 4px 25px -6px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 4px 25px -6px rgba(0, 0, 0, 0.75);
@@ -147,4 +154,5 @@ html {
   max-width: 190px;
   margin: auto;
 }
+
 /*# sourceMappingURL=login-form.component.css.map */
