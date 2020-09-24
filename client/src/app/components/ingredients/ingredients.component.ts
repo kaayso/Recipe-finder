@@ -15,6 +15,7 @@ export class IngredientsComponent implements OnInit {
   loadedItems: any = {};
   userIngredients: Ingredient[] = [];
   optionsDisabled: boolean = true;
+  array = [1, 2, 3];
 
   constructor(
     private genericService: GenericService,

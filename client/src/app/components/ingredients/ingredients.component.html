@@ -1,5 +1,12 @@
 <section id="ingredients-p">
-  <div nz-row nzJustify="flex-start" [nzGutter]="[16, 16]">
+  <nz-carousel nzAutoPlay>
+    <div nz-carousel-content *ngFor="let index of array">
+      <div class="ingredients-p__caroussel_1" *ngIf="index === 1"></div>
+      <div class="ingredients-p__caroussel_2" *ngIf="index === 2"></div>
+      <div class="ingredients-p__caroussel_3" *ngIf="index === 3"></div>
+    </div>
+  </nz-carousel>
+  <div nz-row nzJustify="flex-start" class="ingredients-p__wrapper" [nzGutter]="[16, 16]">
     <div nz-col class="ingredients-p__item" [nzXXl]="4" [nzXl]="6" [nzLg]="8" [nzMd]="8" [nzSm]="12" [nzXs]="24">
       <app-ingredient-card (getIngredientByCategory)="getIngredientByCategory($event)"
         (selectedItems)="selectedItems($event)" description="Légumes feuilles, légumes tiges, légumes fleurs..."

@@ -1,12 +1,11 @@
 #ingredients-p {
   min-height: 100vh;
   width: 100%;
-  padding-top: 100px;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-top: 64px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  flex-direction: column;
 }
 
 .ingredients-p__item {
@@ -35,4 +34,43 @@
   i {
     font-size: 20px;
   }
+}
+
+[nz-carousel-content] {
+  height: 400px;
+  overflow: hidden;
+
+  div {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.ingredients-p__caroussel_1 {
+  background-image: url('../../../assets/caroussel_1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.ingredients-p__caroussel_2 {
+  background-image: url('../../../assets/caroussel_2.jpg');
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: bottom;
+  background-size: cover;
+
+}
+
+.ingredients-p__caroussel_3 {
+  background-image: url('../../../assets/caroussel_3.jpg');
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: bottom;
+  background-size: cover;
+
+}
+
+.ingredients-p__wrapper {
+  margin-top: 2em !important;
 }
