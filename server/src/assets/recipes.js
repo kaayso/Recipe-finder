@@ -238,7 +238,7 @@ const recipes = [{
         }
       },
       {
-        name: 'cacao',
+        name: 'lait',
         quantity: {
           unity: 'l',
           value: 0.08
