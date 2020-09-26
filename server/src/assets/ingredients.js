@@ -1038,6 +1038,10 @@ const meats = [{
     category: 'Viandes',
   },
   {
+    name: 'blanquette de veau',
+    category: 'Viandes',
+  },
+  {
 
     name: "carré d'agneau",
     category: 'Viandes',
