@@ -22,17 +22,27 @@ app.get('/', (req, res) => {
     "Author": "Faycel BENYOUSSA"
   })
 })
+app.use(express.static(`${__dirname}/assets/`));
+
+// CORS
+var whitelist = [process.env.CORS_ORIGIN, 'http://localhost:4200']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 
 // middlewares
 app.use(morgan('common'));
 app.use(helmet());
 app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN,
-  })
+  cors(corsOptions)
 );
 app.use(express.json());
-app.use(express.static(`${__dirname}/assets/`));
 app.use('/api/user', user);
 app.use('/api/recipe', recipe);
 app.use('/api/ingredient', ingredient);

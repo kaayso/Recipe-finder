@@ -1,9 +1,8 @@
 <section id="search-recipe">
-  <div class="search-recipe__back-btn" nzTooltipTitle="Tous les ingrédients" nzTooltipPlacement="right" nz-button
-    nz-tooltip>
+  <div class="search-recipe__back-btn">
     <app-back-button path="/ingredients"></app-back-button>
   </div>
-  <div class="search-recipe__counter" nzTooltipTitle="Mes ingrédients" nzTooltipPlacement="left" nz-button nz-tooltip>
+  <div class="search-recipe__counter">
     <button (click)="open()" nz-button nzType="primary" nzShape="circle">{{userIngredients.length}}</button>
   </div>
   <nz-drawer style="padding-bottom: 0;" [nzClosable]="false" [nzVisible]="isVisible" nzPlacement="right"

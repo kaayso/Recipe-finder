@@ -4,6 +4,7 @@ import { api } from 'src/app/ws/api';
 import { Ingredient } from 'src/app/interfaces/ingredient';
 import { UserResourceService } from 'src/app/services/user-resource.service';
 import { Router } from '@angular/router';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-ingredients',
@@ -20,7 +21,8 @@ export class IngredientsComponent implements OnInit {
   constructor(
     private genericService: GenericService,
     private userResourceService: UserResourceService,
-    private router: Router
+    private router: Router,
+    private modal: NzModalService
   ) {}
 
   ngOnInit(): void {
@@ -59,7 +61,16 @@ export class IngredientsComponent implements OnInit {
   }
 
   searchRecipes(): void {
-    this.userResourceService.setUserIngredients(this.userIngredients);
-    this.router.navigateByUrl('recipes/search');
+    if (this.optionsDisabled) {
+      this.modal.warning({
+        nzTitle: 'Attention',
+        nzContent:
+          "<p>Veuillez d'abord sélectionner au moins un ingédient...</p>",
+        nzOnOk: () => console.log('Info OK'),
+      });
+    } else {
+      this.userResourceService.setUserIngredients(this.userIngredients);
+      this.router.navigateByUrl('recipes/search');
+    }
   }
 }

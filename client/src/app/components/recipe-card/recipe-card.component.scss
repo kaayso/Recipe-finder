@@ -72,6 +72,8 @@
 
 .recipe-card__description {
   margin-top: 24px;
+  max-width: 800px;
+  text-align: justify !important;
 
   h3 {
     color: $primary-color;
@@ -185,5 +187,15 @@
   div {
     margin-left: 0 !important;
     margin-right: 0 !important;
+  }
+}
+
+.recipe-card__drawer-body {
+  img {
+    margin-bottom: 24px;
+    border-radius: 5px;
+    width: 260px;
+    height: 200px;
+    object-fit: cover;
   }
 }

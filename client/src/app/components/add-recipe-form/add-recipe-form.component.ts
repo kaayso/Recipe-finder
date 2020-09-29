@@ -14,6 +14,7 @@ import { GenericService } from 'src/app/services/generic.service';
 import { api } from 'src/app/ws/api';
 import { UploadService } from 'src/app/services/upload.service';
 import { CookiesService } from 'src/app/services/cookies.service';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-add-recipe-form',
@@ -42,7 +43,8 @@ export class AddRecipeFormComponent implements OnInit {
     private genericService: GenericService,
     private uploadService: UploadService,
     private router: Router,
-    private cookiesService: CookiesService
+    private cookiesService: CookiesService,
+    private modal: NzModalService
   ) {
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
@@ -161,7 +163,16 @@ export class AddRecipeFormComponent implements OnInit {
   }
 
   showModal(): void {
-    this.isVisible = true;
+    if (this.disabled) {
+      this.modal.warning({
+        nzTitle: 'Attention',
+        nzContent:
+          "<p>Veuillez d'abord sélectionner au moins un ingédient...</p>",
+        nzOnOk: () => console.log('Info OK'),
+      });
+    } else {
+      this.isVisible = true;
+    }
   }
 
   private buildPayload(recipeInfos: any, ingredientsInfos: any): any {

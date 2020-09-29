@@ -18,11 +18,11 @@
       <h3 class="recipe-card__name" (click)="open()">{{getName()}}</h3>
       <div class="recipe-card__footer">
         <div class="recipe-card__category">{{category}}</div>
-        <div nzTooltipTitle="Éditer" nzTooltipPlacement="top" nz-button nz-tooltip>
+        <div>
           <i *ngIf="!default" class="recipe-card__edit-btn" (click)="editRecipe()" nz-icon nzType="edit"
             nzTheme="outline"></i>
         </div>
-        <div nzTooltipTitle="Supprimer" nzTooltipPlacement="top" nz-button nz-tooltip>
+        <div>
           <a nz-popconfirm (nzOnConfirm)="deleteRecipe()" nzPopconfirmTitle="Êtes-vous sûr?" [nzIcon]="iconTpl"><i
               *ngIf="!default" class="recipe-card__edit-btn" nz-icon nzType="delete" nzTheme="outline"></i></a>
           <ng-template #iconTpl>
@@ -56,8 +56,10 @@
 
 
 <!-- Drawer -->
-<nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="right" nzTitle="{{name}}" (nzOnClose)="close()">
-  <div>
+<nz-drawer [nzWidth]="'90vw'" [nzClosable]="true" [nzVisible]="visible" nzPlacement="right" nzTitle="{{name}}"
+  (nzOnClose)="close()">
+  <div class="recipe-card__drawer-body">
+    <img alt="" src="{{image}}" />
     <div>
       <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
       {{time.value}} {{time.unity}}
