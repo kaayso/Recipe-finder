@@ -167,7 +167,7 @@ export class AddRecipeFormComponent implements OnInit {
       this.modal.warning({
         nzTitle: 'Attention',
         nzContent:
-          "<p>Veuillez d'abord sélectionner au moins un ingédient...</p>",
+          "<p>Veuillez d'abord sélectionner au moins un ingrédient...</p>",
         nzOnOk: () => console.log('Info OK'),
       });
     } else {
